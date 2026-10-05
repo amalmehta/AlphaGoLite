@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlphaGo Lite</title>
+  <meta name="description" content="A 9×9 Go engine that taught itself by self-play (AlphaGo Zero, scaled down). Play it in your browser and watch it think.">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="js/go.js"></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand"><img src="icon.png" alt="" width="28" height="28"> AlphaGo Lite</div>
+    <nav role="tablist">
+      <button role="tab" data-tab="play" aria-selected="true">Play</button>
+      <button role="tab" data-tab="watch">AI vs AI</button>
+      <button role="tab" data-tab="training">Training</button>
+    </nav>
+    <a class="repo" href="https://github.com/amalmehta/AlphaGoLite">GitHub</a>
+  </header>
+
+  <main>
+    <!-- Play -->
+    <section id="play" class="tab">
+      <div class="board-col">
+        <canvas id="play-board" class="board" aria-label="Go board"></canvas>
+        <p id="play-status" class="status"></p>
+      </div>
+      <aside class="panel">
+        <div class="buttons">
+          <button id="new-black">New game as Black</button>
+          <button id="new-white">New game as White</button>
+        </div>
+        <div class="buttons">
+          <button id="pass">Pass</button>
+          <button id="undo">Undo</button>
+          <button id="resign">Resign</button>
+        </div>
+        <label class="row">Strength
+          <select id="strength">
+            <option value="100">Quick (100)</option>
+            <option value="400" selected>Normal (400)</option>
+            <option value="1200">Strong (1200)</option>
+            <option value="3000">Maximum (3000)</option>
+          </select>
+        </label>
+        <label class="row check"><input type="checkbox" id="thinking" checked> Show the engine's thinking</label>
+        <hr>
+        <h3>Win probability</h3>
+        <div class="winbar" id="winbar"><div class="black-part"></div><span class="lbl b"></span><span class="lbl w"></span></div>
+        <div id="analysis"></div>
+        <div id="wr-wrap" hidden>
+          <hr>
+          <h3>Black's win probability over the game</h3>
+          <div class="chart small"><canvas id="wr-chart"></canvas></div>
+        </div>
+        <hr>
+        <p class="note">Scoring is by area (Tromp-Taylor), komi 7.5: every stone on the board counts as alive, so capture dead stones before passing.</p>
+        <p class="note faint" id="model-status">Loading the network…</p>
+      </aside>
+    </section>
+
+    <!-- AI vs AI -->
+    <section id="watch" class="tab" hidden>
+      <aside class="game-list" id="game-list"></aside>
+      <div class="board-col">
+        <canvas id="watch-board" class="board" aria-label="Go board"></canvas>
+        <p id="watch-caption" class="status"></p>
+        <div class="transport">
+          <button id="w-first" aria-label="First move">⏮</button>
+          <button id="w-prev" aria-label="Previous move">◀</button>
+          <button id="w-play" aria-label="Play">▶</button>
+          <button id="w-next" aria-label="Next move">▶▶</button>
+          <button id="w-last" aria-label="Last move">⏭</button>
+          <input type="range" id="w-slider" min="0" max="0" value="0" aria-label="Move">
+          <span id="w-count" class="mono"></span>
+        </div>
+        <div class="live" id="live-controls" hidden>
+          <label>Strength
+            <select id="live-strength">
+              <option value="100" selected>Quick (100)</option>
+              <option value="400">Normal (400)</option>
+            </select>
+          </label>
+          <button id="live-toggle">Start a new game</button>
+        </div>
+        <div class="chart"><canvas id="watch-chart"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Training -->
+    <section id="training" class="tab" hidden>
+      <div class="training">
+        <h2>How AlphaGo Lite taught itself 9×9 Go</h2>
+        <p class="muted">Each generation: the current network plays itself with tree search, the network trains on those games, then the new network plays the previous one to measure progress.</p>
+        <div class="tiles" id="tiles"></div>
+        <div class="card"><h3>Head-to-head: the network on this site vs. earlier generations</h3><div class="chart"><canvas id="h2h-chart"></canvas></div></div>
+        <div class="card"><h3>Chained Elo by generation (each step from 40 games, so noisy: roughly ±100)</h3><div class="chart"><canvas id="elo-chart"></canvas></div></div>
+        <div class="card"><h3>Training loss</h3><div class="chart"><canvas id="loss-chart"></canvas></div></div>
+        <div class="two">
+          <div class="card"><h3>Win rate vs. previous generation</h3><div class="chart"><canvas id="prev-chart"></canvas></div></div>
+          <div class="card"><h3>Average game length (moves)</h3><div class="chart"><canvas id="len-chart"></canvas></div></div>
+        </div>
+        <p class="note" id="config-note"></p>
+        <label class="file">Show another run's <code>metrics.json</code>… <input type="file" id="metrics-file" accept=".json,application/json"></label>
+      </div>
+    </section>
+  </main>
+
+  <!-- Feedback -->
+  <button id="feedback-tab" class="feedback-tab">Feedback</button>
+  <dialog id="feedback">
+    <form method="dialog">
+      <h3>Send feedback</h3>
+      <div class="seg">
+        <label><input type="radio" name="kind" value="Idea" checked> Idea</label>
+        <label><input type="radio" name="kind" value="Bug"> Bug</label>
+        <label><input type="radio" name="kind" value="Other"> Other</label>
+      </div>
+      <textarea id="feedback-text" rows="6" placeholder="What would make AlphaGo Lite better?"></textarea>
+      <p class="note">Opens a pre-filled GitHub issue on the AlphaGoLite repo, where you review it and submit.</p>
+      <div class="buttons end">
+        <button value="cancel">Close</button>
+        <button id="feedback-send" value="send" class="primary">Open GitHub issue</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

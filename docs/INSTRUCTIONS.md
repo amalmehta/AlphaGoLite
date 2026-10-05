@@ -3,6 +3,7 @@
 ## Requirements
 
 - macOS 14 or later, with Xcode (or the Command Line Tools) for `swift` and `xcrun coremlcompiler`.
+- For the website: any modern browser. Node 18+ for its tests.
 - To retrain: [uv](https://docs.astral.sh/uv/) (or any Python 3.11) and about 3–4 hours of CPU time.
 
 ## Run the Mac app
@@ -14,6 +15,20 @@ MacApp/scripts/build_app.sh --open
 ```
 
 This builds `MacApp/build/AlphaGo Lite.app` and opens it. Copy it to `/Applications` if you want to keep it.
+
+## Use the website
+
+Open https://amalmehta.github.io/AlphaGoLite/. It has the same Play, AI vs AI and Training tabs as the Mac app, and the engine runs in your browser. The first load downloads about 10 MB of engine code.
+
+To run it locally:
+
+```bash
+python3 -m http.server 8765 --directory web
+```
+
+Then open http://localhost:8765. Opening the file directly doesn't work, because the Web Worker and `fetch` need a server.
+
+The **Feedback** button (bottom right) opens a pre-filled GitHub issue; you submit it yourself.
 
 ## Using the app
 
@@ -68,6 +83,13 @@ cd trainer
 
 To export a specific generation, add `--gen N`.
 
+Export the same run for the website. A push to `main` that touches `web/` redeploys the site.
+
+```bash
+cd trainer
+.venv/bin/python -m alphago_lite.export_web --run runs/main --out ../web
+```
+
 ## Tests
 
 ```bash
@@ -78,6 +100,10 @@ cd trainer
 ```bash
 cd MacApp
 swift test
+```
+
+```bash
+node web/tests/run_tests.js
 ```
 
 If you change the rules, regenerate the parity vectors that keep Python and Swift in step:

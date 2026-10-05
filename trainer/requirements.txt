@@ -1,5 +1,8 @@
 torch==2.2.2
 numpy<2
 coremltools==7.2
-pytest
+protobuf==3.20.3
+onnx==1.14.1
+onnxruntime==1.17.3
 matplotlib
+pytest

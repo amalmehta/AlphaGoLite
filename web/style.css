@@ -1,0 +1,142 @@
+:root {
+  --bg: #f6f5f2;
+  --panel: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --line: #d9d7d2;
+  --accent: #2f6fdb;
+  --card: #efeee9;
+  --button: #ffffff;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1e;
+    --panel: #242426;
+    --text: #f2f2f7;
+    --muted: #a1a1a6;
+    --line: #3a3a3c;
+    --accent: #4f8ff0;
+    --card: #2c2c2e;
+    --button: #3a3a3c;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+[hidden] { display: none !important; }
+
+header {
+  display: flex; align-items: center; gap: 24px;
+  padding: 10px 20px; border-bottom: 1px solid var(--line); background: var(--panel);
+  position: sticky; top: 0; z-index: 5;
+}
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 17px; }
+nav { display: flex; gap: 4px; }
+nav button {
+  border: 0; background: none; color: var(--muted); font: inherit; padding: 6px 12px; border-radius: 8px; cursor: pointer;
+}
+nav button[aria-selected="true"] { background: var(--card); color: var(--text); font-weight: 600; }
+.repo { margin-left: auto; color: var(--muted); text-decoration: none; font-size: 14px; }
+.repo:hover { color: var(--text); }
+
+main { max-width: 1240px; margin: 0 auto; padding: 20px 16px 60px; }
+.tab { display: flex; gap: 20px; align-items: flex-start; }
+.board-col { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.board { width: min(100%, calc(100vh - 170px), 720px); aspect-ratio: 1; display: block; touch-action: manipulation; }
+.status { font-weight: 600; min-height: 1.4em; margin: 0; text-align: center; }
+
+.panel {
+  width: 300px; flex: none; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px;
+}
+.panel h3, .card h3 { font-size: 14px; margin: 0 0 8px; }
+.panel hr { border: 0; border-top: 1px solid var(--line); margin: 14px 0; }
+.buttons { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.buttons.end { justify-content: flex-end; }
+button, select {
+  font: inherit; font-size: 14px; color: var(--text); background: var(--button);
+  border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; cursor: pointer;
+}
+button:disabled { opacity: 0.45; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0; }
+.row.check { justify-content: flex-start; }
+.note { font-size: 12px; color: var(--muted); margin: 6px 0; }
+.faint { opacity: 0.7; }
+.muted { color: var(--muted); }
+.mono { font-variant-numeric: tabular-nums; }
+
+.winbar {
+  position: relative; height: 24px; border-radius: 6px; overflow: hidden; background: #ededed; border: 1px solid var(--line);
+}
+.winbar .black-part { position: absolute; inset: 0 auto 0 0; width: 50%; background: #1f1f1f; transition: width 0.3s; }
+.winbar .lbl { position: absolute; top: 3px; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.winbar .b { left: 8px; color: #fff; }
+.winbar .w { right: 8px; color: #000; }
+.stats { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin: 6px 0 10px; }
+table.moves { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 14px; }
+table.moves th { text-align: left; font-size: 12px; color: var(--muted); font-weight: 600; }
+table.moves td:first-child { font-weight: 700; }
+.pv { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+.chart { position: relative; height: 200px; width: 100%; }
+.chart.small { height: 120px; }
+.board-col .chart { height: 120px; max-width: 720px; }
+
+.game-list {
+  width: 230px; flex: none; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 8px;
+  max-height: calc(100vh - 110px); overflow: auto;
+}
+.game-list h4 { font-size: 12px; color: var(--muted); margin: 10px 8px 4px; }
+.game-list button {
+  display: block; width: 100%; text-align: left; border: 0; background: none; padding: 6px 8px; border-radius: 8px;
+}
+.game-list button[aria-current="true"] { background: var(--accent); color: #fff; }
+.game-list button small { display: block; font-size: 12px; opacity: 0.75; }
+.transport { display: flex; align-items: center; gap: 6px; width: 100%; max-width: 720px; }
+.transport input[type=range] { flex: 1; }
+.transport button { min-width: 36px; }
+.live { display: flex; gap: 10px; align-items: center; }
+
+.training { width: 100%; }
+.training h2 { margin: 0 0 4px; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+.tile { background: var(--card); border-radius: 10px; padding: 12px; }
+.tile .t { font-size: 12px; color: var(--muted); }
+.tile .v { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.card { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.file { font-size: 13px; color: var(--muted); display: inline-flex; gap: 8px; align-items: center; }
+
+.feedback-tab {
+  position: fixed; right: 16px; bottom: 16px; z-index: 10; font-size: 12px; padding: 4px 10px;
+  color: var(--muted); background: var(--panel); border-radius: 999px; opacity: 0.85;
+}
+.feedback-tab:hover { opacity: 1; color: var(--text); }
+dialog {
+  border: 1px solid var(--line); border-radius: 14px; background: var(--panel); color: var(--text);
+  width: min(440px, calc(100vw - 32px)); padding: 20px;
+}
+dialog::backdrop { background: rgba(0, 0, 0, 0.35); }
+dialog h3 { margin: 0 0 12px; }
+dialog textarea {
+  width: 100%; font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin: 10px 0 4px;
+}
+.seg { display: flex; gap: 14px; font-size: 14px; }
+
+@media (max-width: 860px) {
+  header { flex-wrap: wrap; gap: 10px; padding: 10px 16px; position: static; }
+  .repo { margin-left: 0; }
+  .tab { flex-direction: column; align-items: stretch; }
+  .panel, .game-list { width: 100%; }
+  .game-list { max-height: 220px; }
+  .board { width: 100%; }
+  .tiles { grid-template-columns: repeat(2, 1fr); }
+  .two { grid-template-columns: 1fr; }
+}

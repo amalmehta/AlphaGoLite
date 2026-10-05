@@ -1,6 +1,6 @@
 # AlphaGo Lite
 
-A Mac app that plays 9×9 Go using the AlphaGo Zero algorithm. It taught itself from scratch through self-play on one laptop, and it shows you what it's thinking as it plays.
+A 9×9 Go engine built on the AlphaGo Zero algorithm. It taught itself from scratch through self-play on one laptop. Play it as a Mac app or **[in your browser](https://amalmehta.github.io/AlphaGoLite/)**, and watch what it's thinking as it plays.
 
 ![Playing against AlphaGo Lite, with its search shown on the board](docs/images/play.png)
 
@@ -16,10 +16,12 @@ flowchart LR
     B -->|new network| C[Evaluate<br/>vs previous]
     C --> A
     B -->|Core ML| D[AlphaGo Lite.app<br/>Play · AI vs AI · Training]
+    B -->|ONNX| E[Website<br/>same features, in the browser]
 ```
 
 ## Links
 
+- [Play in your browser](https://amalmehta.github.io/AlphaGoLite/)
 - [Instructions](docs/INSTRUCTIONS.md): build and run the app, how to play, how to retrain
 - [System design](docs/SYSTEM-DESIGN.md): architecture, flows, decisions, limits
 - [File structure](docs/FILE-STRUCTURE.md): what's where

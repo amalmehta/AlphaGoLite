@@ -77,9 +77,20 @@ Decided without asking:
 - Built as a Swift Package + build script rather than an .xcodeproj.
 - GitHub repo created private.
 
+Website (asked and answered 2026-10-04):
+- Hosted on GitHub Pages. That needed the repo to be public on this plan, so
+  AlphaGoLite was made public.
+- Same features as the Mac app. Network runs with ONNX Runtime Web; feedback opens a
+  pre-filled GitHub issue.
+
+Website, decided without asking:
+- Plain JavaScript with no build step; search runs in a Web Worker; charts use Chart.js.
+- Strength levels match the Mac app (100 / 400 / 1200 / 3000 simulations).
+
 CHANGELOG:
 
 - 2026-10-04 — created
+- 2026-10-05 — website built (web/), deployed to GitHub Pages; repo made public
 - 2026-10-04 — built: 9×9 AlphaZero trainer + AlphaGo Lite Mac app (Play, AI vs AI, Training, Feedback); trained 19 generations; docs and README added
 - 2026-09-15 — added meta-instruction: built-out applications include a small feedback tab
 - 2026-09-15 — added meta-instruction: no "Claude" attribution in commits, PRs, or branches
