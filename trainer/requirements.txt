@@ -1,0 +1,5 @@
+torch==2.2.2
+numpy<2
+coremltools==7.2
+pytest
+matplotlib
