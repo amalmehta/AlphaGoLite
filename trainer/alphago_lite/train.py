@@ -34,6 +34,34 @@ def write_json(path, obj):
     os.replace(tmp, path)
 
 
+class Workers:
+    """Process pool that survives a dead worker. multiprocessing.Pool replaces a
+    worker that dies but loses its job, so starmap would wait forever; here a
+    call that doesn't finish within `timeout` seconds is retried on a new pool."""
+
+    def __init__(self, n, timeout, retries=3):
+        self.n, self.timeout, self.retries = n, timeout, retries
+        self.ctx = mp.get_context("spawn")
+        self.pool = self.ctx.Pool(n)
+
+    def starmap(self, fn, jobs):
+        for attempt in range(1, self.retries + 1):
+            try:
+                return self.pool.starmap_async(fn, jobs).get(self.timeout)
+            except mp.TimeoutError:
+                print(f"{fn.__name__}: no result after {self.timeout}s (attempt {attempt}); restarting workers",
+                      flush=True)
+                self.pool.terminate()
+                self.pool = self.ctx.Pool(self.n)
+        raise RuntimeError(f"{fn.__name__} failed {self.retries} times")
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        self.pool.terminate()
+
+
 def load_window(data_dir, max_positions):
     files = sorted(data_dir.glob("gen_*.npz"), reverse=True)
     planes, pis, zs, total = [], [], [], 0
@@ -88,6 +116,8 @@ def main():
     ap.add_argument("--window", type=int, default=250_000)
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--train-threads", type=int, default=12)
+    ap.add_argument("--job-timeout", type=int, default=2400,
+                    help="seconds before a self-play/eval step is retried on fresh workers")
     args = ap.parse_args()
 
     run = Path(args.run)
@@ -118,9 +148,8 @@ def main():
 
     start = time.time() - gens[-1]["elapsed_min"] * 60
     deadline = time.time() + args.hours * 3600
-    ctx = mp.get_context("spawn")
     threads = 1
-    with ctx.Pool(args.workers) as pool:
+    with Workers(args.workers, args.job_timeout) as pool:
         for gen in range(g0 + 1, args.max_gens + 1):
             if time.time() > deadline:
                 break
