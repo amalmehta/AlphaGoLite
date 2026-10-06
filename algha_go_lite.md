@@ -63,7 +63,7 @@ Decided without asking:
 - Rules: simple ko (no superko), no suicide, Tromp-Taylor area scoring,
   komi 7.5, game scored after 162 moves.
 - Network 4 residual blocks × 48 channels (a 6×64 net was 2× slower on this
-  Intel CPU); about 4 hours of training (19 generations, 3,040 games).
+  Intel CPU); about 4 hours of training (19 generations, 3,040 games), then 3 more hours on request (34 generations, 5,440 games in all).
 - Added a head-to-head strength check (final network vs generations 0 and 10)
   because chained Elo was too noisy to show progress.
 - Added View-menu shortcuts (⌘1/⌘2/⌘3) for switching sections.
@@ -90,6 +90,7 @@ Website, decided without asking:
 CHANGELOG:
 
 - 2026-10-04 — created
+- 2026-10-05 — trained 3 more hours (generations 20–34); apps and website now use generation 34, which beats generation 19 in 79/80 games
 - 2026-10-05 — website built (web/), deployed to GitHub Pages; repo made public
 - 2026-10-04 — built: 9×9 AlphaZero trainer + AlphaGo Lite Mac app (Play, AI vs AI, Training, Feedback); trained 19 generations; docs and README added
 - 2026-09-15 — added meta-instruction: built-out applications include a small feedback tab

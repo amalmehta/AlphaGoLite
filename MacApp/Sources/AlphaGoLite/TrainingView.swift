@@ -83,8 +83,8 @@ struct TrainingView: View {
                 Chart(checks.sorted { $0.vs < $1.vs }) { c in
                     BarMark(x: .value("Win %", Double(c.wins) / Double(max(1, c.games)) * 100),
                             y: .value("Opponent", "vs. generation \(c.vs)"))
-                        .annotation(position: .trailing) {
-                            Text("\(c.wins)/\(c.games) games").font(.caption)
+                        .annotation(position: .overlay, alignment: .trailing) {
+                            Text("\(c.wins)/\(c.games) games").font(.caption.bold()).foregroundStyle(.white).padding(.trailing, 6)
                         }
                     RuleMark(x: .value("Even", 50)).foregroundStyle(.secondary)
                 }

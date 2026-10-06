@@ -92,7 +92,8 @@ def main():
     print(f"exported generation {gen}; Core ML vs PyTorch max abs diff {check_parity(net, mlmodel):.2e}")
     metrics["exported_gen"] = gen
     strength = run / "strength.json"
-    metrics["strength_checks"] = json.loads(strength.read_text()) if strength.exists() else []
+    checks = json.loads(strength.read_text()) if strength.exists() else []
+    metrics["strength_checks"] = [c for c in checks if c["gen"] == gen]
     (out / "metrics.json").write_text(json.dumps(metrics))
     games = pick_games(run)
     (out / "games.json").write_text(json.dumps({"games": games}))

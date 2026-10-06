@@ -59,7 +59,8 @@ def main():
 
     metrics["exported_gen"] = gen
     strength = run / "strength.json"
-    metrics["strength_checks"] = json.loads(strength.read_text()) if strength.exists() else []
+    checks = json.loads(strength.read_text()) if strength.exists() else []
+    metrics["strength_checks"] = [c for c in checks if c["gen"] == gen]
     (out / "data").mkdir(parents=True, exist_ok=True)
     (out / "data" / "metrics.json").write_text(json.dumps(metrics))
     games = pick_games(run)

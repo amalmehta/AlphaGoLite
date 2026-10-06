@@ -103,12 +103,22 @@ each move, or plays a new game live with the trained network.
 
 ## Results of the bundled run
 
-- 19 generations, 3,040 self-play games, 4.1 hours on an 8-core Intel i9, with other apps sharing the CPU.
-- Policy loss fell from 4.09 to 3.12. Value loss fell from 0.69 to about 0.55.
-- Head-to-head at 64 simulations a move, 80 games each:
-  - The final network (generation 19) beat generation 10 in 72 games (90%).
-  - It beat the random starting network in 66 games (82%). The random network still has tree search, which sees game-ending captures and passes, so it isn't helpless.
-- Chained Elo is too noisy (each step comes from 40 games) to show this trend, so the dashboard leads with the head-to-head numbers.
+- 34 generations, 5,440 self-play games, 7.2 hours on an 8-core Intel i9, in two sittings:
+  generations 1–19 (4.1 h, sharing the CPU with other apps), then generations 20–34
+  (3 h, with the machine mostly free).
+- Policy loss fell from 4.09 to 2.97. Value loss fell from 0.69 to about 0.55, then crept up to about 0.57.
+- Head-to-head games with the network in the apps (generation 34), at 64 simulations a
+  move, 80 games each:
+
+  | Opponent | Generation 34 won |
+  |---|---|
+  | Generation 0 (random network + search) | 78/80 (97%) |
+  | Generation 10 | 76/80 (95%) |
+  | Generation 19 (the first release) | 79/80 (99%) |
+
+- Chained Elo peaked at generation 25 and then fell, while the head-to-head games show
+  generation 34 far stronger. Chained Elo adds up the noise from each 40-game match, so
+  the dashboards lead with the head-to-head numbers, and the README chart shows only those.
 
 ## Where data lives
 
@@ -199,8 +209,9 @@ builds without retraining.
 - Strength is that of a few hours of CPU training: it plays reasonable shapes and
   captures, but is far below a strong 9×9 engine (KataGo) or a dan player.
 - Elo is chained and noisy; use the head-to-head checks instead.
-- Training time was short. On this run the network learned local fighting (captures,
-  cuts, atari) better than whole-board judgement.
+- Training time was short (7 hours on one CPU). The network is clearly better than its
+  earlier generations, but its strength against people is unmeasured. Expect a capable
+  beginner, not a strong player.
 - No superko, no handicap, no time controls, no SGF import or export.
 - The app's search is single-threaded with batch size 1.
 - Tromp-Taylor scoring doesn't remove dead stones.

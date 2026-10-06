@@ -24,23 +24,29 @@ def main():
     games = gens[-1]["total_games"]
 
     fig, (a, b) = plt.subplots(1, 2, figsize=(11, 3.6), dpi=150)
-    a.plot(g, [x["elo"] for x in gens], color="#2f6fdb", lw=2)
-    a.set_title("Chained Elo (each point from 40 games: noisy)")
-    a.set_xlabel("Generation")
+    checks = Path(args.run) / "strength.json"
+    final = sorted((c for c in (json.loads(checks.read_text()) if checks.exists() else []) if c["gen"] == g[-1]),
+                   key=lambda c: c["vs"])
+    labels = [f"vs. generation {c['vs']}" for c in final]
+    rates = [100 * c["wins"] / c["games"] for c in final]
+    a.barh(labels, rates, color="#2f6fdb")
+    for i, c in enumerate(final):
+        a.text(rates[i] - 2, i, f"{c['wins']}/{c['games']} games", va="center", ha="right", color="white", fontsize=9)
+    a.axvline(50, color="#999", lw=1, ls="--")
+    a.set_xlim(0, 100)
+    a.invert_yaxis()
+    a.set_xlabel("Win %")
+    a.set_title(f"Generation {g[-1]} vs. earlier generations (head-to-head)")
     t = [x for x in gens if "policy_loss" in x]
     b.plot([x["gen"] for x in t], [x["policy_loss"] for x in t], label="Policy loss", color="#2f6fdb", lw=2)
     b.plot([x["gen"] for x in t], [x["value_loss"] for x in t], label="Value loss", color="#e08a1e", lw=2)
     b.set_title("Training loss")
     b.set_xlabel("Generation")
     b.legend(frameon=False)
+    b.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
     for ax in (a, b):
-        ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
         ax.spines[["top", "right"]].set_visible(False)
         ax.grid(alpha=0.25)
-    checks = Path(args.run) / "strength.json"
-    for c in (json.loads(checks.read_text()) if checks.exists() else []):
-        a.annotate(f"gen {c['gen']} beats gen {c['vs']}: {c['wins']}/{c['games']}",
-                   xy=(0.02, 0.92 - 0.08 * c["vs"] / 10), xycoords="axes fraction", fontsize=8, color="#444")
     fig.suptitle(f"AlphaGo Lite learning 9×9 Go from scratch — {games:,} self-play games, {hours:.1f} hours on one laptop CPU",
                  fontsize=11)
     fig.tight_layout()
