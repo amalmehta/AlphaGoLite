@@ -90,6 +90,7 @@ Website, decided without asking:
 CHANGELOG:
 
 - 2026-10-04 — created
+- 2026-10-05 — checked generation 34 against 25 and 30 (wins 66/80, 58/80): it is the best, kept it shipped
 - 2026-10-05 — trained 3 more hours (generations 20–34); apps and website now use generation 34, which beats generation 19 in 79/80 games
 - 2026-10-05 — website built (web/), deployed to GitHub Pages; repo made public
 - 2026-10-04 — built: 9×9 AlphaZero trainer + AlphaGo Lite Mac app (Play, AI vs AI, Training, Feedback); trained 19 generations; docs and README added

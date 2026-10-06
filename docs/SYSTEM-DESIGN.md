@@ -115,9 +115,11 @@ each move, or plays a new game live with the trained network.
   | Generation 0 (random network + search) | 78/80 (97%) |
   | Generation 10 | 76/80 (95%) |
   | Generation 19 (the first release) | 79/80 (99%) |
+  | Generation 25 (peak chained Elo) | 66/80 (82%) |
+  | Generation 30 | 58/80 (72%) |
 
-- Chained Elo peaked at generation 25 and then fell, while the head-to-head games show
-  generation 34 far stronger. Chained Elo adds up the noise from each 40-game match, so
+- Chained Elo peaked at generation 25 and then fell, but generation 34 beats 25 and 30
+  head-to-head, so it is the best generation and the one shipped. Chained Elo adds up the noise from each 40-game match, so
   the dashboards lead with the head-to-head numbers, and the README chart shows only those.
 
 ## Where data lives
