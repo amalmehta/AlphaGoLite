@@ -90,6 +90,7 @@ Website, decided without asking:
 CHANGELOG:
 
 - 2026-10-04 — created
+- 2026-10-06 — trainer: worker pool restarts and retries a step that hangs (a run had stalled for 2 hours on an overloaded machine)
 - 2026-10-05 — checked generation 34 against 25 and 30 (wins 66/80, 58/80): it is the best, kept it shipped
 - 2026-10-05 — trained 3 more hours (generations 20–34); apps and website now use generation 34, which beats generation 19 in 79/80 games
 - 2026-10-05 — website built (web/), deployed to GitHub Pages; repo made public

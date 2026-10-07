@@ -52,7 +52,7 @@ flowchart LR
 | `trainer/alphago_lite/net.py` | Residual network (4 blocks × 48 channels, ~190k parameters) with a policy head (82 move logits) and a value head (tanh, −1…1). |
 | `trainer/alphago_lite/mcts.py` | PUCT tree search. Searches many trees in lock-step so every simulation evaluates one leaf per tree in a single network batch. |
 | `trainer/alphago_lite/selfplay.py` | Self-play games (with Dirichlet noise, temperature for the first 10 moves, playout-cap randomization) and head-to-head evaluation matches. |
-| `trainer/alphago_lite/train.py` | The loop: self-play → train → evaluate, one generation at a time, across a pool of worker processes. Resumable. |
+| `trainer/alphago_lite/train.py` | The loop: self-play → train → evaluate, one generation at a time, across a pool of worker processes. Resumable. If a self-play or evaluation step returns nothing within `--job-timeout` (40 min), it restarts the workers and retries, up to 3 times. |
 | `trainer/alphago_lite/export_app.py` | Converts the latest weights to Core ML (and checks it matches PyTorch), copies the metrics and a selection of games for the app. |
 | `trainer/alphago_lite/strength_check.py` | Plays one generation against earlier ones (80 games each) for an honest strength number. |
 | `trainer/alphago_lite/plot_training.py` | Draws the README's training chart. |
@@ -174,6 +174,10 @@ builds without retraining.
 - **Website feedback goes to GitHub issues**, since a static site has nowhere to store
   it. The visitor reviews and submits the pre-filled issue themselves, which needs a
   GitHub account.
+- **A worker pool that heals itself.** `multiprocessing.Pool` replaces a worker that
+  dies but silently loses its job, so the trainer could wait forever. This happened once,
+  on an overloaded machine, and wasted 2 hours. Each pool call now has a timeout and is
+  retried on fresh workers. The cost: a genuinely hung step wastes up to one timeout.
 - **Swift Package + build script instead of an Xcode project.** Plain text, easy to
   diff, builds with `swift build`; the script assembles a real `.app`.
 

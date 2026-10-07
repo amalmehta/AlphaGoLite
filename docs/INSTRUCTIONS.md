@@ -64,7 +64,8 @@ uv pip install --python .venv/bin/python -r requirements.txt
 
 - Progress is printed one line per generation and written to `runs/main/metrics.json`. Watch it live in the app with **Training › Open Training Run…**.
 - Training resumes from the last finished generation if you run the same command again.
-- Useful flags: `--games-per-gen`, `--sims`, `--workers` (default 10, one process per core), `--eval-games`, `--max-gens`.
+- Useful flags: `--games-per-gen`, `--sims`, `--workers` (default 10, one process per core), `--eval-games`, `--max-gens`, `--job-timeout` (seconds before a stuck self-play or evaluation step restarts its workers; default 2400).
+- Training is CPU-bound. On a busy Mac (simulators, VMs, other training) it slows down a lot, so close heavy apps first.
 
 Measure real strength with head-to-head games (results go to `runs/main/strength.json` and appear in the app's Training view):
 
