@@ -103,24 +103,35 @@ each move, or plays a new game live with the trained network.
 
 ## Results of the bundled run
 
-- 34 generations, 5,440 self-play games, 7.2 hours on an 8-core Intel i9, in two sittings:
-  generations 1–19 (4.1 h, sharing the CPU with other apps), then generations 20–34
-  (3 h, with the machine mostly free).
-- Policy loss fell from 4.09 to 2.97. Value loss fell from 0.69 to about 0.55, then crept up to about 0.57.
-- Head-to-head games with the network in the apps (generation 34), at 64 simulations a
+- 44 generations, 7,040 self-play games, about 11 hours of wall-clock time on an 8-core
+  Intel i9, in four sittings:
+
+  | Generations | Hours | Conditions |
+  |---|---|---|
+  | 1–19 | 4.1 | CPU shared with other apps |
+  | 20–34 | 3 | machine mostly free |
+  | 35–44 | about 4 | heavily loaded machine |
+
+- One later sitting stalled for 2 hours and produced nothing. That's what led to the
+  self-healing worker pool.
+- Policy loss fell from 4.09 to 2.90. Value loss fell from 0.69 to about 0.55, then
+  settled near 0.57.
+- Head-to-head games with the network in the apps (generation 44), at 64 simulations a
   move, 80 games each:
 
-  | Opponent | Generation 34 won |
+  | Opponent | Generation 44 won |
   |---|---|
-  | Generation 0 (random network + search) | 78/80 (97%) |
-  | Generation 10 | 76/80 (95%) |
-  | Generation 19 (the first release) | 79/80 (99%) |
-  | Generation 25 (peak chained Elo) | 66/80 (82%) |
-  | Generation 30 | 58/80 (72%) |
+  | Generation 0 (random network + search) | 79/80 (99%) |
+  | Generation 19 (first release) | 78/80 (98%) |
+  | Generation 34 (second release) | 59/80 (74%) |
+  | Generation 39 | 46/80 (57%) |
 
-- Chained Elo peaked at generation 25 and then fell, but generation 34 beats 25 and 30
-  head-to-head, so it is the best generation and the one shipped. Chained Elo adds up the noise from each 40-game match, so
-  the dashboards lead with the head-to-head numbers, and the README chart shows only those.
+- Before it, generation 34 beat 25 (66/80) and 30 (58/80). Each release has beaten the
+  generations it was tested against, even though chained Elo wanders up and down.
+  Chained Elo adds up the noise from each 40-game match, so the dashboards lead with
+  head-to-head numbers.
+- Gains are shrinking: generation 44 beats 39 only 57% of the time. With this network
+  size, more CPU hours bring smaller improvements.
 
 ## Where data lives
 

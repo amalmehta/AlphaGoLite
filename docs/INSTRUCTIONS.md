@@ -71,7 +71,7 @@ Measure real strength with head-to-head games (results go to `runs/main/strength
 
 ```bash
 cd trainer
-.venv/bin/python -m alphago_lite.strength_check --run runs/main --gen 34 --vs 0 10 19 25 30
+.venv/bin/python -m alphago_lite.strength_check --run runs/main --gen 44 --vs 0 19 34 39
 ```
 
 Export the result into the app, then rebuild:
