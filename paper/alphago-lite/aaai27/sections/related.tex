@@ -1,0 +1,18 @@
+\section{Related Work}
+\paragraph{AlphaZero and its reimplementations.}
+AlphaGo combined deep networks with Monte Carlo tree search \citep{silver2016alphago}; AlphaGo Zero and
+AlphaZero removed human data and hand-crafted features \citep{silver2017alphagozero,silver2018alphazero}.
+Their search descends from UCT and its prior-guided variant PUCT \citep{kocsis2006uct,rosin2011puct}.
+Open reimplementations reproduce the result at large scale \citep{tian2019elf}, make self-play far more
+sample-efficient \citep{wu2019katago}, or provide AlphaZero inside general game frameworks
+\citep{lanctot2019openspiel}. We borrow KataGo's playout-cap randomization \citep{wu2019katago}. We work at
+the opposite end of the scale: one CPU, and a deliberately small network.
+
+\paragraph{Rating and evaluating agents.}
+Elo ratings and the Bradley--Terry model turn pairwise results into a scale \citep{elo1978rating,bradley1952rank}.
+Whole-history rating fits ratings that change over time \citep{coulom2008whr}. Evaluation by pairwise
+results can mislead when games are not transitive \citep{balduzzi2018reevaluating,czarnecki2020spinning},
+and point estimates from a few reinforcement-learning runs can be unreliable without interval estimates
+\citep{agarwal2021precipice}. AlphaGo Zero tracked progress with large evaluation matches against earlier
+players \citep{silver2017alphagozero}. Small runs usually can't afford this. We study the cheap
+alternative many of them use, consecutive-generation matches, and show how and why it can mislead.

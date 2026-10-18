@@ -1,0 +1,53 @@
+\section{A Laptop-Scale AlphaZero}
+\label{sec:system}
+\begin{figure}[t]
+\centering
+\input{figures/pipeline}
+\caption{One training loop on a laptop CPU; the same rules, search and trained network run in three
+runtimes. Chained Elo comes from the ``evaluate vs.\ previous generation'' step.}
+\label{fig:pipeline}
+\end{figure}
+
+\paragraph{Game and representation.}
+We play 9$\times$9 Go with simple ko, no suicide and Tromp--Taylor area scoring (komi 7.5); games end
+after two passes or 162 moves. The network sees six planes: each side's stones now and one move ago, the
+side to move, and a constant plane.
+
+\paragraph{Network and search.}
+A residual network \citep{he2016resnet} with \valNParams{} parameters (Table~\ref{tab:hyper}) outputs move
+logits for the 81 points and pass, and a value in $[-1,1]$. Search is PUCT \citep{rosin2011puct} as in
+AlphaZero, with one change from Leela Zero: an unvisited move is valued at the parent's value minus a
+reduction that grows with the prior probability already explored (first-play urgency).
+
+\paragraph{Self-play and training.}
+Ten worker processes each play 16 games in lock step. Every simulation step evaluates one leaf per game in
+a single network batch, which keeps a CPU busy without virtual loss or threads. Following KataGo
+\citep{wu2019katago}, a quarter of moves receive a full search and become training samples; the rest get a
+quarter of the simulations and only advance the game. The network trains with AdamW on a sliding window
+of recent positions, with all eight board symmetries, on cross-entropy to the search's visit distribution
+plus squared error to the game result. Each generation then plays the previous one in a
+\valEvalGames{}-game match at \valEvalSims{} simulations a move; the summed Elo differences form the
+chained Elo of the training log.
+
+\begin{table}[t]
+\centering
+\small
+\input{generated/tables/hyperparams}
+\caption{Settings of the run, read from the training code and its saved configuration.}
+\label{tab:hyper}
+\end{table}
+
+\paragraph{Hardware and budget.}
+Everything ran on one Intel Core i9-9980HK (8 cores, 16 threads, no GPU). The run took \valNGens{}
+generations of \valGamesPerGen{} games each (\valTotalGames{} games, about \valWallHours{} hours of wall-clock
+time). That time is approximate: other software shared the machine, and one generation's self-play
+took anywhere from \valSelfplayMin{} to \valSelfplayMax{} seconds. Figure~\ref{fig:loss} shows the losses.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/loss_curves.pdf}
+\caption{Training losses fall steadily across generations: policy cross-entropy from
+\valPolicyLossFirst{} to \valPolicyLossLast{} nats, and value MSE from \valValueLossFirst{} to
+\valValueLossLast{}. One run.}
+\label{fig:loss}
+\end{figure}

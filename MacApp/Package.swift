@@ -7,6 +7,7 @@ let package = Package(
     targets: [
         .target(name: "GoEngine"),
         .executableTarget(name: "AlphaGoLite", dependencies: ["GoEngine"]),
+        .executableTarget(name: "AlphaGoLiteBench", dependencies: ["GoEngine"]),
         .testTarget(name: "GoEngineTests", dependencies: ["GoEngine"],
                     resources: [.copy("test_vectors.json")]),
     ]

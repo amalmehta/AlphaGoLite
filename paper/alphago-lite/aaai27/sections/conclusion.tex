@@ -1,0 +1,23 @@
+\section{Limitations and Conclusion}
+\paragraph{Limitations.}
+This is one training run with one seed, on 9$\times$9 Go, with a small network. We do not know how often
+chained Elo misleads in other runs, games or network sizes; the analysis of noise is general, but the size
+of the effect of shallow evaluation may not be. We compared only 32 and 64 simulations a move, and replayed only
+generations 24--44. On a single pair, the log and the replay differ by less than the noise, so the attribution
+rests on the aggregate. Wall-clock times were measured on a
+machine shared with other work. We played no games against humans, and the GNU~Go comparison used a single
+setting.
+
+\paragraph{Conclusion.}
+On a small AlphaZero run, summing Elo from short matches between consecutive generations suggested a
+stall and decline. Anchored head-to-head games showed steady improvement. The disagreement is too large to
+be match noise alone. Replaying the same consecutive matches with more search per move recovered the
+correct direction and agreed with the anchored games. For small runs we recommend evaluating at least at
+deployment search depth, and tracking scores against a few fixed anchors, which costs little. The training pipeline, the evaluation data and the identical-across-runtimes engine are
+released with the paper \TODO{add the anonymized artifact link for review; the public repository URL for camera-ready}.
+
+\paragraph{Use of AI tools.}
+The authors used an AI assistant (Claude Code with a paper-writing skill) to draft text, to write the
+scripts that generate figures, tables and in-text numbers from the logged data, and to format and verify
+references. The authors reviewed all content and are responsible for it.
+\TODO{author: confirm this statement matches what you did, and edit as needed.}

@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- Cross-platform benchmark, browser side. Serve the repo's web/ folder with this
+     file and positions.json copied in (see README in this folder), open it, and call
+     runBench() — it returns the same JSON shape as the Python and Swift benchmarks. -->
+<meta charset="utf-8">
+<title>AlphaGo Lite benchmark</title>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.17.3/dist/ort.min.js"></script>
+<script src="js/go.js"></script>
+<script src="js/mcts.js"></script>
+<script>
+async function runBench() {
+  ort.env.wasm.wasmPaths = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.17.3/dist/";
+  ort.env.wasm.numThreads = 1;
+  const session = await ort.InferenceSession.create("model/alphagolite.onnx", { executionProviders: ["wasm"] });
+  const evaluator = async (f) => {
+    const o = await session.run({ planes: new ort.Tensor("float32", f, [1, 6, 9, 9]) });
+    return { logits: o.policy.data, value: o.value.data[0] };
+  };
+  const input = await (await fetch("positions.json")).json();
+  const cases = [];
+  for (const c of input.cases) {
+    let pos = Go.newPosition();
+    for (const m of c.moves) pos = Go.play(pos, m);
+    let best = Infinity, mcts;
+    for (let r = 0; r < 3; r++) {
+      mcts = new MCTS(evaluator, pos);
+      const t = performance.now();
+      await mcts.search(input.sims);
+      best = Math.min(best, performance.now() - t);
+    }
+    cases.push({ visits: Array.from(mcts.root.visits), best: mcts.bestMove(), ms: best });
+  }
+  return { platform: "Browser / ONNX Runtime Web 1.17.3 (WebAssembly, 1 thread)", userAgent: navigator.userAgent,
+           sims: input.sims, repeats: 3, cases };
+}
+</script>

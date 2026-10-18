@@ -26,7 +26,12 @@ AlphaGoLite/
 ├── paper/alphago-lite/            research paper (in progress)
 │   ├── intake.md                 claims ↔ evidence, open questions
 │   ├── data/                     copies of the run's metrics and evaluation results the paper uses
-│   └── aaai27/                   AAAI-27 workshop version: venue.md, outline.md, template/ (official kit)
+│   ├── bench/                    cross-platform benchmark (Python, browser page) and its results
+│   ├── figures_scripts/          one script per figure/table/value file; make_all.py rebuilds them all;
+│   │                             flatten_tex.py makes the single-file submission source
+│   └── aaai27/                   AAAI-27-format draft: main.tex, sections/, generated/, figures/, refs.bib,
+│                                 sources.md, venue.md, outline.md, venue_report.md, template/ (official kit),
+│                                 submission/ (flattened single-file source)
 ├── trainer/                      Python: learns Go by self-play
 │   ├── requirements.txt
 │   ├── alphago_lite/

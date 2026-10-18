@@ -9,3 +9,13 @@ trainer/*.log
 MacApp/.build/
 MacApp/build/
 MacApp/.swiftpm/
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+paper/**/main.log
+paper/**/*.fls
+paper/**/*.fdb_latexmk
+missfont.log
