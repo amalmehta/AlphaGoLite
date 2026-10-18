@@ -23,6 +23,10 @@ AlphaGoLite/
 │   ├── model/alphagolite.onnx    the trained network
 │   ├── data/                     metrics.json, games.json
 │   └── tests/run_tests.js        Node tests (rule parity, search)
+├── paper/alphago-lite/            research paper (in progress)
+│   ├── intake.md                 claims ↔ evidence, open questions
+│   ├── data/                     copies of the run's metrics and evaluation results the paper uses
+│   └── aaai27/                   AAAI-27 workshop version: venue.md, outline.md, template/ (official kit)
 ├── trainer/                      Python: learns Go by self-play
 │   ├── requirements.txt
 │   ├── alphago_lite/
@@ -34,6 +38,8 @@ AlphaGoLite/
 │   │   ├── export_app.py         Core ML export + metrics/games for the app
 │   │   ├── export_web.py         ONNX export + metrics/games for the website
 │   │   ├── strength_check.py     head-to-head games: one generation vs earlier ones
+│   │   ├── anchored_eval.py      many generation pairs, for fitting one rating per generation
+│   │   ├── gnugo_match.py        a generation vs GNU Go 3.8 over GTP
 │   │   ├── make_test_vectors.py  rule-parity vectors for the Swift tests
 │   │   └── plot_training.py      draws docs/images/training.png from metrics.json
 │   ├── tests/test_go.py          pytest suite
