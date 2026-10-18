@@ -223,8 +223,13 @@ Whole-history rating fits ratings that change over time \citep{coulom2008whr}. E
 results can mislead when games are not transitive \citep{balduzzi2018reevaluating,czarnecki2020spinning},
 and point estimates from a few reinforcement-learning runs can be unreliable without interval estimates
 \citep{agarwal2021precipice}. AlphaGo Zero tracked progress with large evaluation matches against earlier
-players \citep{silver2017alphagozero}. Small runs usually can't afford this. We study the cheap
-alternative many of them use, consecutive-generation matches, and show how and why it can mislead.
+players \citep{silver2017alphagozero}. Recent limited-compute systems rate their engines against fixed external
+references: a ladder of a classical engine at fixed node counts \citep{braun2026efficient}, or a round robin anchored to
+a solver \citep{sherwood2026agents}; voting-based aggregation is a further alternative to Elo
+\citep{lanctot2023vase}. These anchors need an engine strong enough to score against them. Ours lost every game to
+GNU~Go at its weakest level (Section~\ref{sec:gnugo}), so an external ladder could not have separated its generations.
+We study the cheap internal signal many small runs rely on instead, consecutive-generation matches, and show how
+and why it can mislead.
 \section{A Laptop-Scale AlphaZero}
 \label{sec:system}
 \begin{figure}[t]
@@ -483,13 +488,15 @@ deployment search depth, and tracking scores against a few fixed anchors, which 
 released with the paper \TODO{add the anonymized artifact link for review; the public repository URL for camera-ready}.
 
 \paragraph{Use of AI tools.}
-The authors used an AI assistant (Claude Code with a paper-writing skill) to draft text, to write the
-scripts that generate figures, tables and in-text numbers from the logged data, and to format and verify
-references. The authors reviewed all content and are responsible for it.
+The implementation (training pipeline, rules engines, apps, evaluation scripts and
+benchmarks) was written with an AI coding assistant (Claude Code) under the authors' direction and checked by
+the tests and parity checks in Section~\ref{sec:results}. The same assistant, with a paper-writing skill,
+drafted text, wrote the scripts that generate figures, tables and in-text numbers from the logged data, and
+formatted and verified references. The authors reviewed all content and are responsible for it.
 \TODO{author: confirm this statement matches what you did, and edit as needed.}
 \label{pw:mainend}
 
-\begin{thebibliography}{15}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Agarwal et~al.(2021)Agarwal, Schwarzer, Castro, Courville, and Bellemare}]{agarwal2021precipice}
@@ -506,6 +513,11 @@ Balduzzi, D.; Tuyls, K.; P{\'e}rolat, J.; and Graepel, T. 2018.
 Bradley, R.~A.; and Terry, M.~E. 1952.
 \newblock Rank analysis of incomplete block designs: {I}. The method of paired comparisons.
 \newblock \emph{Biometrika}, 39(3/4): 324--345.
+
+\bibitem[{Braun(2026)}]{braun2026efficient}
+Braun, B. 2026.
+\newblock Engineering Efficient Self-Play Chess: Search, Replay, and Throughput Under Limited Compute.
+\newblock arXiv:2609.37447.
 
 \bibitem[{Coulom(2008)}]{coulom2008whr}
 Coulom, R. 2008.
@@ -532,6 +544,11 @@ Kocsis, L.; and Szepesv{\'a}ri, C. 2006.
 \newblock Bandit Based {Monte-Carlo} Planning.
 \newblock In \emph{Machine Learning: ECML 2006}, volume 4212 of \emph{Lecture Notes in Computer Science}, 282--293. Springer.
 
+\bibitem[{Lanctot et~al.(2023)Lanctot, Larson, Bachrach, Marris, Li, Bhoopchand, Anthony, Tanner, and Koop}]{lanctot2023vase}
+Lanctot, M.; Larson, K.; Bachrach, Y.; Marris, L.; Li, Z.; Bhoopchand, A.; Anthony, T.; Tanner, B.; and Koop, A. 2023.
+\newblock Evaluating Agents using Social Choice Theory.
+\newblock arXiv:2312.03121.
+
 \bibitem[{Lanctot et~al.(2019)Lanctot, Lockhart, Lespiau, Zambaldi, Upadhyay, P{\'e}rolat, Srinivasan, Timbers, Tuyls, Omidshafiei, Hennes, Morrill, Muller, Ewalds, Faulkner, Kram{\'a}r, De~Vylder, Saeta, Bradbury, Ding, Borgeaud, Lai, Schrittwieser, Anthony, Hughes, Danihelka, and Ryan-Davis}]{lanctot2019openspiel}
 Lanctot, M.; Lockhart, E.; Lespiau, J.-B.; Zambaldi, V.; Upadhyay, S.; P{\'e}rolat, J.; Srinivasan, S.; Timbers, F.; Tuyls, K.; Omidshafiei, S.; Hennes, D.; Morrill, D.; Muller, P.; Ewalds, T.; Faulkner, R.; Kram{\'a}r, J.; De~Vylder, B.; Saeta, B.; Bradbury, J.; Ding, D.; Borgeaud, S.; Lai, M.; Schrittwieser, J.; Anthony, T.; Hughes, E.; Danihelka, I.; and Ryan-Davis, J. 2019.
 \newblock {OpenSpiel}: A Framework for Reinforcement Learning in Games.
@@ -541,6 +558,11 @@ Lanctot, M.; Lockhart, E.; Lespiau, J.-B.; Zambaldi, V.; Upadhyay, S.; P{\'e}rol
 Rosin, C.~D. 2011.
 \newblock Multi-armed bandits with episode context.
 \newblock \emph{Annals of Mathematics and Artificial Intelligence}, 61(3): 203--230.
+
+\bibitem[{Sherwood, Aybar, and Kaplan(2026)}]{sherwood2026agents}
+Sherwood, J.; Aybar, B.; and Kaplan, B. 2026.
+\newblock Frontier Coding Agents Can Now Implement an {AlphaZero} Self-Play Machine Learning Pipeline For {Connect Four} That Performs Comparably to an External Solver.
+\newblock arXiv:2604.25067.
 
 \bibitem[{Silver et~al.(2016)Silver, Huang, Maddison, Guez, Sifre, van~den Driessche, Schrittwieser, Antonoglou, Panneershelvam, Lanctot, Dieleman, Grewe, Nham, Kalchbrenner, Sutskever, Lillicrap, Leach, Kavukcuoglu, Graepel, and Hassabis}]{silver2016alphago}
 Silver, D.; Huang, A.; Maddison, C.~J.; Guez, A.; Sifre, L.; van~den Driessche, G.; Schrittwieser, J.; Antonoglou, I.; Panneershelvam, V.; Lanctot, M.; Dieleman, S.; Grewe, D.; Nham, J.; Kalchbrenner, N.; Sutskever, I.; Lillicrap, T.; Leach, M.; Kavukcuoglu, K.; Graepel, T.; and Hassabis, D. 2016.

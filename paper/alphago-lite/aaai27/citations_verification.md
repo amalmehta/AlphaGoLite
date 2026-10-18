@@ -17,3 +17,6 @@
 | `czarnecki2020spinning` | Real World Games Look Like Spinning Tops | arXiv:2004.09468 | Real World Games Look Like Spinning Tops | 1.00 | verified |
 | `agarwal2021precipice` | Deep Reinforcement Learning at the Edge of the Statistical P | arXiv:2108.13264 | Deep Reinforcement Learning at the Edge of the Statistical P | 1.00 | verified |
 | `he2016resnet` | Deep Residual Learning for Image Recognition | doi.org 10.1109/CVPR.2016.90 | Deep Residual Learning for Image Recognition | 1.00 | verified |
+| `braun2026efficient` | Engineering Efficient Self-Play Chess: Search, Replay, and T | arXiv:2609.37447 | Engineering Efficient Self-Play Chess: Search, Replay, and T | 1.00 | verified |
+| `sherwood2026agents` | Frontier Coding Agents Can Now Implement an {AlphaZero} Self | arXiv:2604.25067 | Frontier Coding Agents Can Now Implement an AlphaZero Self-P | 1.00 | verified |
+| `lanctot2023vase` | Evaluating Agents using Social Choice Theory | arXiv:2312.03121 | Evaluating Agents using Social Choice Theory | 1.00 | verified |

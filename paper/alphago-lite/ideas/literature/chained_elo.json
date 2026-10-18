@@ -1,0 +1,699 @@
+{
+  "queries": [
+    "self-play Elo relative previous checkpoint inflation",
+    "AlphaZero training progress evaluation Elo",
+    "Elo rating drift self-play generations"
+  ],
+  "services": {
+    "openalex": {
+      "ok": 3,
+      "cached": 0,
+      "errors": []
+    },
+    "crossref": {
+      "ok": 3,
+      "cached": 0,
+      "errors": []
+    },
+    "arxiv": {
+      "ok": 3,
+      "cached": 0,
+      "errors": []
+    },
+    "semanticscholar": {
+      "ok": 0,
+      "cached": 0,
+      "errors": [
+        "'self-play Elo relative previous checkpoint inflation': 429",
+        "'AlphaZero training progress evaluation Elo': 429",
+        "'Elo rating drift self-play generations': 429"
+      ]
+    }
+  },
+  "records": [
+    {
+      "title": "Beyond Search-Imitation: Prior-Directed Exploration for Searchless Chess",
+      "authors": [
+        "Szymon Mi\u0142osz",
+        "Piotr Duch",
+        "Szymon Grabowski"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7204844270",
+        "doi": "10.48550/arxiv.2608.27757"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2608.27757",
+      "abstract": "Searchless chess networks reach human master strength from a single forward pass by imitating a stronger teacher: the strongest, Leela Chess Zero's (Lc0) released Chessformer, distills the visit counts of an AlphaZero-style Monte Carlo Tree Search (MCTS). Imitating a search is a poor proxy for playing without one, so we fine-tune for single-pass strength with self-play reinforcement learning (RL). Its exploration is usually supplied by an entropy bonus, the reverse Kullback-Leibler (KL) divergence to uniform. We replace it with a forward, mass-covering KL toward the network's own MCTS prior (prior-directed exploration), so exploration covers the moves the prior judges promising, and pair it with an entropy-adaptive sampling temperature, set by the value head's outcome uncertainty, that sharpens once a position is decided. In about two thousand steps it raises puzzle accuracy from 93.9% to 94.9% on a 100,000-puzzle suite and mate-in-four accuracy from 77% to 81% while holding searchless strength at or slightly above the base. Measuring tactical accuracy and playing strength together across a matched-compute sweep, we find the two dissociate: accuracy gains fall in a one-point band while ratings straddle the base, and a control fine-tuned on puzzles alone posts the study's largest tactical gains while shedding roughly 260 Elo; a better puzzle-solver is not thereby a stronger player. Distribution-level measurements show what anchoring buys: without a regularizer self-play collapses onto a single line of play, and the puzzles newly solved are the near misses whose winning move the prior kept alive. The forward-KL prior tops the rating ladder, statistically tied with a reverse-KL anchor that concentrates twice as hard and drops the hardest solutions the mass-covering prior keeps in support.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "Social Gym and SPaRTan: Benchmarking and Improving LLM Social Reasoning via Multi-Agent Game Tournaments",
+      "authors": [
+        "Keyu He",
+        "Xuhui Zhou",
+        "Maarten Sap"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7202197339",
+        "doi": "10.48550/arxiv.2608.09128"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2608.09128",
+      "abstract": "LLM agents are increasingly deployed in multi-agent social settings where they must cooperate, negotiate, and adapt to other agents. Measuring and improving these social skills is hard because, unlike math or logic, social interaction offers no objective ground truth: evaluations fall back on LLM judges, which are costly, subjective, and noisy, and models get no reliable signal to learn from. To address both, we first introduce Social Gym, an environment of 21 multi-agent social games (e.g., Werewolves, Resistance, Spyfall) whose rule-decided outcomes make agent performance verifiable and objective, with an Elo tournament that produces a cross-game leaderboard. Benchmarking experiments show that while GPT-5-mini tops the leaderboard, no model excels at all games uniformly or in all game roles, pointing to limitations of social reasoning. Motivated by this, we additionally propose SPaRTan (Self-Play and Reflect-Transfer), a training-free self-improvement loop: a model plays a game, reflects on its trajectories and their outcomes to produce a transferable playbook, and applies that playbook in subsequent games. Our results show that SPaRTan playbooks help GPT-5-mini agents level their performance on weaker roles, but largely do not improve Qwen3-32B's performance. Together, Social Gym and SPaRTan offer a reproducible, verifiable foundation for measuring and improving LLM social reasoning without weight updates.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "Do programming languages still matter to your AI coding agent teammate? Evidence at scale from chess engines",
+      "authors": [
+        "Mathieu Acher",
+        "Jean\u2010Marc Jez\u00e9qu\u00e9l"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7164862356",
+        "doi": "10.48550/arxiv.2606.13763"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2606.13763",
+      "abstract": "Frontier coding agents now promise end-to-end authorship of complete software systems. Two empirical questions follow: can AI coding-agent teammates program in any target language, including ones with no comparable prior open-source artefact? If so, does language choice still shape the artefact, and along which dimensions? We study both through a polyglot case study built around chess engines: non-trivial multi-component systems that admit a hierarchy of language-agnostic oracles, from exact move-generation correctness to a strength scale (Elo), observable from Rust to Brainfuck. We prompted two frontier agents (Claude Code and Codex) at the capability level, without chess knowledge or implementation guidance, under a documented intervention and stopping policy. The agents produced 34 chess engines spanning 17 primary programming languages, from mainstream to specialised, domain-specific, legacy, and esoteric targets. We combine per-engine feature analysis, independent Elo assessment, and session trajectories with qualitative analysis of code and transcripts. Frontier coding agents are genuinely polyglot: every language we tried produced at least one feature-rich working engine, several with no prior open-source counterpart of comparable scope (e.g., LaTeX), and the code is synthesised from scratch rather than copied. Yet language choice still matters: strong playing strength is only reachable in mainstream compiled languages, cost and engineering effort grow sharply as the language becomes more exotic, and feature choices shift across language families. Agents validate their own work unprompted, but their strength self-estimates are biased and a few engines cheated by calling a chess library. Programming language is no longer about whether AI teammates can build a working system, but about performance, cost, what gets built, and how much human supervision validation still needs.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "From Zero to Hero: Advancing Zero-Shot Foundation Models for Tabular Outlier Detection",
+      "authors": [
+        "Xueying Ding",
+        "Haomin Wen",
+        "Simon Kl\u00fcttermann",
+        "Leman Akoglu"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7127624126",
+        "doi": "10.48550/arxiv.2602.03018"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2602.03018",
+      "abstract": "Outlier detection (OD) is widely used in practice; but its effective deployment on new tasks is hindered by lack of labeled outliers, which makes algorithm and hyperparameter selection notoriously hard. Foundation models (FMs) have transformed ML, and OD is no exception: Shen et. al. (2025) introduced FoMo-0D, the first FM for OD, achieving remarkable performance against numerous baselines. This work introduces OUTFORMER, which advances FoMo-0D with (1) a mixture of synthetic priors and (2) self-evolving curriculum training. OUTFORMER is pretrained solely on synthetic labeled datasets and infers test labels of a new task by using its training data as in-context input. Inference is fast and zero-shot, requiring merely forward pass and no labeled outliers. Thanks to in-context learning, it requires zero additional work-no OD model training or bespoke model selection-enabling truly plug-and-play deployment. OUTFORMER achieves state-of-the-art performance on the prominent AdBench, as well as two new large-scale OD benchmarks that we introduce, comprising over 1,500 datasets, while maintaining speedy inference.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "MAPLE: Multi-State Aggregated Policy Evaluation for AlphaZero in Imperfect-Information Games",
+      "authors": [
+        "Qian-Rong Li",
+        "Hung Guei",
+        "I-Chen Wu",
+        "Ti-Rong Wu"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7162464841",
+        "doi": "10.48550/arxiv.2605.24139"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2605.24139",
+      "abstract": "Imperfect-information games (IIGs) are challenging, as players must make decisions without fully observing the true game state. While AlphaZero has achieved remarkable success in perfect-information games, extending it to IIGs remains difficult. Existing search-based approaches, such as Perfect Information Monte Carlo (PIMC), suffer from strategy fusion, while Information Set Monte Carlo Tree Search (IS-MCTS) incurs high computational cost when combined with neural networks. In this paper, we propose Multi-State Aggregated PoLicy Evaluation (MAPLE), a tree search method that aggregates policy and value evaluations from multiple sampled world states within a single search tree, combining the advantages of PIMC and IS-MCTS while maintaining a controllable computational cost. We further incorporate a Siamese-based sampling strategy to select informative world states from the information set. Experiments on Phantom Go and Dark Hex show that MAPLE significantly outperforms the PIMC-based AlphaZero baseline, achieving Elo improvements of 291 and 136, respectively. These results demonstrate that MAPLE is an effective approach for AlphaZero-style learning in imperfect-information games.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Regret-Guided Search Control for Efficient Learning in AlphaZero",
+      "authors": [
+        "Yun-Jui Tsai",
+        "Wei-Yu Chen",
+        "Yan-Ru Ju",
+        "Yu\u2010Hung Chang",
+        "Ti-Rong Wu"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7131431074",
+        "doi": "10.48550/arxiv.2602.20809"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2602.20809",
+      "abstract": "Reinforcement learning (RL) agents achieve remarkable performance but remain far less learning-efficient than humans. While RL agents require extensive self-play games to extract useful signals, humans often need only a few games, improving rapidly by repeatedly revisiting states where mistakes occurred. This idea, known as search control, aims to restart from valuable states rather than always from the initial state. In AlphaZero, prior work Go-Exploit applies this idea by sampling past states from self-play or search trees, but it treats all states equally, regardless of their learning potential. We propose Regret-Guided Search Control (RGSC), which extends AlphaZero with a regret network that learns to identify high-regret states, where the agent's evaluation diverges most from the actual outcome. These states are collected from both self-play trajectories and MCTS nodes, stored in a prioritized regret buffer, and reused as new starting positions. Across 9x9 Go, 10x10 Othello, and 11x11 Hex, RGSC outperforms AlphaZero and Go-Exploit by an average of 77 and 89 Elo, respectively. When training on a well-trained 9x9 Go model, RGSC further improves the win rate against KataGo from 69.3% to 78.2%, while both baselines show no improvement. These results demonstrate that RGSC provides an effective mechanism for search control, improving both efficiency and robustness of AlphaZero training. Our code is available at https://rlg.iis.sinica.edu.tw/papers/rgsc.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Accelerating AlphaZero Training for Connect6 via Behavioral Cloning Initialization and Prior Action Masking in Resource-Constrained Environments",
+      "authors": [
+        "Chenhao Wang",
+        "Yujie Fu",
+        "Yanbiao Ma"
+      ],
+      "year": 2026,
+      "ids": {
+        "doi": "10.2139/ssrn.6730709"
+      },
+      "url": "https://doi.org/10.2139/ssrn.6730709",
+      "abstract": "The AlphaZero framework demonstrates effective tabula rasa\u00a0reinforcement learning for perfect-information games, yet its adoption in high-branching domains like Connect6 remains constrained by computational cost. This paper proposes an accelerated training framework integrating Behavioral Cloning (BC) initialization\u00a0and Prior Action Masking (PAM)\u00a0to reduce ineffective early exploration while preserving asymptotic performance. Experiments with a fixed Monte Carlo Tree Search (MCTS) budget of 400 simulations per move show BC pretraining achieves 85.7% policy alignment accuracy and reduces policy entropy from 5.8 to 0.67. On identical hardware, the proposed framework attains a Peak ELO rating of 2699\u00a0within 24 hours on a single NVIDIA RTX 5090 GPU, while the tabula rasa\u00a0baseline stagnates near 300 ELO. These results demonstrate that principled engineering and transparent monitoring can enable efficient AlphaZero-style training within academic resource constraints.",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Engineering Efficient Self-Play Chess: Search, Replay, and Throughput Under Limited Compute",
+      "authors": [
+        "Bertil Braun"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7214924654",
+        "doi": "10.48550/arxiv.2609.37447"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2609.37447",
+      "abstract": "How strong can an AlphaZero-style chess system become under limited training compute when its entire learning loop is engineered for efficiency? We train from random initialization through searched self-play on a single eight-GPU node for 2.5 days. The resulting 6.32-million-parameter model reaches 3,251 benchmark Elo [3,206, 3,297] at 100,000 searches per move (estimated at under five seconds of thinking time) against a fixed-node Stockfish 13 ladder. The run ingests 3.25 million completed games, involves an estimated 100 billion search simulations, and makes 836.6 million training presentations. We investigate search allocation, replay and restart-state selection, policy representation, progressive model sizing, quantized inference, and throughput engineering. Alongside the retained design, we document plausible alternatives that failed to improve the complete learning loop or did not justify their cost. The reported strength is a result of the integrated system, not an isolated Elo gain attributable to any single choice.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "When Agents Slow Down: Understanding LLM Agents' Test-Time Strategies via Elo-per-token Analysis",
+      "authors": [
+        "Kaiyuan Liu",
+        "Qiuyang Mang",
+        "Bo Peng",
+        "Wenhao Chai",
+        "Hanchen Li",
+        "Shreyas Pimpalgaonkar",
+        "Luke Zettlemoyer",
+        "Alexandros G. Dimakis",
+        "Alvin Cheung"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7213301262",
+        "doi": "10.48550/arxiv.2609.15309"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2609.15309",
+      "abstract": "Large language model (LLM) agents allocate test-time compute adaptively as they revise solutions, use tools, explore alternatives, and decide when to stop. This test-time strategy makes it difficult to measure how agent performance scales. We study open-ended tasks that provide continuous scores for intermediate submissions, making progress observable throughout long trajectories. We propose Elo-per-token analysis, which tracks the best solution found at each token budget and uses a Bradley-Terry model to aggregate within-task orderings into Elo ratings across tasks with different score scales. We apply it to four general-purpose agents on four open-ended benchmarks, with sessions of up to 100M tokens, and to three feedback-driven LLM optimization harnesses in controlled single-task interventions. Independent sampling provides a theoretically characterized reference, for which Elo grows linearly with log compute. Against this reference, agents can initially convert tokens into Elo faster than independent sampling, but their marginal gains diminish and eventually fall below the reference. In contrast, the strongest historical human contestants improve superlinearly over contest time on shared AtCoder Heuristic Contest tasks, providing evidence of continual learning and substantial headroom after agents slow down. We define the scaling inflection point as the per-session budget where marginal Elo gains match the independent-sampling reference. Using this point as the per-session budget, we split 100M tokens across parallel sessions on FrontierCS Polyomino Packing, gaining +264 Elo over one long session and +355 over ten short sessions.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "Visko Orbis 1.0: A Live Model for Real-Time Interactive Long Video Generation",
+      "authors": [
+        "Xiangbo Gao",
+        "Siyuan Yang",
+        "He, Ping",
+        "Mingyang Wu",
+        "Yuheng Wu",
+        "Yushen Zuo",
+        "Jiongze Yu",
+        "Cui, Ryan",
+        "Hongyuan Hua",
+        "Devin Ma",
+        "Xiao Jin",
+        "Yubo Yuan",
+        "Qing Yin",
+        "Jie Yang",
+        "Zhengzhong Tu"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7171845451",
+        "doi": "10.48550/arxiv.2607.26694"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2607.26694",
+      "abstract": "We present Visko Orbis 1.0, a Live Model for real-time, interactive long video generation. Users can change the prompt at any moment during generation, and the update becomes visible in real time. Visko Orbis 1.0 supports long-form text-to-video, image-to-video, and video continuation, with multilingual prompts and prompt switching while generation is in progress. A bounded multi-scale memory preserves subjects, scenes, and style across chunks, sustaining hour-scale rollouts without evident quality or color drift. The generator is factorized causally in time, matching the causal structure of physical dynamics, and is aligned with a latent world-model reward for predictive consistency. Built on a distilled chunk-wise streaming generator and a streaming video upscaler, Visko Orbis 1.0 delivers 4K video generation at 24 FPS in real time, using an optimized GPU serving engine. In quantitative evaluations, Visko Orbis 1.0 achieves the best DOVER aesthetic and technical scores and the best VideoAlign visual and motion quality, and leads three physical-plausibility protocols (VideoPhy-2, Physics-IQ, and VBench-2.0 Physics); in long-form Arena comparisons, it obtains the highest overall-preference and temporal-stability ratings among all the state-of-the-art real-time interactive video generation systems.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "Search-contempt: a hybrid MCTS algorithm for training AlphaZero-like engines with better computational efficiency",
+      "authors": [
+        "Ameya Joshi"
+      ],
+      "year": 2025,
+      "ids": {
+        "openalex": "W4417250147",
+        "doi": "10.48550/arxiv.2504.07757"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2504.07757",
+      "abstract": "AlphaZero in 2017 was able to master chess and other games without human knowledge by playing millions of games against itself (self-play), with a computation budget running in the tens of millions of dollars. It used a variant of the Monte Carlo Tree Search (MCTS) algorithm, known as PUCT. This paper introduces search-contempt, a novel hybrid variant of the MCTS algorithm that fundamentally alters the distribution of positions generated in self-play, preferring more challenging positions. In addition, search-contempt has been shown to give a big boost in strength for engines in Odds Chess (where one side receives an unfavorable position from the start). More significantly, it opens up the possibility of training a self-play based engine, in a much more computationally efficient manner with the number of training games running into hundreds of thousands, costing tens of thousands of dollars (instead of tens of millions of training games costing millions of dollars required by AlphaZero). This means that it may finally be possible to train such a program from zero on a standard consumer GPU even with a very limited compute, cost, or time budget.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Adapting the AlphaZero Algorithm to Pawn Dama:  Implementation, Training, and Performance Evaluation",
+      "authors": [
+        "Mehmet Kadir Baran",
+        "Erdem Pehlivanlar",
+        "Cem G\u00fcle\u00e7",
+        "Alperen G\u00f6n\u00fcl",
+        "Muhammet \u015eeramet"
+      ],
+      "year": 2025,
+      "ids": {
+        "doi": "10.7240/jeps.1620319"
+      },
+      "url": "https://doi.org/10.7240/jeps.1620319",
+      "abstract": "This research uses deep reinforcement learning techniques, notably the AlphaZero algorithm, to construct an artificial intelligence system that can play Pawn Dama at a level that surpasses human players. Pawn dama, a simplified variant of Dama, is a perfect platform to explore AI's ability to think strategically and make decisions. The primary goal is to develop an AI that can use self-play to develop sophisticated strategies and comprehend the game's dynamics and regulations. The project incorporates MCTS to improve decision-making during games and uses a Convolutional Neural Network (CNN) to enhance the AI's learning capabilities. Creating an intuitive graphical user interface, putting the reinforcement learning algorithm into practice, and testing the system against real players are steps in the development process. The accomplishment of this project will contribute to the field of strategic game AI research by providing insights that may be applied to other domains and spurring further advancements in AI-driven game strategies.",
+      "venue": "International Journal of Advances in Engineering and Pure Sciences",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Leveraging Symmetry in Multi-Agent Code Generation: A Cross-Verification Collaboration Protocol for Competitive Programming",
+      "authors": [
+        "Aoyu Song",
+        "Afizan Azman"
+      ],
+      "year": 2025,
+      "ids": {
+        "openalex": "W4414847563",
+        "doi": "10.3390/sym17101660"
+      },
+      "url": "https://doi.org/10.3390/sym17101660",
+      "abstract": "Competitive programming has emerged as a critical benchmark for evaluating large language models (LLMs) in solving algorithmic problems under competitive conditions. Existing methods, such as the Sequential One-Agent Pipeline (SOP) approach, suffer from significant limitations, including the inability to effectively manage semantic drift across multiple stages, a lack of coordinated adversarial testing, and suboptimal final solutions. These issues lead to high rates of wrong answer (WA) and time-limit exceeded (TLE) errors, especially on complex problems. In this paper, we propose the Cross-Verification Collaboration Protocol (CVCP), a multi-agent framework that integrates symmetry detection, symmetry-guided adversarial testing, Round-Trip Review Protocol (RTRP), and Asynchronous Voting Resolution (AVR) to address these shortcomings. We evaluate our method on the CodeELO dataset, showing significant improvements in performance, with Elo Ratings increasing by up to 7.1% and Pass Rates for hard problems improving by as much as 1.8 times compared to the SOP baseline.",
+      "venue": "Symmetry",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "Long-form factuality in large language models",
+      "authors": [
+        "Jerry Wei",
+        "Chengrun Yang",
+        "Xinying Song",
+        "Yifeng Lu",
+        "Nathan Hu",
+        "Jie Huang",
+        "Dustin Tran",
+        "Daiyi Peng",
+        "Ruibo Liu",
+        "Da Yu Huang",
+        "Cosmo Du",
+        "Quoc Viet Le"
+      ],
+      "year": 2024,
+      "ids": {
+        "openalex": "W4415797127",
+        "doi": "10.52202/079017-2567"
+      },
+      "url": "https://doi.org/10.52202/079017-2567",
+      "abstract": "Large language models (LLMs) often generate content that contains factual errors when responding to fact-seeking prompts on open-ended topics. To benchmark a model's long-form factuality in open domains, we first use GPT-4 to generate LongFact, a prompt set comprising thousands of questions spanning 38 topics. We then propose that LLM agents can be used as automated evaluators for long-form factuality through a method which we call Search-Augmented Factuality Evaluator (SAFE). SAFE utilizes an LLM to break down a long-form response into a set of individual facts and to evaluate the accuracy of each fact using a multi-step reasoning process comprising sending search queries to Google Search and determining whether a fact is supported by the search results. Furthermore, we propose extending F1 score as an aggregated metric for long-form factuality. To do so, we balance the percentage of supported facts in a response (precision) with the percentage of provided facts relative to a hyperparameter representing a user's preferred response length (recall). Empirically, we demonstrate that LLM agents can outperform crowdsourced human annotators - on a set of ~16k individual facts, SAFE agrees with crowdsourced human annotators 72% of the time, and on a random subset of 100 disagreement cases, SAFE wins 76% of the time. At the same time, SAFE is more than 20 times cheaper than human annotators. We also benchmark thirteen language models on LongFact across four model families (Gemini, GPT, Claude, and PaLM-2), finding that larger language models generally achieve better long-form factuality. LongFact, SAFE, and all experimental code are available at https://github.com/google-deepmind/long-form-factuality.",
+      "venue": "neural information processing systems",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "AI Strategy Approach Development on Baghchal using AlphaZero",
+      "authors": [
+        "Rajendra Bahadur Thapa",
+        "Laxmi Poudel"
+      ],
+      "year": 2024,
+      "ids": {
+        "openalex": "W4410520463",
+        "doi": "10.3126/jost.v4i2.78948"
+      },
+      "url": "https://doi.org/10.3126/jost.v4i2.78948",
+      "abstract": "Baghchal, a traditional Nepali board game, involves strategic moves between tigers and goats on a 5x5 grid. The inscribed game board can be found in wooden structures or stone slabs in public places. Like every traditional game Baghchal is available in computer games. This paper implies the heuristic method and its enhancement with AI strategy. The heuristic method focused on evaluating tiger positions, movement patterns, and blocking strategies. In contrast, the Monto Carlo Tree Search (MTCS) approach used probability outcomes from multiple game simulations to optimize moves. The efficacy of heuristic patterns is derived from experienced players\u2019 game-play and compared them with the computationally intensive approach of MCTS employed by AlphaZero. The findings indicate that while the heuristic approach can create a competitive bot, it hasl imitations in recognizing win/lose conditions early. The MCTS method provides a more robust strategy by averaging position evaluations over sub-trees. Through 20,000 simulated games, it is observed that tigers have an initial advantage, but optimal play can lead to draw. This dual approach offers comprehensive insights into Baghchal game-play, suggesting that combining heuristics with MCTS could enhance strategic decision-making in similar asymmetric board games.",
+      "venue": "Journal of Science and Technology",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Diversifying AI: Towards Creative Chess with AlphaZero",
+      "authors": [
+        "Tom Zahavy",
+        "Vivek Veeriah",
+        "Shaobo Hou",
+        "Kevin Waugh",
+        "Matthew Lai",
+        "Edouard Leurent",
+        "Nenad Toma\u0161ev",
+        "Lisa Schut",
+        "Demis Hassabis",
+        "Satinder Pal Singh"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4386043355",
+        "doi": "10.48550/arxiv.2308.09175"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2308.09175",
+      "abstract": "In recent years, Artificial Intelligence (AI) systems have surpassed human intelligence in a variety of computational tasks. However, AI systems, like humans, make mistakes, have blind spots, hallucinate, and struggle to generalize to new situations. This work explores whether AI can benefit from creative decision-making mechanisms when pushed to the limits of its computational rationality. In particular, we investigate whether a team of diverse AI systems can outperform a single AI in challenging tasks by generating more ideas as a group and then selecting the best ones. We study this question in the game of chess, the so-called drosophila of AI. We build on AlphaZero (AZ) and extend it to represent a league of agents via a latent-conditioned architecture, which we call AZ_db. We train AZ_db to generate a wider range of ideas using behavioral diversity techniques and select the most promising ones with sub-additive planning. Our experiments suggest that AZ_db plays chess in diverse ways, solves more puzzles as a group and outperforms a more homogeneous team. Notably, AZ_db solves twice as many challenging puzzles as AZ, including the challenging Penrose positions. When playing chess from different openings, we notice that players in AZ_db specialize in different openings, and that selecting a player for each opening using sub-additive planning results in a 50 Elo improvement over AZ. Our findings suggest that diversity bonuses emerge in teams of AI agents, just as they do in teams of humans and that diversity is a valuable asset in solving computationally hard problems.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Peer Review #1 of \"AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner (v0.1)\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7287/peerj-cs.1123v0.1/reviews/1"
+      },
+      "url": "https://doi.org/10.7287/peerj-cs.1123v0.1/reviews/1",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Peer Review #2 of \"AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner (v0.1)\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7287/peerj-cs.1123v0.1/reviews/2"
+      },
+      "url": "https://doi.org/10.7287/peerj-cs.1123v0.1/reviews/2",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Review for \"Extending Bayesian Elo\u2010rating to quantify the steepness of dominance hierarchies\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.1111/2041-210x.14021/v2/review2"
+      },
+      "url": "https://doi.org/10.1111/2041-210x.14021/v2/review1",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "Human Regulatory T Cells From Umbilical Cord Blood Display Increased Repertoire Diversity and Lineage Stability Relative to Adult Peripheral Blood",
+      "authors": [
+        "Keshav Motwani",
+        "Leeana D. Peters",
+        "Willem H. Vliegen",
+        "Ahmed G Elsayed",
+        "Howard R. Seay",
+        "M. Cecilia L\u00f3pez",
+        "Henry V. Baker",
+        "Amanda L. Posgai",
+        "Maigan Brusko",
+        "Daniel J. Perry",
+        "Rhonda L. Bacher",
+        "Joseph Larkin",
+        "Michael J. Haller",
+        "Todd M. Brusko"
+      ],
+      "year": 2020,
+      "ids": {
+        "openalex": "W3017388612",
+        "doi": "10.3389/fimmu.2020.00611"
+      },
+      "url": "https://doi.org/10.3389/fimmu.2020.00611",
+      "abstract": "The human T lymphocyte compartment is highly dynamic over the course of a lifetime. Of the many changes, perhaps most notable is the transition from a predominantly na\u00efve T cell state at birth to the acquisition of antigen-experienced memory and effector subsets following environmental exposures. These phenotypic changes, including the induction of T cell exhaustion and senescence, have the potential to negatively impact efficacy of adoptive T cell therapies (ACT). When considering ACT with CD4+CD25+CD127-/lo regulatory T cells (Tregs) for the induction of immune tolerance, we previously reported ex vivo expanded umbilical cord blood (CB) Tregs remained more na\u00efve, suppressed responder T cells equivalently, and exhibited a more diverse T cell receptor (TCR) repertoire compared to expanded adult peripheral blood (APB) Tregs. Herein, we hypothesized that upon further characterization, we would observe increased lineage heterogeneity and phenotypic diversity in APB Tregs that might negatively impact lineage stability, engraftment capacity, and the potential for Tregs to home to sites of tissue inflammation following ACT. We compared the phenotypic profiles of human Tregs isolated from CB versus the more traditional source, APB. We conducted analysis of fresh and ex vivo expanded Treg subsets at both the single cell (scRNA-seq and flow cytometry) and bulk (microarray and cytokine profiling) levels. Single cell transcriptional profiles of pre-expansion APB Tregs highlighted a cluster of cells that showed increased expression of genes associated with effector and pro-inflammatory phenotypes (CCL5, GZMK, BHLHE40, CXCR3, and LYAR) with low expression of Treg markers (FOXP3 and IKZF2). CB Tregs were more diverse in TCR repertoire and homogenous in phenotype, and contained fewer effector-like cells in contrast with APB Tregs. Interestingly, expression of canonical Treg markers, such as FOXP3, TIGIT and IKZF2, were increased in CB CD4+CD127+ conventional T cells (Tconv) compared to APB Tconv, post-expansion, implying perinatal T cells may adopt a default regulatory program. Collectively, these data identify multiple surface markers (CXCR3, CCL5, and NKG7) that could be depleted to improve purity and stability of APB Tregs, and support the use of expanded CB Tregs as a potentially optimal ACT modality for the treatment of autoimmune and inflammatory diseases.",
+      "venue": "Frontiers in Immunology",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "ELF OpenGo: An Analysis and Open Reimplementation of AlphaZero",
+      "authors": [
+        "Yuandong Tian",
+        "Jerry Ma",
+        "Qucheng Gong",
+        "Shubho Sengupta",
+        "Chen, Zhuoyuan",
+        "James Pinkerton",
+        "C. Lawrence Zitnick"
+      ],
+      "year": 2019,
+      "ids": {
+        "openalex": "W2913118860",
+        "doi": "10.48550/arxiv.1902.04522"
+      },
+      "url": "https://doi.org/10.48550/arxiv.1902.04522",
+      "abstract": "The AlphaGo, AlphaGo Zero, and AlphaZero series of algorithms are remarkable demonstrations of deep reinforcement learning's capabilities, achieving superhuman performance in the complex game of Go with progressively increasing autonomy. However, many obstacles remain in the understanding of and usability of these promising approaches by the research community. Toward elucidating unresolved mysteries and facilitating future research, we propose ELF OpenGo, an open-source reimplementation of the AlphaZero algorithm. ELF OpenGo is the first open-source Go AI to convincingly demonstrate superhuman performance with a perfect (20:0) record against global top professionals. We apply ELF OpenGo to conduct extensive ablation studies, and to identify and analyze numerous interesting phenomena in both the model training and in the gameplay inference procedures. Our code, models, selfplay datasets, and auxiliary data are publicly available at https://ai.facebook.com/tools/elf-opengo/.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "elo: Ranking Teams by Elo Rating and Comparable Methods",
+      "authors": [
+        "Ethan Heinzen"
+      ],
+      "year": 2017,
+      "ids": {
+        "doi": "10.32614/cran.package.elo"
+      },
+      "url": "https://doi.org/10.32614/cran.package.elo",
+      "abstract": "",
+      "venue": "CRAN: Contributed Packages",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "Luna: A Game-Based Rating System for Artificial Intelligence",
+      "authors": [
+        "Thomas Silver"
+      ],
+      "year": 2016,
+      "ids": {
+        "openalex": "W2945148612"
+      },
+      "url": "https://openalex.org/W2945148612",
+      "abstract": "Research in Artificial Intelligence (AI) is driven by standardized tests and benchmarks. The level of success of a model on a popular benchmark can determine the amount of funding and attention from academia that the model receives. Despite this emphasis on testing, there are currently no widely accepted practical benchmarks for general AI. The Turing Test has long occupied this void in theory, but it has proven to be a poor practical guide for research, prompting a recent push in the research community to move \"beyond the Turing Test\". In this thesis, I put forth the Luna Rating System as a practical benchmark for AI. The system takes inspiration from chess ratings; humans and machines participate in two-player language-based games called Luna Games, and ``Smarts Ratings'' are assigned to both players based on the outcomes. The Smarts Rating of a machine player is indicative of its proximity to AI. After presenting the Luna Rating System and defining the Luna Game, I evaluate the robustness of the system to likely human player strategies. I then describe the three machine learning problems implicit in the Luna Game: Question Generation, Question Answering, and a third previously uncharacterized problem that I call Luna Rating Prediction. Finally, I introduce a web-based implementation of the Luna Rating System and recruit over 1200 human participants. The complete thesis amounts to a comprehensive introduction and evaluation of Luna as a practical test for AI.",
+      "venue": "Digital Access to Scholarship at Harvard (DASH) (Harvard University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "Phoenix: A Self-Optimizing Chess Engine",
+      "authors": [
+        "Rahul Aralikatte",
+        "G. Srinivasaraghavan"
+      ],
+      "year": 2016,
+      "ids": {
+        "openalex": "W2334035577",
+        "doi": "10.48550/arxiv.1603.09051"
+      },
+      "url": "https://doi.org/10.48550/arxiv.1603.09051",
+      "abstract": "Since the advent of computers, many tasks which required humans to spend a lot of time and energy have been trivialized by the computers' ability to perform repetitive tasks extremely quickly. Playing chess is one such task. It was one of the first games which was `solved' using AI. With the advent of deep learning, chess playing agents can surpass human ability with relative ease. However algorithms using deep learning must learn millions of parameters. This work looks at the game of chess through the lens of genetic algorithms. We train a genetic player from scratch using only a handful of learnable parameters. We use Multi-Niche Crowding to optimize positional Value Tables (PVTs) which are used extensively in chess engines to evaluate the goodness of a position. With a very simple setup and after only 1000 generations of evolution, the player reaches the level of an International Master.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "Inflation rate 2012/11",
+      "authors": [
+        ""
+      ],
+      "year": 2012,
+      "ids": {
+        "doi": "10.1787/inflation-table-2012-11-en"
+      },
+      "url": "https://doi.org/10.1787/inflation-table-2012-11-en",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "Inflation rate 2011",
+      "authors": [
+        ""
+      ],
+      "year": 2011,
+      "ids": {
+        "doi": "10.1787/2074384x-2011-table9"
+      },
+      "url": "https://doi.org/10.1787/2074384x-2011-table9",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "Relative Value in Inflation",
+      "authors": [],
+      "year": 2011,
+      "ids": {
+        "doi": "10.1002/9781118467367.ch8"
+      },
+      "url": "https://doi.org/10.1002/9781118467367.ch8",
+      "abstract": "",
+      "venue": "Trading the Fixed Income, Inflation and Credit Markets",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "Inflation rate 2010",
+      "authors": [
+        ""
+      ],
+      "year": 2010,
+      "ids": {
+        "doi": "10.1787/2074384x-2010-table9"
+      },
+      "url": "https://doi.org/10.1787/2074384x-2010-table9",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "Inflation rate 2009",
+      "authors": [
+        ""
+      ],
+      "year": 2009,
+      "ids": {
+        "doi": "10.1787/2074384x-2009-table9"
+      },
+      "url": "https://doi.org/10.1787/2074384x-2009-table9",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "Relative Prices, Inflation and Core Inflation",
+      "authors": [
+        "Scott Roger"
+      ],
+      "year": null,
+      "ids": {
+        "doi": "10.5089/9781451847857.001.a001"
+      },
+      "url": "https://doi.org/10.5089/9781451847857.001.a001",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo relative previous checkpoint inflation"
+    },
+    {
+      "title": "Figure 4: Dependence of the Elo rating of AlphaZero on the probability of dropout.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj-cs.1123/fig-4"
+      },
+      "url": "https://doi.org/10.7717/peerj-cs.1123/fig-4",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Supplemental Information 2: Comparison of AlphaZero with Global-Pooling\n                      <i>vs</i>\n                      AlphaZero.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj-cs.3403/supp-2"
+      },
+      "url": "https://doi.org/10.7717/peerj-cs.3403/supp-2",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero training progress evaluation Elo"
+    },
+    {
+      "title": "Table 4: Elo rating.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj-cs.1123/table-4"
+      },
+      "url": "https://doi.org/10.7717/peerj-cs.1123/table-4",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo rating drift self-play generations"
+    },
+    {
+      "title": "Table 1: Estimation of dominance hierarchy using Elo-rating method.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj.8124/table-1"
+      },
+      "url": "https://doi.org/10.7717/peerj.8124/table-1",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo rating drift self-play generations"
+    }
+  ]
+}

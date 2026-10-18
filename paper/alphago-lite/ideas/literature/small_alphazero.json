@@ -1,0 +1,429 @@
+{
+  "queries": [
+    "AlphaZero reproduction limited compute small board",
+    "efficient AlphaZero training single machine Go"
+  ],
+  "services": {
+    "openalex": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "crossref": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "arxiv": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "semanticscholar": {
+      "ok": 0,
+      "cached": 0,
+      "errors": [
+        "'AlphaZero reproduction limited compute small board': 429",
+        "'efficient AlphaZero training single machine Go': 429"
+      ]
+    }
+  },
+  "records": [
+    {
+      "title": "From MDP to AlphaZero",
+      "authors": [
+        "",
+        "David SeWell"
+      ],
+      "year": 2021,
+      "ids": {
+        "doi": "10.15760/etd.7738",
+        "openalex": "W4214498042"
+      },
+      "url": "https://doi.org/10.15760/etd.7738",
+      "abstract": "In this paper I will explain the AlphaGo family of algorithms starting from first principles and requiring little previous knowledge from the reader. The focus will be upon one of the more recent versions AlphaZero but I hope to explain the core principles that allowed these algorithms to be so successful. I will generally refer to AlphaZero as theses core set of principles and will make it clear when I am referring to a specific algorithm of the AlphaGo family. AlphaZero in short combines Monte Carlo Tree Search (MCTS) with Deep learning and self-play. We will see how these three concepts fit together and we will break down each of these pieces and look at examples to clarify understanding. I implemented a simplified version of the algorithm on TicTacToe and Connect4 and the code is available online as well as a simple web app that allows you to play against a trained agent. https://github.com/befeltingu/VikingZero https://github.com/befeltingu/VikingDashboard",
+      "venue": "",
+      "found_in": [
+        "crossref",
+        "openalex"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "Frontier Coding Agents Can Now Implement an AlphaZero Self-Play Machine Learning Pipeline For Connect Four That Performs Comparably to an External Solver",
+      "authors": [
+        "Joshua Sherwood",
+        "Ben Aybar",
+        "Benjamin Kaplan"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7157594135",
+        "doi": "10.48550/arxiv.2604.25067"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2604.25067",
+      "abstract": "Forecasting when AI systems will become capable of meaningfully accelerating AI research is a central challenge for AI safety. Existing benchmarks measure broad capability growth, but may not provide ample early warning signals for recursive self-improvement. We propose measuring AI's capability to autonomously implement end-to-end machine learning pipelines from past AI research breakthroughs, given a minimal task description. By providing a concise task description instead of the full prior work as reference, we hope to better elicit emerging AI research taste. We introduce a proof-of-concept benchmark in which frontier coding agents autonomously implement an AlphaZero-style machine learning pipeline for Connect Four on consumer hardware within a three-hour budget, and we evaluate the resulting game AIs in a round-robin tournament anchored to the Pascal Pons Connect Four solver. Across four agents with eight trials each, we find substantial differentiation: Claude Opus 4.7 won as first-mover against Pons in seven of eight trials, statistically significantly better than the other agents tested, none of which exceeded two of eight. The task, which no frontier agent could reliably complete when we began development in January of 2026, is now near-saturation. Our evaluation also surfaced anomalous behavior in GPT-5.4, which consistently used far less of its allocated time budget than other agents. A follow-up 16-trial probe using shorter, less evaluation-coded prompts substantially increased GPT-5.4's time-budget usage, consistent with but not diagnostic of sandbagging; Bradley-Terry ratings across probe conditions showed only directional differences, despite significant differences in time-budget usage. We release our data, code, and prompts to support reproduction and extension.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "Engineering Efficient Self-Play Chess: Search, Replay, and Throughput Under Limited Compute",
+      "authors": [
+        "Bertil Braun"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7214924654",
+        "doi": "10.48550/arxiv.2609.37447"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2609.37447",
+      "abstract": "How strong can an AlphaZero-style chess system become under limited training compute when its entire learning loop is engineered for efficiency? We train from random initialization through searched self-play on a single eight-GPU node for 2.5 days. The resulting 6.32-million-parameter model reaches 3,251 benchmark Elo [3,206, 3,297] at 100,000 searches per move (estimated at under five seconds of thinking time) against a fixed-node Stockfish 13 ladder. The run ingests 3.25 million completed games, involves an estimated 100 billion search simulations, and makes 836.6 million training presentations. We investigate search allocation, replay and restart-state selection, policy representation, progressive model sizing, quantized inference, and throughput engineering. Alongside the retained design, we document plausible alternatives that failed to improve the complete learning loop or did not justify their cost. The reported strength is a result of the integrated system, not an isolated Elo gain attributable to any single choice.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "Impartial Games: A Challenge for Reinforcement Learning",
+      "authors": [
+        "Bei Zhou",
+        "Soren Riis"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7134055742",
+        "doi": "10.1007/s10994-026-06996-1"
+      },
+      "url": "https://doi.org/10.1007/s10994-026-06996-1",
+      "abstract": "Abstract AlphaZero-style reinforcement learning (RL) algorithms have achieved superhuman performance in many complex board games such as Chess, Shogi, and Go. However, we showcase that these algorithms encounter significant and fundamental challenges when applied to impartial games, a class where players share game pieces and optimal strategy often relies on abstract mathematical principles. Specifically, we utilise the game of Nim as a concrete and illustrative case study to reveal critical limitations of AlphaZero-style and similar self-play RL algorithms. We introduce a novel conceptual framework distinguishing between champion and expert mastery to evaluate RL agent performance. Our findings reveal that while AlphaZero-style agents can achieve champion-level play on very small Nim boards, their learning progression severely degrades as the board size increases. This difficulty stems not merely from complex data distributions or noisy labels, but from a deeper representational bottleneck: the inherent struggle of generic neural networks to implicitly learn abstract, non-associative functions like parity, which are crucial for optimal play in impartial games. This limitation causes a critical breakdown in the positive feedback loop essential for self-play RL, preventing effective learning beyond rote memorisation of frequently observed states. These results align with broader concerns regarding AlphaZero-style algorithms\u2019 vulnerability to adversarial attacks, highlighting their inability to truly master all legal game states. Our work underscores that simple hyperparameter adjustments are insufficient to overcome these challenges, establishing a crucial foundation for the development of fundamentally novel algorithmic approaches, potentially involving neuro-symbolic or meta-learning paradigms, to bridge the gap towards true expert-level AI in combinatorial games.",
+      "venue": "Machine Learning",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "Dotsformer: Capturing Chain-Loop Structures for Transformer in Dots-and-Boxes",
+      "authors": [
+        "Ranran Zhang",
+        "Changming Xu",
+        "Kuo Wu",
+        "Mingze Zheng",
+        "Xingcan Liu",
+        "Junwei Wang"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7147422339",
+        "doi": "10.3390/app16073395"
+      },
+      "url": "https://doi.org/10.3390/app16073395",
+      "abstract": "In many board games, AlphaZero has demonstrated superhuman abilities. Dots-and-Boxes is a classic board game with simple rules but requiring skills to win. This paper proposes Dotsformer, which extracts chain-loop structures from the game board. These structures connect distant boxes, providing long-range relational information as input to the Transformer. We employ multiple convolutional kernels to generate Q, K, and V, and incorporate information about the box structure itself into the attention scores. We also incorporate auxiliary training tasks, including an initiative task and a classification task. These tasks determine whether to retain or relinquish the initiative in the current situation, and classify actions into forbidden, conceding, safe, and scoring moves. They provide additional supervisory signals and accelerate learning. The experimental results show that Dotsformer outperforms AlphaZero in both rollback speed and playing strength: it achieved a winning rate of 87.6% and an ELO rating lead of 340 points against the baseline. Additionally, ablation studies verify the effectiveness of each key module.",
+      "venue": "Applied Sciences",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "Regret-Guided Search Control for Efficient Learning in AlphaZero",
+      "authors": [
+        "Yun-Jui Tsai",
+        "Wei-Yu Chen",
+        "Yan-Ru Ju",
+        "Yu\u2010Hung Chang",
+        "Ti-Rong Wu"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7131431074",
+        "doi": "10.48550/arxiv.2602.20809"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2602.20809",
+      "abstract": "Reinforcement learning (RL) agents achieve remarkable performance but remain far less learning-efficient than humans. While RL agents require extensive self-play games to extract useful signals, humans often need only a few games, improving rapidly by repeatedly revisiting states where mistakes occurred. This idea, known as search control, aims to restart from valuable states rather than always from the initial state. In AlphaZero, prior work Go-Exploit applies this idea by sampling past states from self-play or search trees, but it treats all states equally, regardless of their learning potential. We propose Regret-Guided Search Control (RGSC), which extends AlphaZero with a regret network that learns to identify high-regret states, where the agent's evaluation diverges most from the actual outcome. These states are collected from both self-play trajectories and MCTS nodes, stored in a prioritized regret buffer, and reused as new starting positions. Across 9x9 Go, 10x10 Othello, and 11x11 Hex, RGSC outperforms AlphaZero and Go-Exploit by an average of 77 and 89 Elo, respectively. When training on a well-trained 9x9 Go model, RGSC further improves the win rate against KataGo from 69.3% to 78.2%, while both baselines show no improvement. These results demonstrate that RGSC provides an effective mechanism for search control, improving both efficiency and robustness of AlphaZero training. Our code is available at https://rlg.iis.sinica.edu.tw/papers/rgsc.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "Accelerating AlphaZero Training for Connect6 via Behavioral Cloning Initialization and Prior Action Masking in Resource-Constrained Environments",
+      "authors": [
+        "Chenhao Wang",
+        "Yujie Fu",
+        "Yanbiao Ma"
+      ],
+      "year": 2026,
+      "ids": {
+        "doi": "10.2139/ssrn.6730709"
+      },
+      "url": "https://doi.org/10.2139/ssrn.6730709",
+      "abstract": "The AlphaZero framework demonstrates effective tabula rasa\u00a0reinforcement learning for perfect-information games, yet its adoption in high-branching domains like Connect6 remains constrained by computational cost. This paper proposes an accelerated training framework integrating Behavioral Cloning (BC) initialization\u00a0and Prior Action Masking (PAM)\u00a0to reduce ineffective early exploration while preserving asymptotic performance. Experiments with a fixed Monte Carlo Tree Search (MCTS) budget of 400 simulations per move show BC pretraining achieves 85.7% policy alignment accuracy and reduces policy entropy from 5.8 to 0.67. On identical hardware, the proposed framework attains a Peak ELO rating of 2699\u00a0within 24 hours on a single NVIDIA RTX 5090 GPU, while the tabula rasa\u00a0baseline stagnates near 300 ELO. These results demonstrate that principled engineering and transparent monitoring can enable efficient AlphaZero-style training within academic resource constraints.",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "AlphaZero Neural Scaling and Zipf's Law: a Tale of Board Games and Power Laws",
+      "authors": [
+        "Oren Neumann",
+        "Claudius Gros"
+      ],
+      "year": 2025,
+      "ids": {
+        "doi": "10.52202/085713-1957"
+      },
+      "url": "https://doi.org/10.52202/085713-1957",
+      "abstract": "",
+      "venue": "Advances in Neural Information Processing Systems 38",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "Uncertainty-Guided Exploration for Efficient AlphaZero Training",
+      "authors": [
+        "Scott Cheng",
+        "Meng-Yu Tsai",
+        "Ding-Yong Hong",
+        "Mahmut T Kandemir"
+      ],
+      "year": 2025,
+      "ids": {
+        "doi": "10.52202/085713-1361"
+      },
+      "url": "https://doi.org/10.52202/085713-1361",
+      "abstract": "",
+      "venue": "Advances in Neural Information Processing Systems 38",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "Initial state diversification for efficient AlphaZero-style training",
+      "authors": [
+        "Yosuke Demura",
+        "Tomoyuki Kaneko"
+      ],
+      "year": 2024,
+      "ids": {
+        "doi": "10.3233/icg-240255"
+      },
+      "url": "https://doi.org/10.3233/icg-240255",
+      "abstract": "AlphaZero has achieved superhuman performance in Go, chess, and shogi with a general reinforcement learning (RL) algorithm. This achievement is remarkable because AlphaZero does not rely on any training dataset of strong players. However, AlphaZero-style training requires substantial computational resources. Gumbel AlphaZero, a recently introduced more efficient version of AlphaZero, reduces the computational cost of AlphaZero training. The goal of this study is to further improve the playing strength of Gumbel AlphaZero under a limited amount of computational resources. We focus on the diversity in training games, inspired by procedural generation and domain randomization in RL studies, and propose a novel method, initial state diversification. This method diversifies the initial states of a self-play game to encourage the RL agent to understand the game in a more general manner through diverse experiences. For example, in shogi, the initial state of each self-play game is diversified by rearranging the pieces under realistic domain constraints. Experiments demonstrated that training with initial state diversification improves the playing strength of Gumbel AlphaZero in shogi, within the same computational budget for training.",
+      "venue": "ICGA Journal",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "Game Theory Optimization Based on Python: Evidence from Board Game \u201cGo-Moku\u201d",
+      "authors": [
+        "Zijing Li"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4378673014",
+        "doi": "10.54097/hset.v49i.8520"
+      },
+      "url": "https://doi.org/10.54097/hset.v49i.8520",
+      "abstract": "Game theory has been widely used in multiple fields such as economics, computer science, and political science to study the rational behavior of multiple decision makers in different scenarios. In recent years, with the rapid development of artificial intelligence, AI trained using game theory has shown outstanding performance in board games such as Go, chess and backgammon. This study explores the application of game theory optimization in the board game \"Go-Moku\" using a learning algorithm combining Monte Carlo tree search algorithm and reinforcement learning. The paper discusses recent developments in game theory in Go-Moku and explains the Monte Carlo tree search algorithm in detail. The performance of the algorithm is evaluated through experimental results of the application of Alpha Zero in the Go-Moku domain, demonstrating its effectiveness in improving the gaming capabilities of artificial intelligence. According to the analysis, after 1,100 training sessions, the algorithm combining reinforcement learning and MCTS had a 9:1 win rate compared to a pure MCTS approach with 2,000 self-simulations per step. And playing against the 800-times pure MCTS method, it reached a 10:0 win rate for the first time in the 300th game. In addition, the paper discusses potential applications of game-theoretic optimization in other dynamic games. Overall, these results shed light on further exploration of game theory in the area of complete information games and reinforcement learning.",
+      "venue": "Highlights in Science Engineering and Technology",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "Quantum Enhancements for AlphaZero",
+      "authors": [
+        "James Chao",
+        "Ramiro Rodriguez",
+        "Sean Crowe"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4385190246",
+        "doi": "10.1145/3583133.3596302"
+      },
+      "url": "https://doi.org/10.1145/3583133.3596302",
+      "abstract": "Reinforcement learning algorithms including AlphaZero are powerful artificial intelligence (AI) algorithms, but are known to be resource intensive and unable to train within a reasonable budget. Speeding up learning would be valuable to further expand application areas for real world problems. In this paper, we investigate two quantum computing methods to enhance AlphaZero, with the goal of speeding up training. We evaluate the results by playing the board game Othello, an adversarial multi-agent turn based game similar to the game Go. First, parameterized quantum circuits (PQC) have been shown to train hybrid quantum-classical reinforcement learning agents in standard benchmark environments. With this inspiration, we replace the classical neural network with a PQC quantum neural network (QNN) in the AlphaZero architecture. Second, tensor-network quantum circuits have been used to extract important features for convolutional neural networks (CNNs) in image classification tasks. Using this as inspiration, we use a tree tensor network (TTN) to extract features from the Othello game board, generating a new set of feature vectors for a classical neural network to estimate the policy and value. Results show both novel methods converge to master the game and achieve the same level of play compared to the classical AlphaZero agent.",
+      "venue": "",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "AlphaZero applied to Jass",
+      "authors": [
+        "Andrin B\u00fcrli"
+      ],
+      "year": 2022,
+      "ids": {
+        "openalex": "W4225063277",
+        "doi": "10.5281/zenodo.6400546"
+      },
+      "url": "https://doi.org/10.5281/zenodo.6400546",
+      "abstract": "Despite recent successes of Artificial Intelligence applied to games, the performance ofcooperative agents in imperfect information games is still far from surpassing humans.In the traditional swiss card game of Jass four distinct parties play against each otherin two opposing teams. As an imperfect information game with competition as well ascooperation, Jass is a suitable candidate subject for research in this area. This project aims to evaluate if a purely reinforcement learning based method such asAlphaZero would be suitable for solving the game of Jass. However, since this methodis designed to work only on perfect information games, it cannot be used directly. For that reason, a new perfect information Jass is introduced where there is no hidden information. A fully asynchronous pipeline was designed to teach an AlphaZero based agent toplay the game of perfect information Jass. By means of a supervised dataset an optimized domain specific network architecture has been evaluated and trained. Using theimplemented pipeline in combination with this architecture, a variety of hyperparameters have been examined. The strongest configuration allowed an agent to achieve 0.75%average points againts the random opponent (APAR) and 0.48% average points againtsthe MCTS (100 simulations) based opponent (APAMCTS), therefore not beating thebaseline. After training, the agent is transferred to the imperfect information domainusing determinisations. In the new domain the best agent was using the network trainedon supervised data. It reached 0.72 APAR and at most 0.57 APAMCTS (20 simulations,25 determinizations) and therefore it is outperforming the MCTS baseline with statistical significance. Training an agent using self-play requires a lot of data and as a result also a lot of time.Considering the time and resource constraints of this project, the results do indicate thatthis approach might be suitable for the game of Jass. Nevertheless, further experimentswith more time and more computing power are required to prove this.",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "Peer Review #1 of \"AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner (v0.1)\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7287/peerj-cs.1123v0.1/reviews/1"
+      },
+      "url": "https://doi.org/10.7287/peerj-cs.1123v0.1/reviews/1",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "Peer Review #2 of \"AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner (v0.1)\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7287/peerj-cs.1123v0.1/reviews/2"
+      },
+      "url": "https://doi.org/10.7287/peerj-cs.1123v0.1/reviews/2",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "Global optimization of quantum dynamics with AlphaZero deep exploration",
+      "authors": [
+        "Mogens Dalgaard",
+        "Felix Motzoi",
+        "Jens Jakob S\u00f8rensen",
+        "Jacob Friis Sherson"
+      ],
+      "year": 2020,
+      "ids": {
+        "openalex": "W2961408814",
+        "doi": "10.1038/s41534-019-0241-0"
+      },
+      "url": "https://doi.org/10.1038/s41534-019-0241-0",
+      "abstract": "Abstract While a large number of algorithms for optimizing quantum dynamics for different objectives have been developed, a common limitation is the reliance on good initial guesses, being either random or based on heuristics and intuitions. Here we implement a tabula rasa deep quantum exploration version of the Deepmind AlphaZero algorithm for systematically averting this limitation. AlphaZero employs a deep neural network in conjunction with deep lookahead in a guided tree search, which allows for predictive hidden-variable approximation of the quantum parameter landscape. To emphasize transferability, we apply and benchmark the algorithm on three classes of control problems using only a single common set of algorithmic hyperparameters. AlphaZero achieves substantial improvements in both the quality and quantity of good solution clusters compared to earlier methods. It is able to spontaneously learn unexpected hidden structure and global symmetry in the solutions, going beyond even human heuristics.",
+      "venue": "npj Quantum Information",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "Improved Online Sequential Extreme Learning Machine: A New Intelligent Evaluation Method for AZ-Style Algorithms",
+      "authors": [
+        "Xiali Li",
+        "Shuai He",
+        "Zhi Wei",
+        "Licheng Wu"
+      ],
+      "year": 2019,
+      "ids": {
+        "openalex": "W2970381480",
+        "doi": "10.1109/access.2019.2938568"
+      },
+      "url": "https://doi.org/10.1109/access.2019.2938568",
+      "abstract": "Researches on computer games for Go, Chess, and Japanese Chess stand out as one of the notable landmarks in the progress of artificial intelligence. AlphaGo, AlphaGo Zero, and AlphaZero algorithms, which are called AlphaZero style (AZ-style) algorithms in some literature [1], have achieved superhuman performance by using deep reinforcement learning (DRL). However, the unavailability of training details, expensive equipment used for model training, and the low evaluation accuracy resulted by slow self-play training without expensive computing equipment in practical applications have been the defects of AZ-style algorithms. To solve the problems to a certain extent, the paper proposes an improved online sequential extreme learning machine (IOS-ELM), a new evaluation method, to evaluate chess board positions for AZ-style algortihm. Firstly, the theoretical principles of IOS-ELM is given. Secondly, the study considers Gomoku as the application object and uses IOS-ELM as the evaluation method for AZ-style's board positions to discuss the loss in the training process and hyperparameters affecting performance in detail. Under the same experimental conditions, the proposed method reduces the training parameters by 14 times, training time to 15%, and error of evaluation by 13% compared with the board evaluation network used in original AZ-style algorithms.",
+      "venue": "IEEE Access",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "ELF OpenGo: An Analysis and Open Reimplementation of AlphaZero",
+      "authors": [
+        "Yuandong Tian",
+        "Jerry Ma",
+        "Qucheng Gong",
+        "Shubho Sengupta",
+        "Chen, Zhuoyuan",
+        "James Pinkerton",
+        "C. Lawrence Zitnick"
+      ],
+      "year": 2019,
+      "ids": {
+        "openalex": "W2913118860",
+        "doi": "10.48550/arxiv.1902.04522"
+      },
+      "url": "https://doi.org/10.48550/arxiv.1902.04522",
+      "abstract": "The AlphaGo, AlphaGo Zero, and AlphaZero series of algorithms are remarkable demonstrations of deep reinforcement learning's capabilities, achieving superhuman performance in the complex game of Go with progressively increasing autonomy. However, many obstacles remain in the understanding of and usability of these promising approaches by the research community. Toward elucidating unresolved mysteries and facilitating future research, we propose ELF OpenGo, an open-source reimplementation of the AlphaZero algorithm. ELF OpenGo is the first open-source Go AI to convincingly demonstrate superhuman performance with a perfect (20:0) record against global top professionals. We apply ELF OpenGo to conduct extensive ablation studies, and to identify and analyze numerous interesting phenomena in both the model training and in the gameplay inference procedures. Our code, models, selfplay datasets, and auxiliary data are publicly available at https://ai.facebook.com/tools/elf-opengo/.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "efficient AlphaZero training single machine Go"
+    },
+    {
+      "title": "Supplemental Information 2: Comparison of AlphaZero with Global-Pooling\n                      <i>vs</i>\n                      AlphaZero.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj-cs.3403/supp-2"
+      },
+      "url": "https://doi.org/10.7717/peerj-cs.3403/supp-2",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "DURACIM: Durable compute-in-memory (CiM) inference for resource-limited environments",
+      "authors": [
+        "Sri Harsha Mudumba"
+      ],
+      "year": null,
+      "ids": {
+        "doi": "10.31274/td-20260223-4"
+      },
+      "url": "https://doi.org/10.31274/td-20260223-4",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    },
+    {
+      "title": "Figure A1: DNN of AlphaZero.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj-cs.3403/fig-8"
+      },
+      "url": "https://doi.org/10.7717/peerj-cs.3403/fig-8",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "AlphaZero reproduction limited compute small board"
+    }
+  ]
+}

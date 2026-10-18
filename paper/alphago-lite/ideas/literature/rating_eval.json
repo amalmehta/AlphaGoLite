@@ -1,0 +1,442 @@
+{
+  "queries": [
+    "evaluating agents Elo nontransitivity rating",
+    "statistical comparison game playing agents confidence intervals"
+  ],
+  "services": {
+    "openalex": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "crossref": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "arxiv": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "semanticscholar": {
+      "ok": 0,
+      "cached": 0,
+      "errors": [
+        "'evaluating agents Elo nontransitivity rating': 429",
+        "'statistical comparison game playing agents confidence intervals': 429"
+      ]
+    }
+  },
+  "records": [
+    {
+      "title": "Hierarchy and ranking in fencing and tennis",
+      "authors": [
+        "Bogd\u00e1n Asztalos",
+        "Boldizs\u00e1r Bal\u00e1zs",
+        "Gergely Palla",
+        "Tam\u00e1s Vicsek"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7163077713",
+        "doi": "10.1038/s41598-026-53459-7"
+      },
+      "url": "https://doi.org/10.1038/s41598-026-53459-7",
+      "abstract": "Ranking athletes by their performance in competitions and tournaments is common in every popular sport and has significant benefits that contribute to both the organization and strategic aspects of competitions. Although rankings are perhaps the most concise and most straightforward representation of the relative strength among the competitors, beyond this one-dimensional characterization, it is also possible to capture the relationships between athletes in greater detail. Following this approach, our study examines the networks between athletes in individual sports such as fencing and tennis, where the nodes are associated with the contestants and the edges are directed from the winner to the loser. We demonstrate that the connections formed through matches arrange themselves into a time-evolving hierarchy, with the top players positioned at its apex. The structure of the resulting networks exhibits detectable differences depending on whether they are constructed purely from round-robin data or from purely elimination-style tournaments. We find that although elimination tournaments lead to networks with strong hierarchical networks due to their organisational concept (structural hierarchy), the dominance differences between players (competing hierarchy) are less effective in this format, which is manifested in the increased probability of circular win-loss situations (cycles). The position within the hierarchy, along with other network metrics, can be used to predict match outcomes. In the systems studied, these methods provide predictions with an accuracy comparable to that of forecasts based on official sports ranking points or the Elo rating system. A deeper understanding of the delicate aspects of pairwise contest networks enhances our ability to model, predict, and optimise the behaviour of many complex systems, whether in sports tournaments, social interactions, or other competitive environments.",
+      "venue": "Scientific Reports",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Evaluating Agents using Social Choice Theory",
+      "authors": [
+        "Marc Lanctot",
+        "Kate S. Larson",
+        "Yoram Bachrach",
+        "Luke Marris",
+        "Zun Li",
+        "Avishkar Bhoopchand",
+        "Anthony, Thomas",
+        "Brian K Tanner",
+        "Anna Koop"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4389500197",
+        "doi": "10.48550/arxiv.2312.03121"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2312.03121",
+      "abstract": "We argue that many general evaluation problems can be viewed through the lens of voting theory. Each task is interpreted as a separate voter, which requires only ordinal rankings or pairwise comparisons of agents to produce an overall evaluation. By viewing the aggregator as a social welfare function, we are able to leverage centuries of research in social choice theory to derive principled evaluation frameworks with axiomatic foundations. These evaluations are interpretable and flexible, while avoiding many of the problems currently facing cross-task evaluation. We apply this Voting-as-Evaluation (VasE) framework across multiple settings, including reinforcement learning, large language models, and humans. In practice, we observe that VasE can be more robust than popular evaluation frameworks (Elo and Nash averaging), discovers properties in the evaluation data not evident from scores alone, and can predict outcomes better than Elo in a complex seven-player game. We identify one particular approach, maximal lotteries, that satisfies important consistency properties relevant to evaluation, is computationally efficient (polynomial in the size of the evaluation data), and identifies game-theoretic cycles.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Post Turing: Mapping the landscape of LLM Evaluation",
+      "authors": [
+        "Tikhonov, Alexey",
+        "Ivan P. Yamshchikov"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4388444880",
+        "doi": "10.48550/arxiv.2311.02049"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2311.02049",
+      "abstract": "In the rapidly evolving landscape of Large Language Models (LLMs), introduction of well-defined and standardized evaluation methodologies remains a crucial challenge. This paper traces the historical trajectory of LLM evaluations, from the foundational questions posed by Alan Turing to the modern era of AI research. We categorize the evolution of LLMs into distinct periods, each characterized by its unique benchmarks and evaluation criteria. As LLMs increasingly mimic human-like behaviors, traditional evaluation proxies, such as the Turing test, have become less reliable. We emphasize the pressing need for a unified evaluation system, given the broader societal implications of these models. Through an analysis of common evaluation methodologies, we advocate for a qualitative shift in assessment approaches, underscoring the importance of standardization and objective criteria. This work serves as a call for the AI community to collaboratively address the challenges of LLM evaluation, ensuring their reliability, fairness, and societal benefit.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Epistemic confidence in the observed confidence interval",
+      "authors": [
+        "Yudi Pawitan Y",
+        "Hangbin Lee",
+        "Youngjo Lee"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4365145532",
+        "doi": "10.1111/sjos.12654"
+      },
+      "url": "https://doi.org/10.1111/sjos.12654",
+      "abstract": "Abstract We define confidence to be epistemic if it applies to an observed confidence interval. Epistemic confidence is unavailable\u2014or even denied\u2014in orthodox frequentist inference, as the confidence level is understood to apply to the procedure. Yet there are obvious practical and psychological needs to think about the uncertainty in the observed interval. We extend the Dutch Book argument used in the classical Bayesian justification of subjective probability to a stronger market\u2010based version, which prevents external agents from exploiting unused information in any relevant subset. We previously showed that confidence is an extended likelihood, and the likelihood principle states that the likelihood contains all the information in the data, hence leaving no relevant subset. Intuitively, this implies that confidence associated with the full likelihood is protected from the Dutch Book, and hence is epistemic. Our goal is to validate this intuitive notion through theoretical backing and practical illustrations.",
+      "venue": "Scandinavian Journal of Statistics",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "Confidence Intervals and Comparison Tests",
+      "authors": [
+        "Muhammad Aslam",
+        "Muhammad Imdad Ullah"
+      ],
+      "year": 2023,
+      "ids": {
+        "doi": "10.1007/978-981-99-2886-6_8"
+      },
+      "url": "https://doi.org/10.1007/978-981-99-2886-6_8",
+      "abstract": "",
+      "venue": "Practicing R for Statistical Computing",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "Measuring the Non-Transitivity in Chess",
+      "authors": [
+        "Ricky Shonda Sanjaya",
+        "Yi-Xiang Wang",
+        "Yaodong Yang"
+      ],
+      "year": 2022,
+      "ids": {
+        "openalex": "W3208313084",
+        "doi": "10.3390/a15050152"
+      },
+      "url": "https://doi.org/10.3390/a15050152",
+      "abstract": "In this paper, we quantify the non-transitivity in chess using human game data. Specifically, we perform non-transitivity quantification in two ways\u2014Nash clustering and counting the number of rock\u2013paper\u2013scissor cycles\u2014on over one billion matches from the Lichess and FICS databases. Our findings indicate that the strategy space of real-world chess strategies has a spinning top geometry and that there exists a strong connection between the degree of non-transitivity and the progression of a chess player\u2019s rating. Particularly, high degrees of non-transitivity tend to prevent human players from making progress in their Elo ratings. We also investigate the implications of non-transitivity for population-based training methods. By considering fixed-memory fictitious play as a proxy, we conclude that maintaining large and diverse populations of strategies is imperative to training effective AI agents for solving chess.",
+      "venue": "Algorithms",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Mastering the Game of No-Press Diplomacy via Human-Regularized Reinforcement Learning and Planning",
+      "authors": [
+        "Anton Bakhtin",
+        "David Wu",
+        "Adam K. Lerer",
+        "Jonathan Gray",
+        "Athul Paul Jacob",
+        "Gabriele Farina",
+        "Alexander Miller",
+        "Noam Brown"
+      ],
+      "year": 2022,
+      "ids": {
+        "openalex": "W4305033123",
+        "doi": "10.48550/arxiv.2210.05492"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2210.05492",
+      "abstract": "No-press Diplomacy is a complex strategy game involving both cooperation and competition that has served as a benchmark for multi-agent AI research. While self-play reinforcement learning has resulted in numerous successes in purely adversarial games like chess, Go, and poker, self-play alone is insufficient for achieving optimal performance in domains involving cooperation with humans. We address this shortcoming by first introducing a planning algorithm we call DiL-piKL that regularizes a reward-maximizing policy toward a human imitation-learned policy. We prove that this is a no-regret learning algorithm under a modified utility function. We then show that DiL-piKL can be extended into a self-play reinforcement learning algorithm we call RL-DiL-piKL that provides a model of human play while simultaneously training an agent that responds well to this human model. We used RL-DiL-piKL to train an agent we name Diplodocus. In a 200-game no-press Diplomacy tournament involving 62 human participants spanning skill levels from beginner to expert, two Diplodocus agents both achieved a higher average score than all other participants who played more than two games, and ranked first and third according to an Elo ratings model.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Review for \"Extending Bayesian Elo\u2010rating to quantify the steepness of dominance hierarchies\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.1111/2041-210x.14021/v2/review2"
+      },
+      "url": "https://doi.org/10.1111/2041-210x.14021/v2/review1",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Real World Games Look Like Spinning Tops",
+      "authors": [
+        "Wojciech Marian Czarnecki",
+        "Gauthier Gidel",
+        "Brendan Tracey",
+        "Karl Tuyls",
+        "Shayegan Omidshafiei",
+        "David Balduzzi",
+        "Max Jaderberg"
+      ],
+      "year": 2020,
+      "ids": {
+        "openalex": "W3016722131",
+        "doi": "10.48550/arxiv.2004.09468"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2004.09468",
+      "abstract": "This paper investigates the geometrical properties of real world games (e.g. Tic-Tac-Toe, Go, StarCraft II). We hypothesise that their geometrical structure resemble a spinning top, with the upright axis representing transitive strength, and the radial axis, which corresponds to the number of cycles that exist at a particular transitive strength, representing the non-transitive dimension. We prove the existence of this geometry for a wide class of real world games, exposing their temporal nature. Additionally, we show that this unique structure also has consequences for learning - it clarifies why populations of strategies are necessary for training of agents, and how population size relates to the structure of the game. Finally, we empirically validate these claims by using a selection of nine real world two-player zero-sum symmetric games, showing 1) the spinning top structure is revealed and can be easily re-constructed by using a new method of Nash clustering to measure the interaction between transitive and cyclical strategy behaviour, and 2) the effect that population size has on the convergence in these games.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "elo: Ranking Teams by Elo Rating and Comparable Methods",
+      "authors": [
+        "Ethan Heinzen"
+      ],
+      "year": 2017,
+      "ids": {
+        "doi": "10.32614/cran.package.elo"
+      },
+      "url": "https://doi.org/10.32614/cran.package.elo",
+      "abstract": "",
+      "venue": "CRAN: Contributed Packages",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Evolutionary game theory using agent-based methods",
+      "authors": [
+        "Christoph Adami",
+        "Jory Schossau",
+        "Arend Hintze"
+      ],
+      "year": 2016,
+      "ids": {
+        "openalex": "W1935235554",
+        "doi": "10.1016/j.plrev.2016.08.015"
+      },
+      "url": "https://doi.org/10.1016/j.plrev.2016.08.015",
+      "abstract": "Evolutionary game theory is a successful mathematical framework geared towards understanding the selective pressures that affect the evolution of the strategies of agents engaged in interactions with potential conflicts. While a mathematical treatment of the costs and benefits of decisions can predict the optimal strategy in simple settings, more realistic settings such as finite populations, non-vanishing mutations rates, stochastic decisions, communication between agents, and spatial interactions, require agent-based methods where each agent is modeled as an individual, carries its own genes that determine its decisions, and where the evolutionary outcome can only be ascertained by evolving the population of agents forward in time. While highlighting standard mathematical results, we compare those to agent-based methods that can go beyond the limitations of equations and simulate the complexity of heterogeneous populations and an ever-changing set of interactors. We conclude that agent-based methods can predict evolutionary outcomes where purely mathematical treatments cannot tread (for example in the weak selection-strong mutation limit), but that mathematics is crucial to validate the computational simulations.",
+      "venue": "Physics of Life Reviews",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "Game-Playing Agents and Non-player Characters",
+      "authors": [
+        "Kathryn E. Merrick"
+      ],
+      "year": 2016,
+      "ids": {
+        "doi": "10.1007/978-3-319-33459-2_3"
+      },
+      "url": "https://doi.org/10.1007/978-3-319-33459-2_3",
+      "abstract": "",
+      "venue": "Computational Models of Motivation for Game-Playing Agents",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "Recent Advances in General Game Playing",
+      "authors": [
+        "Maciej \u015awiechowski",
+        "HyunSoo Park",
+        "Jacek Ma\u0144dziuk",
+        "Kyung-Joong Kim"
+      ],
+      "year": 2015,
+      "ids": {
+        "openalex": "W1508483467",
+        "doi": "10.1155/2015/986262"
+      },
+      "url": "https://doi.org/10.1155/2015/986262",
+      "abstract": "The goal of General Game Playing (GGP) has been to develop computer programs that can perform well across various game types. It is natural for human game players to transfer knowledge from games they already know how to play to other similar games. GGP research attempts to design systems that work well across different game types, including unknown new games. In this review, we present a survey of recent advances (2011 to 2014) in GGP for both traditional games and video games. It is notable that research on GGP has been expanding into modern video games. Monte-Carlo Tree Search and its enhancements have been the most influential techniques in GGP for both research domains. Additionally, international competitions have become important events that promote and increase GGP research. Recently, a video GGP competition was launched. In this survey, we review recent progress in the most challenging research areas of Artificial Intelligence (AI) related to universal game playing.",
+      "venue": "The Scientific World JOURNAL",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "Simulation-Based General Game Playing",
+      "authors": [
+        "Hilmar Finnsson"
+      ],
+      "year": 2012,
+      "ids": {
+        "openalex": "W1584247264"
+      },
+      "url": "https://openalex.org/W1584247264",
+      "abstract": "The aim of General Game Playing (GGP) is to create intelligent agents that automatically learn how to play many different games at an expert level without any human intervention. One of the main challenges such agents face is to automatically learn knowledge-based heuristics in real-time, whether for evaluating game positions or for search guidance. \\nIn this thesis we approach this challenge with Monte-Carlo Tree Search (MCTS), which in recent years has become a popular and effective search method in games. For competitive play such an approach requires an effective search-control mechanism for guiding the simulation playouts. In here we describe our GGP agent, CADIAPLAYER, and introduce several schemes for automatically learning search guidance based on both statistical and reinforcement learning techniques. Providing GGP agents with the knowledge relevant to the game at hand in real time is, however, a challenging task. This thesis furthermore proposes two extensions for MCTS in the context of GGP, aimed at improving the effectiveness of the simulations in real time based on in-game statistical feedback. Also we present a way to extend MCTS solvers to handle simultaneous move games. Finally, we study how various game-tree properties affect MCTS performance.",
+      "venue": "Opin v\u00edsindi (Opin v\u00edsindi)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "Learning Simulation Control in General Game-Playing Agents",
+      "authors": [
+        "Hilmar Finnsson",
+        "Yngvi Bj\u00f6rnsson"
+      ],
+      "year": 2010,
+      "ids": {
+        "openalex": "W1955510565",
+        "doi": "10.1609/aaai.v24i1.7651"
+      },
+      "url": "https://doi.org/10.1609/aaai.v24i1.7651",
+      "abstract": "The aim of General Game Playing (GGP) is to create intelligent agents that can automatically learn how to play many different games at an expert level without any human intervention. One of the main challenges such agents face is to automatically learn knowledge-based heuristics in real-time, whether for evaluating game positions or for search guidance. In recent years, GGP agents that use Monte-Carlo simulations to reason about their actions have become increasingly more popular. For competitive play such an approach requires an effective search-control mechanism for guiding the simulation playouts. In here we introduce several schemes for automatically learning search guidance based on both statistical and reinforcement learning techniques. We compare the different schemes empirically on a variety of games and show that they improve significantly upon the current state-of-the-art in simulation-control in GGP. For example, in the chess-like game Skirmish, which has proved a particularly challenging game for simulation-based GGP agents, an agent employing one of the proposed schemes achieves 97% winning rate against an unmodified agent.",
+      "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "A learning framework for zero-knowledge game playing agents",
+      "authors": [
+        "Willem H. Duminy"
+      ],
+      "year": 2007,
+      "ids": {
+        "openalex": "W606191966"
+      },
+      "url": "https://openalex.org/W606191966",
+      "abstract": "The subjects of perfect information games, machine learning and computational intelligence combine in an experiment that investigates a method to build the skill of a game-playing agent from zero game knowledge. The skill of a playing agent is determined by two aspects, the first is the quantity and quality of the knowledge it uses and the second aspect is its search capacity. This thesis introduces a novel representation language that combines symbols and numeric elements to capture game knowledge. Insofar search is concerned; an extension to an existing knowledge-based search method is developed. Empirical tests show an improvement over alpha-beta, especially in learning conditions where the knowledge may be weak. Current machine learning techniques as applied to game agents is reviewed. From these techniques a learning framework is established. The data-mining algorithm, ID3, and the computational intelligence technique, Particle Swarm Optimisation (PSO), form the key learning components of this framework. The classification trees produced by ID3 are subjected to new post-pruning processes specifically defined for the mentioned representation language. Different combinations of these pruning processes are tested and a dominant combination is chosen for use in the learning framework. As an extension to PSO, tournaments are introduced as a relative fitness function. A variety of alternative tournament methods are described and some experiments are conducted to evaluate these. The final design decisions are incorporated into the learning frame-work configuration, and learning experiments are conducted on Checkers and some variations of Checkers. These experiments show that learning has occurred, but also highlights the need for further development and experimentation. Some ideas in this regard conclude the thesis.",
+      "venue": "UpSpace Institutional Repository (University of Pretoria)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "6. Adaptive Confidence Intervals",
+      "authors": [],
+      "year": 2004,
+      "ids": {
+        "doi": "10.1137/1.9780898718430.ch6"
+      },
+      "url": "https://doi.org/10.1137/1.9780898718430.ch6",
+      "abstract": "",
+      "venue": "Applied Adaptive Statistical Methods",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "Bootstrap confidence intervals for smoothing splines and their comparison to bayesian confidence intervals",
+      "authors": [
+        "Yuedong. Wang",
+        "Grace Wahba"
+      ],
+      "year": 1995,
+      "ids": {
+        "doi": "10.1080/00949659508811637"
+      },
+      "url": "https://doi.org/10.1080/00949659508811637",
+      "abstract": "",
+      "venue": "Journal of Statistical Computation and Simulation",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    },
+    {
+      "title": "Table 4: Elo rating.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj-cs.1123/table-4"
+      },
+      "url": "https://doi.org/10.7717/peerj-cs.1123/table-4",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Table 1: Estimation of dominance hierarchy using Elo-rating method.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj.8124/table-1"
+      },
+      "url": "https://doi.org/10.7717/peerj.8124/table-1",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Figure 4: Dependence of the Elo rating of AlphaZero on the probability of dropout.",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.7717/peerj-cs.1123/fig-4"
+      },
+      "url": "https://doi.org/10.7717/peerj-cs.1123/fig-4",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "evaluating agents Elo nontransitivity rating"
+    },
+    {
+      "title": "Equipment reliability testing",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.3403/02341183u"
+      },
+      "url": "https://doi.org/10.3403/02341183",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical comparison game playing agents confidence intervals"
+    }
+  ]
+}

@@ -27,6 +27,8 @@ AlphaGoLite/
 │   ├── intake.md                 claims ↔ evidence, open questions
 │   ├── data/                     copies of the run's metrics and evaluation results the paper uses
 │   ├── bench/                    cross-platform benchmark (Python, browser page) and its results
+│   ├── ideas/                    ranked improvement ideas (ideas.md), literature searches, and
+│   │                             experiments/NN_*/ (plan, code, results, findings) for approved ideas
 │   ├── figures_scripts/          one script per figure/table/value file; make_all.py rebuilds them all;
 │   │                             flatten_tex.py makes the single-file submission source
 │   └── aaai27/                   AAAI-27-format draft: main.tex, sections/, generated/, figures/, refs.bib,
