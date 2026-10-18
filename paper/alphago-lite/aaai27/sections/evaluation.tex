@@ -1,0 +1,29 @@
+\section{Evaluating a Small Self-Play Run}
+\label{sec:evaluation}
+\paragraph{Chained Elo and its noise.}
+Let $p_g$ be the score of generation $g$ against $g-1$ in an $n$-game match. Chained Elo is
+$E_g=\sum_{i\le g} 400\log_{10}\bigl(p_i/(1-p_i)\bigr)$, with $p_i$ clipped to $[0.02,0.98]$. Each term
+has a standard error of about $\frac{400}{\ln 10}\cdot\frac{\sqrt{0.25/n}}{0.25}$ at $p=0.5$, which is
+\valStepSE{} Elo for $n=\valEvalGames{}$. The errors are independent, so they add like a random walk: after
+\valNGens{} generations the spread from noise alone is $\pm$\valWalkSD{} Elo (one standard deviation). Two
+generations far apart can therefore be ranked in the wrong order even when every step is unbiased.
+Section~\ref{sec:results} shows that noise alone does not explain our run.
+
+\paragraph{Anchored matches.}
+To measure progress without chaining, we play every fourth generation ($0,4,\dots,44$) against the next two
+sampled generations and against the final generation \valNGens{}. This gives \valAnchoredPairs{} pairs of
+\valEvalGames{} games (\valAnchoredGames{} games), each at \valAnchoredSims{} simulations a move, with
+colors balanced and moves sampled in proportion to visits for the first six moves. Together with eleven
+80-game checks played between release candidates, that gives \valHtoHGames{} games. We report the results
+in two ways:
+\begin{itemize}
+  \item \emph{model-free}: each sampled generation's score against the final one, with 95\% Wilson intervals;
+  \item a Bradley--Terry fit \citep{bradley1952rank} on all games on the Elo scale (generation~0 $=0$), with
+        a weak Gaussian prior (s.d.\ 1000) to keep one-sided results finite, and 95\% bootstrap intervals
+        from resampling games within each match.
+\end{itemize}
+
+\paragraph{Consecutive replay.}
+To separate the effect of short matches from the effect of comparing adjacent generations, we replay the
+consecutive pairs from generation~\valConsFrom{} onwards at the anchored settings (\valConsPairs{} pairs,
+40 games each, \valAnchoredSims{} simulations).

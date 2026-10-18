@@ -3,9 +3,11 @@ Bradley-Terry (Elo) rating per generation.
 
     python -m alphago_lite.anchored_eval --run runs/main --step 4 --games 40
 
-Pairs: every `step`-th generation g plays g+step, g+2*step and the last
-generation. Results are appended to <run>/anchored.json after each batch, so the
-command can be stopped and resumed.
+Pairs (--design anchored, the default): every `step`-th generation g plays
+g+step, g+2*step and the last generation. --design consecutive plays each
+generation g in [--from, last) against g+1, to compare with the training log's
+32-simulation chained matches. Results are appended to <run>/<design>.json after
+each batch, so the command can be stopped and resumed.
 """
 import argparse
 import json
@@ -25,6 +27,8 @@ def main():
     ap.add_argument("--chunk", type=int, default=4, help="games per job (even)")
     ap.add_argument("--pairs-per-batch", type=int, default=5)
     ap.add_argument("--job-timeout", type=int, default=3600)
+    ap.add_argument("--design", choices=["anchored", "consecutive"], default="anchored")
+    ap.add_argument("--from", dest="first", type=int, default=0, help="first generation (consecutive design)")
     args = ap.parse_args()
 
     run = Path(args.run)
@@ -34,12 +38,15 @@ def main():
     if gens[-1] != last:
         gens.append(last)
     pairs = []
-    for i, g in enumerate(gens):
-        for h in gens[i + 1:i + 3] + [last]:
-            if h != g and (g, h) not in pairs:
-                pairs.append((g, h))
+    if args.design == "consecutive":
+        pairs = [(g, g + 1) for g in range(args.first, last)]
+    else:
+        for i, g in enumerate(gens):
+            for h in gens[i + 1:i + 3] + [last]:
+                if h != g and (g, h) not in pairs:
+                    pairs.append((g, h))
 
-    out = run / "anchored.json"
+    out = run / f"{args.design}.json"
     data = json.loads(out.read_text()) if out.exists() else {"sims": args.sims, "results": []}
     done = {(r["a"], r["b"]) for r in data["results"]}
     todo = [p for p in pairs if p not in done]

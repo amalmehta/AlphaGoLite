@@ -30,7 +30,7 @@ export logs (Core ML / ONNX parity).
 | C5 | The trained network exports to Core ML and ONNX with max absolute output difference vs PyTorch of 5.48e-6 and 7.63e-6 (20 random inputs). | export logs; `export_app.py:check_parity`, `export_web.py:check_parity` | supported (re-runnable; I'd log it to a file for the paper) |
 | C6 | The same search runs on-device in a native Mac app (Core ML) and in the browser (ONNX Runtime Web, WebAssembly, single thread); 400 simulations take about 1 s in the browser; the browser and app produce identical root visit counts for the same position. | one manual browser timing (1,005 ms) and one manual observation (F6, 166 visits) | **partial** — not logged; needs a scripted benchmark if it goes in the paper |
 | C7 | Engineering lessons for low-budget AlphaZero: lock-step batched MCTS, playout-cap randomization, first-play urgency, and a self-healing worker pool (a run stalled for 2 h when `multiprocessing.Pool` lost jobs from dead workers). | code; `runs_main.log`; git history | partial (design facts are solid; there are no ablations showing each choice's effect) |
-| C8 | The engine plays at the level of a capable beginner. | none | **unsupported** — no games vs humans or an external engine; I would not put this in the paper unless we measure it |
+| C8 | The engine plays at the level of a capable beginner. | `data/gnugo.json` | **contradicted** — gen 44 won 0/40 vs GNU Go level 1; the paper reports this as an external calibration instead |
 
 ## Facts I still need from you
 - **Target venue** (and track: main, workshop, demo, education). This decides page limits, anonymity and how much evidence is expected — see my honest assessment below.
@@ -48,3 +48,7 @@ export logs (Core ML / ONNX parity).
 ## Honest assessment of the evidence vs. venues
 - **Main track at NeurIPS / ICML / ICLR:** not competitive as is. One training run, no seeds, no ablations, no external benchmark, and the algorithm itself is known. Reviewers would call it a reproduction.
 - **Realistic fits:** an education venue (e.g. EAAI, the AAAI symposium on educational advances in AI: an end-to-end, inspectable AlphaZero that trains on a laptop, with a visualizer); a games venue short/demo paper (e.g. IEEE Conference on Games, or Advances in Computer Games); or a workshop paper focused on C3 — evaluating small self-play runs (why chained Elo misleads and what to use instead). The C3 angle gets much stronger with the anchored-evaluation experiment below.
+
+## Update 2026-10-18
+- C3 refined by the consecutive replay (`data/consecutive.json`): chained Elo misled mainly because the per-generation matches used 32 simulations (plus noise), not because adjacent generations are inherently hard to compare.
+- C6 now measured (`bench/`): identical root visits on all 15 positions across PyTorch, Core ML and ONNX Runtime Web.

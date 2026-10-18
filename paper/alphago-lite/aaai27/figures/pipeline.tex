@@ -1,0 +1,17 @@
+% Fig. 1: pipeline diagram (TikZ), included by sections/system.tex
+\begin{tikzpicture}[
+    box/.style={draw, rounded corners=2pt, align=center, font=\footnotesize, minimum height=0.85cm, inner sep=3pt},
+    arr/.style={-{Stealth[length=4pt]}, semithick},
+    node distance=0.35cm and 0.6cm]
+  \node[box, text width=1.75cm] (self) {Self-play\\(batched PUCT)};
+  \node[box, text width=1.35cm, right=of self] (train) {Train\\policy + value};
+  \node[box, text width=1.65cm, right=of train] (eval) {Evaluate vs.\\previous gen.};
+  \draw[arr] (self) -- (train);
+  \draw[arr] (train) -- (eval);
+  \draw[arr] (eval.south) |- ++(0,-0.3) -| node[pos=0.25, above=1pt, font=\scriptsize, inner sep=0pt] {next generation} (self.south);
+  \node[box, text width=1.3cm, below=1.15cm of self] (py) {Python\\PyTorch};
+  \node[box, text width=1.3cm, right=of py] (sw) {Swift app\\Core ML};
+  \node[box, text width=1.5cm, right=of sw] (js) {Browser\\ONNX (WASM)};
+  \node[draw, dashed, rounded corners=3pt, fit=(py)(sw)(js), inner sep=4pt,
+        label={[font=\scriptsize]below:same rules, same search, same network}] {};
+\end{tikzpicture}

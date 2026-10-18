@@ -1,0 +1,34 @@
+\section{Introduction}
+AlphaGo Zero and AlphaZero learn to play board games from nothing but the rules, by alternating self-play
+with tree search and training a policy/value network on the resulting games
+\citep{silver2017alphagozero,silver2018alphazero}.
+The original systems used thousands of accelerators, but the algorithm is simple enough that small
+versions are widely built: in courses, in hobby engines, and as research prototypes before a large run.
+At that scale the budget for \emph{evaluation} is tiny, and the most common progress signal is also the
+cheapest one: after each generation, play a short match between the new network and the previous one,
+convert the score to an Elo difference \citep{elo1978rating}, and add it to a running total. We call this
+total \emph{chained Elo}.
+
+This paper reports a run where chained Elo told the wrong story. We trained a 9$\times$9 Go engine for
+\valNGens{} generations on one laptop CPU. Chained Elo peaked at generation~\valChainedPeakGen{}
+(\valChainedPeak{}) and then drifted down, putting generation~34 (\valChainedThirtyFour{}) below both
+generation~25 (\valChainedTwentyFive{}) and generation~19 (\valChainedNineteen{}). Taken at face value,
+training had stalled or regressed. In direct 80-game matches, however, generation~34 beat generation~25
+in \valHTtfVsTf{} games and generation~19 in \valHTtfVsNt{}, and the final generation~\valNGens{} beat
+generation~34 in \valHFfVsTtf{}.
+
+\paragraph{Contributions.}
+\begin{itemize}
+  \item An evaluation of a complete small run against fixed anchors (\valHtoHGames{} games), showing steady
+        improvement where chained Elo shows a decline (Figure~\ref{fig:elo}).
+  \item An analysis of why chained Elo failed. Match noise grows with the number of generations, but the
+        observed drop lies \valDropZ{} standard deviations from what noise around the true gain would produce. Replaying the same
+        consecutive pairs at the anchored settings (64 rather than 32 simulations) gives gains that agree with
+        the anchored matches (Figure~\ref{fig:step}). From this we derive a cheap protocol for small runs
+        (Section~\ref{sec:lessons}).
+  \item An open AlphaZero pipeline that trains on one laptop CPU. Its rules and search were checked to
+        give identical results in Python, Swift with Core ML, and the browser with ONNX Runtime, so the
+        same engine ships as a native app and a web page (Table~\ref{tab:platform}).
+  \item An external calibration against GNU~Go, which shows how far such a network remains from a
+        classical engine (Section~\ref{sec:gnugo}).
+\end{itemize}

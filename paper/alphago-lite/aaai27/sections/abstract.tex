@@ -1,0 +1,19 @@
+\begin{abstract}
+Small self-play runs, of the kind used in teaching, hobby engines and research prototypes, cannot afford
+large evaluations, so progress is often tracked by matching each new network against its predecessor and
+summing the Elo differences (``chained Elo'').
+We train an AlphaZero-style 9$\times$9 Go engine from scratch on one 8-core laptop CPU
+(\valNGens{} generations, \valTotalGames{} self-play games) and report a case where this signal pointed
+the wrong way: chained Elo fell after generation~\valChainedPeakGen{} and ranked generation~34 below
+generations~19 and~25, yet in direct matches generation~34 beat them in \valHTtfVsNt{} and \valHTtfVsTf{}
+games.
+Anchored matches against fixed earlier and later generations (\valHtoHGames{} games) show steady
+improvement throughout.
+Match noise contributes, but cannot explain the size of the error. Replaying the same consecutive
+matches with more search per move recovers the correct direction and agrees with the anchored games. In
+this run, chained Elo misled mainly because the per-generation matches were too cheap.
+We describe the laptop-scale training pipeline, whose rules and search we verified to produce identical
+results in Python, Swift and the browser. We also report an external calibration: the final network won
+\valGnuWins{} games against GNU~Go at its weakest level. Finally, we recommend a cheap anchored protocol
+for evaluating small runs.
+\end{abstract}

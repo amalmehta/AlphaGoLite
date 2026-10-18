@@ -1,0 +1,8 @@
+{
+ "gen": 44,
+ "inputs": 20,
+ "coreml_max_abs_diff": 5.4836273193359375e-06,
+ "onnx_max_abs_diff": 7.62939453125e-06,
+ "rule_parity_cases": 433,
+ "rule_parity_games": 40
+}

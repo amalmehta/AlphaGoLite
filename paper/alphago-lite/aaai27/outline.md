@@ -78,3 +78,4 @@ steady improvement. We quantify why, and recommend an evaluation protocol that f
 ## Changelog
 - 2026-10-08 — first outline.
 - 2026-10-18 — anchored evaluation and GNU Go match finished; data copied to `paper/alphago-lite/data/`.
+- 2026-10-18 — consecutive replay finished; explanation changed from "adjacency" to "shallow (32-sim) per-generation matches + noise"; abstract, intro, §5, §6, §7 and Fig. 4 updated; flatten script for the single-file submission.
