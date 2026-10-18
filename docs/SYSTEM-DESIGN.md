@@ -55,6 +55,8 @@ flowchart LR
 | `trainer/alphago_lite/train.py` | The loop: self-play → train → evaluate, one generation at a time, across a pool of worker processes. Resumable. If a self-play or evaluation step returns nothing within `--job-timeout` (40 min), it restarts the workers and retries, up to 3 times. |
 | `trainer/alphago_lite/export_app.py` | Converts the latest weights to Core ML (and checks it matches PyTorch), copies the metrics and a selection of games for the app. |
 | `trainer/alphago_lite/strength_check.py` | Plays one generation against earlier ones (80 games each) for an honest strength number. |
+| `trainer/alphago_lite/anchored_eval.py` | Plays every 4th generation against the next two sampled generations and the last one (40 games each, 64 sims), saving after each batch; feeds a Bradley–Terry fit. |
+| `trainer/alphago_lite/gnugo_match.py` | Plays a generation against GNU Go 3.8 over GTP (Chinese rules, komi 7.5, `--capture-all-dead`), scoring by our Tromp-Taylor rules and recording GNU Go's own score as a cross-check. |
 | `trainer/alphago_lite/plot_training.py` | Draws the README's training chart. |
 | `trainer/alphago_lite/make_test_vectors.py` | Writes positions from random games so the Swift rules can be checked against the Python rules. |
 | `MacApp/Sources/GoEngine` | Swift port of the rules and search, plus the Core ML evaluator. A separate library so it can be unit-tested. |
@@ -130,6 +132,8 @@ each move, or plays a new game live with the trained network.
   generations it was tested against, even though chained Elo wanders up and down.
   Chained Elo adds up the noise from each 40-game match, so the dashboards lead with
   head-to-head numbers.
+- Against an outside engine the network is weak: at 400 simulations a move, generation 44
+  lost all 40 games to GNU Go 3.8 at its easiest level (level 1).
 - Gains are shrinking: generation 44 beats 39 only 57% of the time. With this network
   size, more CPU hours bring smaller improvements.
 

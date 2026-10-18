@@ -90,6 +90,7 @@ Website, decided without asking:
 CHANGELOG:
 
 - 2026-10-04 — created
+- 2026-10-18 — paper started (paper/alphago-lite, AAAI-27 workshop target); anchored evaluation (30 pairs × 40 games) and GNU Go match (gen 44 lost 0/40 at level 1) added
 - 2026-10-07 — trained generations 35–44; shipped generation 44 (beats 34 in 59/80, 39 in 46/80)
 - 2026-10-06 — trainer: worker pool restarts and retries a step that hangs (a run had stalled for 2 hours on an overloaded machine)
 - 2026-10-05 — checked generation 34 against 25 and 30 (wins 66/80, 58/80): it is the best, kept it shipped

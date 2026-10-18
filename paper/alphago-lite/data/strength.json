@@ -1,0 +1,79 @@
+[
+ {
+  "gen": 19,
+  "vs": 0,
+  "wins": 66,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 19,
+  "vs": 10,
+  "wins": 72,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 34,
+  "vs": 0,
+  "wins": 78,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 34,
+  "vs": 10,
+  "wins": 76,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 34,
+  "vs": 19,
+  "wins": 79,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 34,
+  "vs": 25,
+  "wins": 66,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 34,
+  "vs": 30,
+  "wins": 58,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 44,
+  "vs": 34,
+  "wins": 59,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 44,
+  "vs": 39,
+  "wins": 46,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 44,
+  "vs": 0,
+  "wins": 79,
+  "games": 80,
+  "sims": 64
+ },
+ {
+  "gen": 44,
+  "vs": 19,
+  "wins": 78,
+  "games": 80,
+  "sims": 64
+ }
+]
