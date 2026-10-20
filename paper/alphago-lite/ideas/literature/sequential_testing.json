@@ -1,0 +1,437 @@
+{
+  "queries": [
+    "sequential probability ratio test engine testing games",
+    "statistical testing playing strength computer chess"
+  ],
+  "services": {
+    "openalex": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "crossref": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "arxiv": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "semanticscholar": {
+      "ok": 0,
+      "cached": 0,
+      "errors": [
+        "'sequential probability ratio test engine testing games': 429",
+        "'statistical testing playing strength computer chess': 429"
+      ]
+    }
+  },
+  "records": [
+    {
+      "title": "Trainable Activation Functions for Real-Time Chess Engine Evaluation",
+      "authors": [
+        "Yosif Soliman",
+        "Ahmed ELSayed"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7213272479",
+        "doi": "10.5281/zenodo.22767133"
+      },
+      "url": "https://doi.org/10.5281/zenodo.22767133",
+      "abstract": "Raw match-runner output behind every playing-strength number reported in the paper \"Trainable Activation Functions for Real-Time Chess Engine Evaluation: Custom CUDA Kernels, Quantized Lookup-Table Inference, and Playing-Strength Validation\". All matches were run with the fastchess match runner. Three Sequential Probability Ratio Test runs totalling 674 games across two opening books (chess.epd and UHO_Lichess_4852_v1) and two time controls (10+0.1 and 60+0.6), producing the 169 to 226 Elo range over a matched-architecture MLP baseline. Plus a 400-game calibrated gauntlet against Stockfish 18 at UCI_Elo settings 2000, 2400, 2800 and 3190, 100 games each with 50 per colour, producing the 2556 absolute Elo estimate and its 95 percent bootstrap confidence interval [2503, 2604]. Engine binaries are built from the modified Akimbo engine at https://github.com/y0sif/akimbo, branch baseline at commit d8d2c17 and branch kan-relu-lut at commit 9dee989. Related code: https://github.com/y0sif/kanue and https://github.com/y0sif/bullet.",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "Rethinking Priority Scheduling for Sequential Multi-Agent Decision Making in Stackelberg Games",
+      "authors": [
+        "Liu, Xiangyu",
+        "Liang Zhang",
+        "Bo Jin",
+        "Ziqi Wei"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7160969394"
+      },
+      "url": "https://openalex.org/W7160969394",
+      "abstract": "Current research applying N-level Stackelberg Game to multi-agent systems often uses the default decision order of agents provided by the environment. However, this raises the question: does the order of agents necessarily affect the final equilibrium point of the game? To address this, we formally analyze the N-level Stackelberg Game, where changing the order in which agents make decisions typically leads to an overdetermined system. As a result, the equilibrium point shifts unless special structural conditions are satisfied. Based on this analysis, we propose the Hierarchical Priority Adjustment (HPA) method, which adjusts and selects the agents' decision order. At the upper level, an upper policy dynamically selects the optimal decision order of agents based on the current game state. At the lower level, agents execute strategies in the Spatio-Temporal Sequential Markov Game (STMG) according to the selected order. To coordinate learning across time scales, we employ a slow-fast update scheme with shared intrinsic rewards derived from the advantage function of the upper policy. Experimental results on high-precision control tasks, including multi-agent MuJoCo, show that HPA outperforms benchmark algorithms and robustly adapts to changing environments. These results highlight the crucial role of optimizing the agents' decision order in N-level Stackelberg Game.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "Chess Signatures of Play",
+      "authors": [
+        "C. T\u00fcrk",
+        "Nicholas Polson"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7165145210",
+        "doi": "10.48550/arxiv.2606.18544"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2606.18544",
+      "abstract": "A game of chess is a stream: a time-ordered sequence of moves, each carrying an engine evaluation, a measure of accuracy, a measure of position complexity, and a clock reading. We model a game as a multivariate path and apply the signature transform of rough-path theory to obtain a reparametrization-invariant, graded feature set that records the order and interaction of in-game events without a parametric likelihood. We show that a player's law of play is identifiable from the expected signature up to tree-like equivalence, construct a signature-kernel two-sample test on path space, and recast cheating detection as an anytime-valid sequential test: a signature conformance score becomes an e-process whose error is controlled for every sample size at once by Ville's inequality, with fluctuations calibrated on the moderate-deviation scale. The discriminating information lives in the signature's Levy areas, which measure whether accuracy rises precisely when positions become hard--the fingerprint of engine assistance that aggregate match-rate statistics discard. In a controlled study the test holds exact type-I control and detection power rises from negligible for subtle assistance to 0.98 for blatant assistance, with a median detection time matching the growth-rate prediction. Calibrated to Magnus Carlsen's documented elite accuracy, the monitor does not flag world-champion-level play; and we exhibit cheating strategies that leave every aggregate statistic, including the best-move-frequency z-score of the Regan system, unchanged yet are caught cleanly by the signature--making precise how an order-aware, anytime-valid test strengthens the prevailing approach to chess anti-cheating.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "Re-evaluating metamorphic testing of chess engines: A replication study",
+      "authors": [
+        "Axel Martin",
+        "Djamel Eddine Khelladi",
+        "Th\u00e9o Matricon",
+        "Mathieu Acher"
+      ],
+      "year": 2025,
+      "ids": {
+        "openalex": "W4407186615",
+        "doi": "10.1016/j.infsof.2025.107679"
+      },
+      "url": "https://doi.org/10.1016/j.infsof.2025.107679",
+      "abstract": "",
+      "venue": "Information and Software Technology",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "Decision Making of Automated Vehicles in Mixed Environment Based on Bayesian Sequential Games",
+      "authors": [
+        "Harikrishnan Vijayakumar",
+        "Dezong Zhao",
+        "Jianglin Lan",
+        "Wenjing Zhao",
+        "David Flynn",
+        "Dachuan Li",
+        "Quan Zhou",
+        "Yuanjian Zhang",
+        "Kang Song"
+      ],
+      "year": 2025,
+      "ids": {
+        "openalex": "W4409795905",
+        "doi": "10.1109/tits.2025.3561510"
+      },
+      "url": "https://doi.org/10.1109/tits.2025.3561510",
+      "abstract": "Automated Vehicles (AVs) will coexist with Human-Driven Vehicles (HDVs) for a long time. AVs must navigate safely among HDVs while maintaining smooth traffic flow. To facilitate this, the decision making system of AVs must accurately assess HDV intentions while accounting for inherent uncertainties. Current HDV intention prediction models often misclassify these intentions, leading to unsafe navigation decisions. This study introduces a three-stage Bayesian sequential game-based decision making architecture designed for AV operation. In the first stage, the AV utilizes a temporal neural network to classify vehicle intentions. In the second stage, a sequential game is solved to determine optimal actions by predicting future HDV states. The final stage, serving as a validation stage, identifies and corrects misclassifications from the first stage by predicting HDV future positions, incorporating models that account for potential deviations from the ground truth. Simulation results indicate a 93.5\u00b10.5% accuracy in initial intention predictions, facilitating swift and effective decision making. The validation stage further enhances safety by promptly correcting errors, ensuring reliable navigation for AVs in HDV environments.",
+      "venue": "IEEE Transactions on Intelligent Transportation Systems",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "EVOLUTION OF COMPUTER CHESS",
+      "authors": [
+        "Yurii Moroz"
+      ],
+      "year": 2025,
+      "ids": {
+        "openalex": "W4416567354",
+        "doi": "10.30525/978-9934-26-602-7-10"
+      },
+      "url": "https://doi.org/10.30525/978-9934-26-602-7-10",
+      "abstract": "Modern science: theory, practice, innovative technologies : Scientific monograph. Part 1. Riga, Latvia : Baltija Publishing, 2025. 712 p. The scientific monograph presents theoretical and practical aspects of the development of science. It covers general issues of biological, agricultural and engineering sciences, phisical and mathematical sciences, chemical and medical sciences, historical and political sciences, etc. The publication is intended for scientists, educators, postgraduate students and undergraduates, as well as the general readership.",
+      "venue": "Izdevniec\u012bba \u201cBaltija Publishing\u201d eBooks",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "Computing Through Time: Playing Chess",
+      "authors": [
+        "Ergun Akleman"
+      ],
+      "year": 2024,
+      "ids": {
+        "doi": "10.1109/mc.2024.3423888"
+      },
+      "url": "https://doi.org/10.1109/mc.2024.3423888",
+      "abstract": "",
+      "venue": "Computer",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "Training with AI: Evidence from chess computers",
+      "authors": [
+        "Fabian Gaessler",
+        "Henning Piezunka"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4378087384",
+        "doi": "10.1002/smj.3512"
+      },
+      "url": "https://doi.org/10.1002/smj.3512",
+      "abstract": "Abstract We suggest that AI can help decision\u2010makers learn; specifically, that it can help them learn strategic interactions by serving as artificial training partners and thus help them to overcome a bottleneck of scarce human training partners. We present evidence from chess computers, the first widespread incarnation of AI. Leveraging the staggered diffusion of chess computers, we find that they did indeed help chess players improve by serving as a substitute for scarce human training partners. We also illustrate that chess computers were not a perfect substitute, as players training with them were not exposed to and thus did not learn to exploit idiosyncratic (\u201chuman\u201d) mistakes. We discuss implications for research on learning, on AI in management and strategy, and on competitive advantage.",
+      "venue": "Strategic Management Journal",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "Efficiency in Sequential Testing: Comparing the Sequential Probability Ratio Test and the Sequential Bayes Factor Test",
+      "authors": [
+        "Angelika Marlene Stefan",
+        "Felix D. Sch\u00f6nbrodt",
+        "Nathan J. Evans",
+        "Eric-Jan Wagenmakers"
+      ],
+      "year": 2020,
+      "ids": {
+        "doi": "10.31234/osf.io/ry4fw"
+      },
+      "url": "https://doi.org/10.31234/osf.io/ry4fw",
+      "abstract": "In a sequential hypothesis test, the analyst checks at multiple steps during data collection whether sufficient evidence has accrued to make a decision about the tested hypotheses. As soon as sufficient information has been obtained, data collection is terminated. Here, we compare two sequential hypothesis testing procedures that have recently been proposed for use in psychological research: the Sequential Probability Ratio Test (SPRT; Schnuerch &amp;amp; Erdfelder, 2020) and the Sequential Bayes Factor Test (SBFT; Sch\u00f6nbrodt et al., 2017). We show that although the two methods have different philosophical roots, they share many similarities and can even be mathematically regarded as two instances of an overarching hypothesis testing framework. We demonstrate that the two methods use the same mechanisms for evidence monitoring and error control, and that differences in efficiency between the methods depend on the exact specification of the statistical models involved, as well as on the population truth. Our simulations indicate that when deciding on a sequential design within a unified sequential testing framework, researchers need to balance the needs of test efficiency, robustness against model misspecification, and appropriate uncertainty quantification. We provide guidance for navigating these design decisions based onindividual preferences and simulation-based design analyses.",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "Playing FPS Games with Deep Reinforcement Learning",
+      "authors": [
+        "Guillaume Lample",
+        "Devendra Singh Chaplot"
+      ],
+      "year": 2017,
+      "ids": {
+        "openalex": "W2522489477",
+        "doi": "10.1609/aaai.v31i1.10827"
+      },
+      "url": "https://doi.org/10.1609/aaai.v31i1.10827",
+      "abstract": "Advances in deep reinforcement learning have allowed autonomous agents to perform well on Atari games, often outperforming humans, using only raw pixels to make their decisions. However, most of these games take place in 2D environments that are fully observable to the agent. In this paper, we present the first architecture to tackle 3D environments in first-person shooter games, that involve partially observable states. Typically, deep reinforcement learning methods only utilize visual input for training. We present a method to augment these models to exploit game feature information such as the presence of enemies or items, during the training phase. Our model is trained to simultaneously learn these features along with minimizing a Q-learning objective, which is shown to dramatically improve the training speed and performance of our agent. Our architecture is also modularized to allow different models to be independently trained for different phases of the game. We show that the proposed architecture substantially outperforms built-in AI agents of the game as well as average humans in deathmatch scenarios.",
+      "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "Intrinsic Chess Ratings",
+      "authors": [
+        "Kenneth W. Regan",
+        "Guy Haworth"
+      ],
+      "year": 2011,
+      "ids": {
+        "openalex": "W2144464705",
+        "doi": "10.1609/aaai.v25i1.7951"
+      },
+      "url": "https://doi.org/10.1609/aaai.v25i1.7951",
+      "abstract": "This paper develops and tests formulas for representing playing strength at chess by the quality of moves played, rather than by the results of games. Intrinsic quality is estimated via evaluations given by computer chess programs run to high depth, ideally so that their playing strength is sufficiently far ahead of the best human players as to be a `relatively omniscient' guide. Several formulas, each having intrinsic skill parameters s for `sensitivity' and c for `consistency', are argued theoretically and tested by regression on large sets of tournament games played by humans of varying strength as measured by the internationally standard Elo rating system. This establishes a correspondence between Elo rating and the parameters. A smooth correspondence is shown between statistical results and the century points on the Elo scale, and ratings are shown to have stayed quite constant over time. That is, there has been little or no `rating inflation'. The theory and empirical results are transferable to other rational-choice settings in which the alternatives have well-defined utilities, but in which complexity and bounded information constrain the perception of the utility values.",
+      "venue": "AAAI Publications (The Association for the Advancement of Artificial Intelligence (AAAI))",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "New architectures in computer chess",
+      "authors": [
+        "F.M.H. Reul"
+      ],
+      "year": 2009,
+      "ids": {
+        "openalex": "W2116159818"
+      },
+      "url": "https://openalex.org/W2116159818",
+      "abstract": "About five years ago I completed my diploma project about computer chess at the University of Applied Sciences in Friedberg, Germany.Immediately afterwards I continued in 2004 with the R&D of my computer-chess engine Loop.In 2005 I started my Ph.D. project \"New Architectures in Computer Chess\" at the Maastricht University.In the first year of my R&D I concentrated on the redesign of a computer-chess architecture for 32-bit computer environments.I developed more efficient search methods and more precise evaluation functions in order to carry out my R&D within the scope of a state-of-the-art computerchess environment.In fall 2006 the development of my new 32-bit computer-chess architecture was completed.With the opening book by Gerhard Sonnabend and the hardware provided by Clemens Keck my computer-chess engine Loop Leiden achieved the 2 nd place behind Rybka and before Hiarcs X MP at the 26 th Open Dutch Computer-Chess Championship 2006 in Leiden (NL) (see Appendix C.1).In 2007, I started the next R&D phase on the basis of this computer-chess engine.The focus of this phase was on the development of a 64-bit computer-chess architecture that should be used within the scope of a quad-core computer-chess engine.The new 64-bit computer-chess engine, Loop Amsterdam, achieved the 3 rd place behind Rybka and Zappa but before Shredder at the 15 th World Computer-Chess Championship 2007 in Amsterdam (NL) (see Appendix C.2).For the persons who continuously supported me some words of gratitude are appropriate.In particular, I am grateful to my supervisor Professor Jaap van den Herik who brought me with firm guidance to this success.He stimulated me to continue the R&D of my computer-chess engine Loop Chess and motivated me to write this thesis.In addition, he set up the contact to the company Nintendo in 2007 which implemented my source codes successfully in their commercial product Wii Chess.Moreover, I would like to thank my daily advisor dr.Jos Uiterwijk for the many crucial suggestions and tips during the reading of my thesis.My thanks goes also to Dr. Christian Donninger (Chrilly) for his advisory input during the development of a parallel search engine and to Tord Romstad for his assistance in generating magic multipliers.Gerhard Sonnabend and Clemens Keck helped me in the experiments that lasted many months and particularly in the preparation for two important computer-chess championships, Great Work! v vi PREFACE Finally, I am grateful to Viktoria",
+      "venue": "Data Archiving and Networked Services (DANS)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "Sequential Probability Ratio Test",
+      "authors": [],
+      "year": 2008,
+      "ids": {
+        "doi": "10.1201/9781420010022.ch3"
+      },
+      "url": "https://doi.org/10.1007/springerreference_205592",
+      "abstract": "",
+      "venue": "SpringerReference",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "Application of Sequential Probability Ratio Test to Computerized Criterion-Referenced Testing",
+      "authors": [
+        "Yuan-chin Ivan Chang"
+      ],
+      "year": 2004,
+      "ids": {
+        "doi": "10.1081/sqa-120030194"
+      },
+      "url": "https://doi.org/10.1081/sqa-120030194",
+      "abstract": "",
+      "venue": "Sequential Analysis",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "The Sequential Probability Ratio Test",
+      "authors": [],
+      "year": 2004,
+      "ids": {
+        "doi": "10.1142/9789812562319_0002"
+      },
+      "url": "https://doi.org/10.1142/9789812562319_0002",
+      "abstract": "",
+      "venue": "Sequential Statistics",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "General Purpose Technologies \"Engines of Growth?\"",
+      "authors": [
+        "Timothy F. Bresnahan",
+        "Manuel Trajtenberg"
+      ],
+      "year": 1992,
+      "ids": {
+        "openalex": "W4229487566",
+        "doi": "10.3386/w4148"
+      },
+      "url": "https://doi.org/10.3386/w4148",
+      "abstract": "Whole eras of technical progress and economic growth appear to be driven by a few key technologies, which we call General Purpose Technologies (GPT's).Thus the steam engine and the electric motor may have played such a role in the past, whereas semiconductors and computers may be doing as much in our era.GPT's are characterized by pervasiveness (they are used as inputs by many downstream sectors), inherent potential for technical improvements, and innovational complementarities', meaning that the productivity of R&D in downstream sectors increases as a consequence of innovation in the GPT.Thus, as GPT's improve they spread throughout the economy, bringing about generalized productivity gains.Our analysis shows that the characteristics of GPT's imply a sort of increasing returns to scale phenomenon, and that this may have a large role to play in determining the rate of technical advance; on the other hand this phenomenon makes it difficult for a decentralized economy to fully exploit the growth opportunities offered by evolving OPT'S.In particular,' if the relationship between the OPT and its users is limited to arms-length market transactions, there will be \"too little, too late\" innovation in both sectors.Likewise, difficulties in forecasting the technological developments of the other side may lower the rate of technical advance of all sectors.Lastly, we show that the analysis of GPT's has testable implications in the Context of R&D and productivity equations, that can in piinciple be estimated.",
+      "venue": "National Bureau of Economic Research",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "Estimation After Sequential Testing: A Simple Approach for a Truncated Sequential Probability Ratio Test",
+      "authors": [
+        "Michael Woodroofe"
+      ],
+      "year": 1992,
+      "ids": {
+        "doi": "10.2307/2336845"
+      },
+      "url": "https://doi.org/10.2307/2336845",
+      "abstract": "",
+      "venue": "Biometrika",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "sequential probability ratio test engine testing games"
+    },
+    {
+      "title": "Programming a Computer for Playing Chess",
+      "authors": [
+        "Claude E. Shannon"
+      ],
+      "year": 1988,
+      "ids": {
+        "doi": "10.1007/978-1-4757-1968-0_1"
+      },
+      "url": "https://doi.org/10.1007/978-1-4757-1968-0_1",
+      "abstract": "",
+      "venue": "Computer Chess Compendium",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "A Chess Playing Program for the IBM 7090 Computer",
+      "authors": [
+        "Alan Kotok"
+      ],
+      "year": 1988,
+      "ids": {
+        "doi": "10.1007/978-1-4757-1968-0_6"
+      },
+      "url": "https://doi.org/10.1007/978-1-4757-1968-0_6",
+      "abstract": "",
+      "venue": "Computer Chess Compendium",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "Chess Playing Programs and the Problem of Complexity",
+      "authors": [
+        "Allen Newell",
+        "Cliff Shaw",
+        "Herbert Simon"
+      ],
+      "year": 1988,
+      "ids": {
+        "doi": "10.1007/978-1-4757-1968-0_4"
+      },
+      "url": "https://doi.org/10.1007/978-1-4757-1968-0_4",
+      "abstract": "",
+      "venue": "Computer Chess Compendium",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "COMPUTER CHESS STRENGTH",
+      "authors": [
+        "K. Thompson"
+      ],
+      "year": 1982,
+      "ids": {
+        "doi": "10.1016/b978-0-08-026898-9.50008-5"
+      },
+      "url": "https://doi.org/10.1016/b978-0-08-026898-9.50008-5",
+      "abstract": "",
+      "venue": "Advances in Computer Chess",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    },
+    {
+      "title": "OSTRICH: A Description of a Chess-Playing Program",
+      "authors": [
+        "Monroe Newborn"
+      ],
+      "year": 1975,
+      "ids": {
+        "doi": "10.1016/b978-0-12-517250-9.50015-1"
+      },
+      "url": "https://doi.org/10.1016/b978-0-12-517250-9.50015-1",
+      "abstract": "",
+      "venue": "Computer Chess",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "statistical testing playing strength computer chess"
+    }
+  ]
+}

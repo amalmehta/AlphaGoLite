@@ -1,0 +1,602 @@
+{
+  "queries": [
+    "MCTS simulations playing strength scaling AlphaZero",
+    "search depth evaluation strength difference game agents"
+  ],
+  "services": {
+    "openalex": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "crossref": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "arxiv": {
+      "ok": 2,
+      "cached": 0,
+      "errors": []
+    },
+    "semanticscholar": {
+      "ok": 1,
+      "cached": 0,
+      "errors": [
+        "'search depth evaluation strength difference game agents': 429"
+      ]
+    }
+  },
+  "records": [
+    {
+      "title": "Strategies anticipating a difference in search depth using opponent-model search",
+      "authors": [
+        "Xinbo Gao",
+        "Hiroyuki Iida",
+        "JOS W. H. M. UITERWIJK",
+        "H.J. van den Herik"
+      ],
+      "year": 2001,
+      "ids": {
+        "openalex": "W2035901005",
+        "doi": "10.1016/s0304-3975(00)00077-3"
+      },
+      "url": "https://doi.org/10.1016/s0304-3975(00)00077-3",
+      "abstract": "",
+      "venue": "Theoretical Computer Science",
+      "found_in": [
+        "crossref",
+        "openalex"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "CASCO: Cosmological and AStrophysical parameters from Cosmological simulations and Observations. IV. Testing warm dark matter cosmologies with galaxy scaling relations: A joint simulation\u2013observation study using DREAMS simulations",
+      "authors": [
+        "M. Silvestrini",
+        "Crescenzo Tortora",
+        "V. Busillo",
+        "Alyson M. Brooks",
+        "A. Farahi",
+        "A. M. Garc\u00eda",
+        "N. Kallivayalil",
+        "N. Napolitano",
+        "J. Rose",
+        "P. Torrey",
+        "F. Villaescusa-Navarro",
+        "M. Vogelsberger"
+      ],
+      "year": 2026,
+      "ids": {
+        "s2": "ff908c51bb8b878b786716af5ab2b8c68d37100d",
+        "arxiv": "2601.07543",
+        "doi": "10.1051/0004-6361/202556698"
+      },
+      "url": "https://www.semanticscholar.org/paper/ff908c51bb8b878b786716af5ab2b8c68d37100d",
+      "abstract": "Small-scale discrepancies in the standard Lamda cold dark matter paradigm have motivated the exploration of alternative dark matter (DM) models, such as warm dark matter (WDM). In our work, we investigate the constraining power of galaxy scaling relations on cosmological, astrophysical, and WDM parameters using a joint analysis of multiresolution hydrodynamic simulations and observational data. Our study is based on the DREAMS project and combines large-volume uniform-box simulations with high-resolution Milky Way (MW) zoom-in runs exploring a \u039bWDM cosmology. To ensure consistency between the different simulation sets, we applied calibrations to account for resolution effects, which allowed us to better exploit the complementary strengths of the two suites. We compared the simulated relations, such as stellar size, DM mass, and fraction, within the stellar half-mass radius and the total-to-stellar mass ratio with two complementary galaxy samples: the Spitzer Photometry and Accurate Rotation Curves catalog, providing resolved kinematics for nearby spirals, and the Local Volume Database catalog, which includes structural and dynamical measurements for dwarf galaxies in the Local Volume. By applying a bootstrap-based fitting procedure, we show that key cosmological parameters (\u2126_\u030am m, \u03c3_8) and supernova feedback strength can be recovered with good accuracy, particularly from the uniform-box simulations. Although the WDM particle mass remains unconstrained, the MW zoom-in simulations reveal subtle WDM-induced trends, especially at low stellar masses, in the scaling relations of both the DM mass and the total-to-stellar mass ratio within the stellar half-mass radius. Additionally, we find that the galaxy abundance as a function of total stellar mass shows a measurable dependence on WDM particle mass, with a suppression at log_ 10 \u030am M_*/M_ 8 that appears separable from the impact of feedback, suggesting this observable is a valuable complementary probe. Our results highlight the importance of combining simulations at multiple resolutions with diverse observational catalogs to jointly constrain baryonic processes and DM properties. In particular, future low-mass galaxy surveys such as Euclid will play a crucial role in tightening the constraints on alternative DM scenarios through joint structural and statistical analyses. At the same time, higher-resolution simulations will be essential to fully capturing the small-scale features and improving the discriminatory power of such analyses, especially in the context of WDM.",
+      "venue": "Astronomy &amp; Astrophysics",
+      "found_in": [
+        "semanticscholar"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Evaluating the Search Agent in a Parallel World",
+      "authors": [
+        "Jiawei Chen",
+        "Xintian Shen",
+        "Lihao Zheng",
+        "Lifu Mu",
+        "Haoyi Sun",
+        "Mao, Ning",
+        "Hao Ma",
+        "Wei, Tao",
+        "Pan Zhou",
+        "Kun Zhan"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7134043144",
+        "doi": "10.48550/arxiv.2603.04751"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2603.04751",
+      "abstract": "Integrating web search tools has significantly extended the capability of LLMs to address open-world, real-time, and long-tail problems. However, evaluating these Search Agents presents formidable challenges. First, constructing high-quality deep search benchmarks is prohibitively expensive, while unverified synthetic data often suffers from unreliable sources. Second, static benchmarks face dynamic obsolescence: as internet information evolves, complex queries requiring deep research often degrade into simple retrieval tasks due to increased popularity, and ground truths become outdated due to temporal shifts. Third, attribution ambiguity confounds evaluation, as an agent's performance is often dominated by its parametric memory rather than its actual search and reasoning capabilities. Finally, reliance on specific commercial search engines introduces variability that hampers reproducibility. To address these issues, we propose a novel framework, Mind-ParaWorld, for evaluating Search Agents in a Parallel World. Specifically, MPW samples real-world entity names to synthesize future scenarios and questions situated beyond the model's knowledge cutoff. A ParaWorld Law Model then constructs a set of indivisible Atomic Facts and a unique ground-truth for each question. During evaluation, instead of retrieving real-world results, the agent interacts with a ParaWorld Engine Model that dynamically generates SERPs grounded in these inviolable Atomic Facts. We release MPW-Bench, an interactive benchmark spanning 19 domains with 1,608 instances. Experiments across three evaluation settings show that, while search agents are strong at evidence synthesis given complete information, their performance is limited not only by evidence collection and coverage in unfamiliar search environments, but also by unreliable evidence sufficiency judgment and when-to-stop decisions-bottlenecks.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "Agentic Cognitive Depth: Operational Criteria for Evaluating LLM Agents",
+      "authors": [
+        "Nijesh Upreti",
+        "Chris Sypherd",
+        "Vaishak Belle"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7220712251",
+        "doi": "10.48550/arxiv.2610.04168"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2610.04168",
+      "abstract": "Agentic large language model (LLM) systems are commonly implemented as an LLM in a loop with Planning, Memory, Tools, and Control Flow. This application-focused view connects agentic LLM research with deployable systems and leaves open how such systems should be evaluated beyond end-to-end task success. Building on this view, we define agentic cognitive depth as a trajectory-level profile across five operational criteria. The profile contains context sensitivity ($C$), temporal continuity ($T$), multimodal coordination ($M$), adaptive interaction ($A$), and metacognitive monitoring ($Mc$). The first four criteria measure how well Control Flow, Memory, Tools, and Planning are used across a trajectory. The fifth measures whether the system monitors and regulates the full run. For each criterion, we give operational proxies and a perturbation procedure, then connect the profile to the agent's world model. We provide the structure needed to extend benchmarks such as GAIA, SWE-bench, WebArena, and TRIP-Bench with per-criterion diagnostics. Symbolic verifiers, structured memory, planner coupling, and tool constraints provide practical ways to build and test these capacities.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "Search-contempt: a hybrid MCTS algorithm for training AlphaZero-like engines with better computational efficiency",
+      "authors": [
+        "A. Joshi"
+      ],
+      "year": 2025,
+      "ids": {
+        "s2": "8b8ed5749cbdf6917f702cce00c75d79d0d9a34f",
+        "arxiv": "2504.07757",
+        "doi": "10.48550/arXiv.2504.07757"
+      },
+      "url": "https://www.semanticscholar.org/paper/8b8ed5749cbdf6917f702cce00c75d79d0d9a34f",
+      "abstract": "AlphaZero in 2017 was able to master chess and other games without human knowledge by playing millions of games against itself (self-play), with a computation budget running in the tens of millions of dollars. It used a variant of the Monte Carlo Tree Search (MCTS) algorithm, known as PUCT. This paper introduces search-contempt, a novel hybrid variant of the MCTS algorithm that fundamentally alters the distribution of positions generated in self-play, preferring more challenging positions. In addition, search-contempt has been shown to give a big boost in strength for engines in Odds Chess (where one side receives an unfavorable position from the start). More significantly, it opens up the possibility of training a self-play based engine, in a much more computationally efficient manner with the number of training games running into hundreds of thousands, costing tens of thousands of dollars (instead of tens of millions of training games costing millions of dollars required by AlphaZero). This means that it may finally be possible to train such a program from zero on a standard consumer GPU even with a very limited compute, cost, or time budget.",
+      "venue": "arXiv.org",
+      "found_in": [
+        "semanticscholar"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "A Hybrid Minimax-MCTS Chess Engine Enhanced by RLHF Using Stockfish and AlphaZero",
+      "authors": [
+        "Hemlata Parmar",
+        "Sai Yashwant Reddy Panthy",
+        "Utsav Krishan Murari"
+      ],
+      "year": 2025,
+      "ids": {
+        "s2": "dbb80b42503c5247c88200edd89b7903d3b21350",
+        "doi": "10.1109/ACROSET66531.2025.11280596"
+      },
+      "url": "https://www.semanticscholar.org/paper/dbb80b42503c5247c88200edd89b7903d3b21350",
+      "abstract": "In this research, we designed a novel chess engine that combines Monte Carlo Tree Search (MCTS) with the traditional Minimax algorithm to enhance decision-making performance and strategic depth. Unlike normative engines that solely rely on static evaluation functions, our model is a Reinforcement Learning from Human Feedback (RLHF)-trained, constantly evolving performance model that draws upon advanced systems such as Stockfish and AlphaZero to clarify its position [7], [8], [9]. Using the CCRL V3 dataset from Lc0 Leela Chess, we established a robust training base composed of expert-level play. A major challenge was ensuring that Minimax remained as exhaustive and tactically precise as possible, while balancing the inherently scalable but sometimes imprecise nature of MCTS [5], [6], [10]. To address this, the engine dynamically chooses between the two methods based on real-time board complexity\u2014an adaptive strategy inspired by prior hybrid approaches [1], [5], [6]. This dynamic mechanism not only eliminates shallow or ineffective searches and improves computational efficiency, but also ensures rigorous treatment of legal move generation and check/checkmate detection, adhering to best practices in AI game engines [12]. Experimental results show that our hybrid model performs better in gameplay scenarios, achieving high prediction accuracy with reduced computational overhead. In other words, the system could be further scaled using parallel self-play and network-based training simulations [8]. Overall, our research highlights the viability of dynamic search algorithms in combination with RLHF training for educational applications in board games, potentially paving the way for more human-like and adaptive AI.",
+      "venue": "2025 IEEE International Conference on Advances in Computing Research On Science Engineering and Technology (ACROSET)",
+      "found_in": [
+        "semanticscholar"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Applying Importance Sampling to MCTS for Mahjong",
+      "authors": [
+        "Shih-Chieh Tang",
+        "Jr-Chang Chen",
+        "I-Chen Wu"
+      ],
+      "year": 2025,
+      "ids": {
+        "s2": "3f3009f1cf99ab4fc3f3f4f24112dedc4dfca1f4",
+        "doi": "10.1109/TG.2025.3535740"
+      },
+      "url": "https://www.semanticscholar.org/paper/3f3009f1cf99ab4fc3f3f4f24112dedc4dfca1f4",
+      "abstract": "Mahjong is a four-player stochastic imperfect-information game. In this article, we utilize importance sampling within Monte Carlo tree search (MCTS) to enhance the playing strength of our Mahjong program, MeowCaTS. First, we propose a tree structure called the merging solitary tile model, which facilitates the application of importance sampling. This model also reduces the branching factor of the search tree. Second, we apply importance sampling to MCTS and introduce the calculation of importance weights during the backpropagation stage. Finally, we design a multidepth transposition table to accumulate simulation results of similar positions in MCTS, further enhancing the strength of MeowCaTS. In the experiments, the performance of the proposed methods was analyzed, and the results showed a significant improvement. Notably, MeowCaTS won the first place in Computer Olympiad 2023.",
+      "venue": "IEEE Transactions on Games",
+      "found_in": [
+        "semanticscholar"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Automated Game Testing With Online Search Agent and Model Construction, a Study",
+      "authors": [
+        "Samira Shirzadehhajimahmood",
+        "I. S. W. B. Prasetya",
+        "Davide Prandi",
+        "Frank P. M. Dignum",
+        "Mehdi M. Dastani",
+        "Gabriele Keller"
+      ],
+      "year": 2025,
+      "ids": {
+        "openalex": "W4407619670",
+        "doi": "10.1002/stvr.70002"
+      },
+      "url": "https://doi.org/10.1002/stvr.70002",
+      "abstract": "ABSTRACT Modern computer games have become very complex, so they can benefit from automated testing. However, their huge and fine grained interaction space makes them very challenging for automated testing algorithms. Having a model of a system would greatly improve the effectiveness of a testing algorithm. However, manually constructing a model is expensive and time\u2010consuming. This paper proposes an online agent\u2010based search approach to solve common testing tasks for computer games, in particular games that involve elements of world navigation and exploration. On the fly, the approach also constructs a model of the system, which is then exploited to solve the given testing task. The effectiveness of the approach is studied via a case study called Lab Recruits and its simulation of another game called Dungeons and Dragons Online. The study showed that the approach is superior in its ability to complete testing tasks and its completion time compared to evolutionary algorithm, Q\u2010learning and MCTS. This paper extends a previous work presented in ATEST by including evaluation on large game levels, evaluation of the achieved coverage and fault detection and the aforementioned comparison with other algorithms.",
+      "venue": "Software Testing Verification and Reliability",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "Empirical Evaluation of Concept Probing for Game-Playing Agents",
+      "authors": [
+        "A\u00f0alsteinn P\u00e1lsson",
+        "Yngvi Bj\u00f6rnsson"
+      ],
+      "year": 2024,
+      "ids": {
+        "openalex": "W4403488508",
+        "doi": "10.3233/faia240574"
+      },
+      "url": "https://doi.org/10.3233/faia240574",
+      "abstract": "Concept probing is one prominent methodology for interpreting and analyzing (deep) neural network models. It has, for example, formed the backbone of several recent works to understand better the high-level knowledge learned and employed by game-playing agents, particularly in chess. However, some recent theoretical and empirical studies have questioned the methodology\u2019s reliability and highlighted some limitations. Here, in the game-playing domain of chess, we investigate the effectiveness of several different probing architectures and look into the reliability of methods for interpreting their results. We use a world-class chess-playing agent as our test domain, which allows us, via self-play, to quantify the importance of the concepts identified in the agent\u2019s neural network by the concept probes. Our results demonstrate that the widespread practice of using linear probes and interpreting their accuracy to indicate concept importance is somewhat unreliable and needs to be revised. We demonstrate several ways of doing that in our domain, particularly by using more complex probes and amnesic-like probing.",
+      "venue": "Frontiers in artificial intelligence and applications",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "Expediting Self-Play Learning in AlphaZero-Style Game-Playing Agents",
+      "authors": [
+        "Yngvi Bj\u00f6rnsson",
+        "Robert J\u00f6nsson",
+        "Sigurj\u00f3n Ingi J\u00f3nsson"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4387185488",
+        "doi": "10.3233/faia230279"
+      },
+      "url": "https://doi.org/10.3233/faia230279",
+      "abstract": "One of the main appeals of AlphaZero-style game-playing agents, which combine deep learning and Monte Carlo Tree Search, is that they can be trained autonomously without external expert-level domain knowledge. However, training such agents is generally computationally expensive, with the most computationally time-consuming step being generating training data via self-play. Here we propose an improved strategy for generating self-play training data, resulting in higher-quality samples, especially in earlier training phases. The new strategy initially emphasizes the latter game phases and gradually extends those phases to entire games as the training progresses. In our test domains, the games Connect4 and Breakthrough, we show that game-playing agents using the improved training approach learn significantly faster than counterpart agents using a standard approach. Furthermore, we empirically show that the proposed strategy is (in our test domains) superior to several recently proposed strategies for expediting self-play learning in game playing.",
+      "venue": "Frontiers in artificial intelligence and applications",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "AlphaZero-Inspired Game Learning: Faster Training by Using MCTS Only at Test Time",
+      "authors": [
+        "Johannes Scheiermann",
+        "Wolfgang Konen"
+      ],
+      "year": 2023,
+      "ids": {
+        "doi": "10.1109/tg.2022.3206733"
+      },
+      "url": "https://doi.org/10.1109/tg.2022.3206733",
+      "abstract": "",
+      "venue": "IEEE Transactions on Games",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Penerapan Algoritma Breadth First Search dan Depth First Search pada Game Angka",
+      "authors": [
+        "Ari Muhardono"
+      ],
+      "year": 2023,
+      "ids": {
+        "doi": "10.33395/jmp.v12i1.12340"
+      },
+      "url": "https://doi.org/10.33395/jmp.v12i1.12340",
+      "abstract": "Game sebagai media hiburan telah berkembang dengan pesat seiring dengan perkembangan teknologi. Salah satu unsur yang berperan penting dalam sebuah game adalah kecerdasan buatan. Tujuan dari penelitian ini adalah merancang sebuah Aplikasi Games Angka dalam wadah berbentuk bintang sebagai sarana hiburan dan pembelajaran kecerdasan buatan dengan menggunakan Metode Breadth First Search dan Depth First Search sebagai alat bantu solusi yang dapat membantu memecahkan permasalahan dengan disertai simulasi solusi langkah-langkah penyelesaian. Alat Bantu Solusi dalam permainan angka ini menggunakan bantuan struktur pohon pelacakan (search tree). Pohon pelacakan adalah suatu pohon (tree), dimana akar dari pohon berupa keadaan awal dan cabang berupa keadaan-keadaan yang mungkin terjadi dari keadaan sebelumnya serta daun merupakan keadaan akhir, yang dapat dijadikan sebagai solusi dari permasalahan. Metode pencarian yang dipakai menggunakan algoritma Breadth First Search (BFS) dan algoritma Depth First Search (DFS).&#x0D;\nJenis Penelitian ini adalah Penelitian Research and Development (R&amp;D), metode Penelitian yang digunakan menggunakan System Development Life Cycle (SDLC) model Waterfall. Hasil Penelitian ini adalah rancang bangun game angka dengan alat bantu solusi menggunakan Algortima Breadth First Search dan Algoritma Depth First Search. Hasil pengujian sistem menunjukkan bahwa perbedaan antara algoritma Breadth First Search (BFS) dan Depth First Search (DFS) terletak pada cara pengeksplorasian simpul dalam graf atau pohon pencarian. BFS akan melakukan pengeksplorasian dari simpul awal secara merata ke segala arah terlebih dahulu, sedangkan DFS akan melakukan pengeksplorasian terlebih dahulu pada satu jalur secara vertikal sejauh mungkin sebelum kemudian kembali dan mengeksplorasi jalur yang lain. Dalam penggunaannya pada game, kedua algoritma ini dapat digunakan untuk mencari jalur atau strategi yang dapat diambil dalam menyelesaikan level atau mencapai tujuan tertentu. Untuk penelitian selanjutnya diharapkan menambahkan metode lain seperti metode Best First Search",
+      "venue": "Jurnal Minfo Polgan",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "AlphaZero applied to Jass",
+      "authors": [
+        "Andrin B\u00fcrli"
+      ],
+      "year": 2022,
+      "ids": {
+        "openalex": "W4225063277",
+        "doi": "10.5281/zenodo.6400546"
+      },
+      "url": "https://doi.org/10.5281/zenodo.6400546",
+      "abstract": "Despite recent successes of Artificial Intelligence applied to games, the performance ofcooperative agents in imperfect information games is still far from surpassing humans.In the traditional swiss card game of Jass four distinct parties play against each otherin two opposing teams. As an imperfect information game with competition as well ascooperation, Jass is a suitable candidate subject for research in this area. This project aims to evaluate if a purely reinforcement learning based method such asAlphaZero would be suitable for solving the game of Jass. However, since this methodis designed to work only on perfect information games, it cannot be used directly. For that reason, a new perfect information Jass is introduced where there is no hidden information. A fully asynchronous pipeline was designed to teach an AlphaZero based agent toplay the game of perfect information Jass. By means of a supervised dataset an optimized domain specific network architecture has been evaluated and trained. Using theimplemented pipeline in combination with this architecture, a variety of hyperparameters have been examined. The strongest configuration allowed an agent to achieve 0.75%average points againts the random opponent (APAR) and 0.48% average points againtsthe MCTS (100 simulations) based opponent (APAMCTS), therefore not beating thebaseline. After training, the agent is transferred to the imperfect information domainusing determinisations. In the new domain the best agent was using the network trainedon supervised data. It reached 0.72 APAR and at most 0.57 APAMCTS (20 simulations,25 determinizations) and therefore it is outperforming the MCTS baseline with statistical significance. Training an agent using self-play requires a lot of data and as a result also a lot of time.Considering the time and resource constraints of this project, the results do indicate thatthis approach might be suitable for the game of Jass. Nevertheless, further experimentswith more time and more computing power are required to prove this.",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Reimagining chess with AlphaZero",
+      "authors": [
+        "Nenad Toma\u0161ev",
+        "Ulrich Paquet",
+        "Demis Hassabis",
+        "Vladimir Kramnik"
+      ],
+      "year": 2022,
+      "ids": {
+        "openalex": "W4207001022",
+        "doi": "10.1145/3460349"
+      },
+      "url": "https://doi.org/10.1145/3460349",
+      "abstract": "AI is driving the next evolution of chess, giving players a glimpse into the game's future.",
+      "venue": "Communications of the ACM",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Peer Review #1 of \"AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner (v0.1)\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7287/peerj-cs.1123v0.1/reviews/1"
+      },
+      "url": "https://doi.org/10.7287/peerj-cs.1123v0.1/reviews/1",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Peer Review #2 of \"AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner (v0.1)\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7287/peerj-cs.1123v0.1/reviews/2"
+      },
+      "url": "https://doi.org/10.7287/peerj-cs.1123v0.1/reviews/2",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Peer Review #1 of \"AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner (v0.2)\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7287/peerj-cs.1123v0.2/reviews/1"
+      },
+      "url": "https://doi.org/10.7287/peerj-cs.1123v0.2/reviews/1",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Peer Review #2 of \"AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner (v0.2)\"",
+      "authors": [],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7287/peerj-cs.1123v0.2/reviews/2"
+      },
+      "url": "https://doi.org/10.7287/peerj-cs.1123v0.2/reviews/2",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "AlphaDDA: strategies for adjusting the playing strength of a fully trained AlphaZero system to a suitable human training partner",
+      "authors": [
+        "Kazuhisa Fujita"
+      ],
+      "year": 2022,
+      "ids": {
+        "doi": "10.7717/peerj-cs.1123"
+      },
+      "url": "https://doi.org/10.7717/peerj-cs.1123",
+      "abstract": "Artificial intelligence (AI) has achieved superhuman performance in board games such as Go, chess, and Othello (Reversi). In other words, the AI system surpasses the level of a strong human expert player in such games. In this context, it is difficult for a human player to enjoy playing the games with the AI. To keep human players entertained and immersed in a game, the AI is required to dynamically balance its skill with that of the human player. To address this issue, we propose AlphaDDA, an AlphaZero-based AI with dynamic difficulty adjustment (DDA). AlphaDDA consists of a deep neural network (DNN) and a Monte Carlo tree search, as in AlphaZero. AlphaDDA learns and plays a game the same way as AlphaZero, but can change its skills. AlphaDDA estimates the value of the game state from only the board state using the DNN. AlphaDDA changes a parameter dominantly controlling its skills according to the estimated value. Consequently, AlphaDDA adjusts its skills according to a game state. AlphaDDA can adjust its skill using only the state of a game without any prior knowledge regarding an opponent. In this study, AlphaDDA plays Connect4, Othello, and 6x6 Othello with other AI agents. Other AI agents are AlphaZero, Monte Carlo tree search, the minimax algorithm, and a random player. This study shows that AlphaDDA can balance its skill with that of the other AI agents, except for a random player. AlphaDDA can weaken itself according to the estimated value. However, AlphaDDA beats the random player because AlphaDDA is stronger than a random player even if AlphaDDA weakens itself to the limit. The DDA ability of AlphaDDA is based on an accurate estimation of the value from the state of a game. We believe that the AlphaDDA approach for DDA can be used for any game AI system if the DNN can accurately estimate the value of the game state and we know a parameter controlling the skills of the AI system.",
+      "venue": "PeerJ Computer Science",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Warm-Start AlphaZero Self-play Search Enhancements",
+      "authors": [
+        "Hui Wang",
+        "Mike Preu\u00df",
+        "Aske Plaat"
+      ],
+      "year": 2020,
+      "ids": {
+        "openalex": "W3019643906",
+        "doi": "10.1007/978-3-030-58115-2_37"
+      },
+      "url": "https://doi.org/10.1007/978-3-030-58115-2_37",
+      "abstract": "",
+      "venue": "Lecture notes in computer science",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Analyses of Tabular AlphaZero on NoGo",
+      "authors": [
+        "Chu-Hsuan Hsueh",
+        "Kokolo Ikeda",
+        "SangGyu Nam",
+        "I\u2010Chen Wu"
+      ],
+      "year": 2020,
+      "ids": {
+        "openalex": "W3136427524",
+        "doi": "10.1109/taai51410.2020.00054"
+      },
+      "url": "https://doi.org/10.1109/taai51410.2020.00054",
+      "abstract": "The AlphaZero algorithm has been shown to achieve superhuman levels of plays in chess, shogi, and Go. This paper presents analytic investigations of the algorithm on NoGo, a variant of Go that players cannot capture the opponents' stones. More specifically, lookup tables are employed for learning instead of deep neural networks, referred to as tabular AlphaZero. One goal of this work is to investigate how the algorithm is influenced by hyper-parameters. Another goal is to investigate whether the optimal plays and theoretical values can be learned. One of the hyper-parameters is thoroughly analyzed in the experiments. The results show that the tabular AlphaZero can learn the theoretical values and optimal plays in many settings of the hyper-parameter. Also, NoGo on different board sizes is compared, and the learning difficulty is shown to relate to the game complexity.",
+      "venue": "International Conference on Technologies and Applications of Artificial Intelligence",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Strength Adjustment and Assessment for MCTS-Based Programs [Research Frontier]",
+      "authors": [
+        "A. Liu",
+        "Ti-Rong Wu",
+        "I-Chen Wu",
+        "Hung Guei",
+        "Ting-Han Wei"
+      ],
+      "year": 2020,
+      "ids": {
+        "s2": "cd5848fe325cb27ba09ecced29bfdee5bbbc9c0a",
+        "doi": "10.1109/MCI.2020.2998315"
+      },
+      "url": "https://www.semanticscholar.org/paper/cd5848fe325cb27ba09ecced29bfdee5bbbc9c0a",
+      "abstract": "This paper proposes an approach to strength adjustment and assessment for Monte-Carlo tree search based game-playing programs. We modify an existing softmax policy with a strength index to choose moves. The most important modification is a mechanism which filters low-quality moves by excluding those that have a lower simulation count than a pre-defined threshold ratio of the maximum simulation count. Through theoretical analysis, we show that the adjusted policy is guaranteed to choose moves exceeding a lower bound in strength by using a threshold ratio. Experimental results show that the strength index is highly correlated to the empirical strength. With an index value between ?2, we can cover a strength range of about 800 Elo ratings. The strength adjustment and assessment methods were also tested in real-world scenarios with human players, ranging from professionals (strongest) to kyu rank amateurs (weakest). For amateur levels, we tested our mechanism on two popular Go online platforms - Fox Weiqi and Tygem. The result shows that our method can adjust program strength to different ranks stably. In terms of strength assessment, we proposed a new dynamic strength adjustment method, then used it to evaluate human professionals, predicting reliably their playing strengths within 15 games. Lastly, we collected survey responses asking players about strength perception, entertainment, and general comments for different aspects of analysis. To our best knowledge, this result is state-ofthe- art in terms of the range of strengths in Elo rating while maintaining a controllable relationship between the strength and a strength index.",
+      "venue": "IEEE Computational Intelligence Magazine",
+      "found_in": [
+        "semanticscholar"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "Alternative Loss Functions in AlphaZero-like Self-play",
+      "authors": [
+        "Hui Wang",
+        "Michael Emmerich",
+        "Mike Preu\u00df",
+        "Aske Plaat"
+      ],
+      "year": 2019,
+      "ids": {
+        "openalex": "W3006868496",
+        "doi": "10.1109/ssci44817.2019.9002814"
+      },
+      "url": "https://doi.org/10.1109/ssci44817.2019.9002814",
+      "abstract": "Recently, AlphaZero has achieved outstanding performance in playing Go, Chess, and Shogi. Players in AlphaZero consist of a combination of Monte Carlo Tree Search and a deep neural network, that is trained using self-play. The unified deep neural network has a policy-head and a value-head, and during training, the optimizer minimizes the sum of policy loss and value loss. However, it is not clear if and under which circumstances other formulations of the loss function are better. Therefore, we perform experiments with different combinations of these two minimization targets. In contrast to many recent papers who adopt single run experiments and use the whole history Elo ratings from self-play, we propose to use repeated runs. The results show that this method can describe the training performance quite well within each training run, but there is a high self-play bias, such that it is incomparable among different training runs. Therefore, inspired by the AlphaGo series papers, a self-play bias avoiding performance assessment, final best player Elo rating, is adopted to evaluate the playing strength in a direct competition between the evolved players. For relatively small games, based on this new evaluation method, surprisingly, minimizing only value loss achieves the strongest playing strength in the final best players' round-robin tournament. These results indicate that more research is needed into the relative importance of value function and policy function in small games.",
+      "venue": "IEEE Symposium Series on Computational Intelligence (SSCI)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "On Strength Adjustment for MCTS-Based Programs",
+      "authors": [
+        "I-Chen Wu",
+        "Ti-Rong Wu",
+        "A. Liu",
+        "Hung Guei",
+        "Ting-Han Wei"
+      ],
+      "year": 2019,
+      "ids": {
+        "s2": "e50ec79973c22e09e6ee4805969d00cbcd9e37af",
+        "doi": "10.1609/AAAI.V33I01.33011222"
+      },
+      "url": "https://www.semanticscholar.org/paper/e50ec79973c22e09e6ee4805969d00cbcd9e37af",
+      "abstract": "This paper proposes an approach to strength adjustment for MCTS-based game-playing programs. In this approach, we use a softmax policy with a strength index z to choose moves. Most importantly, we filter low quality moves by excluding those that have a lower simulation count than a pre-defined threshold ratio of the maximum simulation count. We perform a theoretical analysis, reaching the result that the adjusted policy is guaranteed to choose moves exceeding a lower bound in strength by using a threshold ratio. The approach is applied to the Go program ELF OpenGo. The experiment results show that z is highly correlated to the empirical strength; namely, given a threshold ratio 0.1, z is linearly related to the Elo rating with regression error 47.95 Elo where \u22122\u2264z\n\u22642. Meanwhile, the covered strength range is about 800 Elo ratings in the interval of z in [\u22122,2]. With the ease of strength adjustment using z, we present two methods to adjust strength and predict opponents\u2019 strengths dynamically. To our knowledge, this result is state-of-the-art in terms of the range of strengths in Elo rating while maintaining a controllable relationship between the strength and a strength index.",
+      "venue": "AAAI Conference on Artificial Intelligence",
+      "found_in": [
+        "semanticscholar"
+      ],
+      "query": "MCTS simulations playing strength scaling AlphaZero"
+    },
+    {
+      "title": "The N-Tuple Bandit Evolutionary Algorithm for Game Agent Optimisation",
+      "authors": [
+        "Simon Mark Lucas",
+        "Jialin Liu",
+        "Diego P\u00e9rez-Li\u00e9bana"
+      ],
+      "year": 2018,
+      "ids": {
+        "openalex": "W2786661560",
+        "doi": "10.1109/cec.2018.8477869"
+      },
+      "url": "https://doi.org/10.1109/cec.2018.8477869",
+      "abstract": "This paper describes the N-Tuple Bandit Evolutionary Algorithm (NTBEA), an optimisation algorithm developed for noisy and expensive discrete (combinatorial) optimisation problems. The algorithm is applied to two game-based hyperparameter optimisation problems. The N-Tuple system directly models the statistics, approximating the fitness and number of evaluations of each modelled combination of parameters. The model is simple, efficient and informative. Results show that the NTBEA significantly outperforms grid search and an estimation of distribution algorithm.",
+      "venue": "IEEE Congress on Evolutionary Computation (CEC)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "Evolving Game Skill-Depth using General Video Game AI agents",
+      "authors": [
+        "Jialin Liu",
+        "Julian Togelius",
+        "Diego Perez-Liebana",
+        "Simon M. Lucas"
+      ],
+      "year": 2017,
+      "ids": {
+        "doi": "10.1109/cec.2017.7969583"
+      },
+      "url": "https://doi.org/10.1109/cec.2017.7969583",
+      "abstract": "",
+      "venue": "2017 IEEE Congress on Evolutionary Computation (CEC)",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "Temporal difference learning for heuristic search and game playing",
+      "authors": [
+        "D.F. Beal",
+        "M.C. Smith"
+      ],
+      "year": 2000,
+      "ids": {
+        "doi": "10.1016/s0020-0255(99)00093-6"
+      },
+      "url": "https://doi.org/10.1016/s0020-0255(99)00093-6",
+      "abstract": "",
+      "venue": "Information Sciences",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "Knowledge difference and its influence on a search agent",
+      "authors": [
+        "Yiming Ye",
+        "John K. Tsotsos"
+      ],
+      "year": 1997,
+      "ids": {
+        "doi": "10.1145/267658.267669"
+      },
+      "url": "https://doi.org/10.1145/267658.267669",
+      "abstract": "",
+      "venue": "Proceedings of the first international conference on Autonomous agents  - AGENTS '97",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    },
+    {
+      "title": "A High-Performance Parallel Algorithm to Search Depth-First Game Trees",
+      "authors": [
+        "Robert Morgan Hyatt"
+      ],
+      "year": 1988,
+      "ids": {
+        "doi": "10.3233/icg-1988-11411"
+      },
+      "url": "https://doi.org/10.3233/icg-1988-11411",
+      "abstract": "",
+      "venue": "ICGA Journal",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "search depth evaluation strength difference game agents"
+    }
+  ]
+}

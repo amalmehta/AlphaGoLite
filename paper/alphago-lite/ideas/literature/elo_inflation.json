@@ -1,0 +1,653 @@
+{
+  "queries": [
+    "self-play Elo inflation Leela Zero",
+    "gating evaluation new network self-play win rate threshold",
+    "Elo difference playouts per move evaluation games"
+  ],
+  "services": {
+    "openalex": {
+      "ok": 3,
+      "cached": 0,
+      "errors": []
+    },
+    "crossref": {
+      "ok": 3,
+      "cached": 0,
+      "errors": []
+    },
+    "arxiv": {
+      "ok": 3,
+      "cached": 0,
+      "errors": []
+    },
+    "semanticscholar": {
+      "ok": 0,
+      "cached": 0,
+      "errors": [
+        "'self-play Elo inflation Leela Zero': 429",
+        "'gating evaluation new network self-play win rate threshold': 429",
+        "'Elo difference playouts per move evaluation games': 429"
+      ]
+    }
+  },
+  "records": [
+    {
+      "title": "Beyond Search-Imitation: Prior-Directed Exploration for Searchless Chess",
+      "authors": [
+        "Szymon Mi\u0142osz",
+        "Piotr Duch",
+        "Szymon Grabowski"
+      ],
+      "year": 2026,
+      "ids": {
+        "openalex": "W7204844270",
+        "doi": "10.48550/arxiv.2608.27757"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2608.27757",
+      "abstract": "Searchless chess networks reach human master strength from a single forward pass by imitating a stronger teacher: the strongest, Leela Chess Zero's (Lc0) released Chessformer, distills the visit counts of an AlphaZero-style Monte Carlo Tree Search (MCTS). Imitating a search is a poor proxy for playing without one, so we fine-tune for single-pass strength with self-play reinforcement learning (RL). Its exploration is usually supplied by an entropy bonus, the reverse Kullback-Leibler (KL) divergence to uniform. We replace it with a forward, mass-covering KL toward the network's own MCTS prior (prior-directed exploration), so exploration covers the moves the prior judges promising, and pair it with an entropy-adaptive sampling temperature, set by the value head's outcome uncertainty, that sharpens once a position is decided. In about two thousand steps it raises puzzle accuracy from 93.9% to 94.9% on a 100,000-puzzle suite and mate-in-four accuracy from 77% to 81% while holding searchless strength at or slightly above the base. Measuring tactical accuracy and playing strength together across a matched-compute sweep, we find the two dissociate: accuracy gains fall in a one-point band while ratings straddle the base, and a control fine-tuned on puzzles alone posts the study's largest tactical gains while shedding roughly 260 Elo; a better puzzle-solver is not thereby a stronger player. Distribution-level measurements show what anchoring buys: without a regularizer self-play collapses onto a single line of play, and the puzzles newly solved are the near misses whose winning move the prior kept alive. The forward-KL prior tops the rating ladder, statistically tied with a reverse-KL anchor that concentrates twice as hard and drops the hardest solutions the mass-covering prior keeps in support.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "[NEW] *Unlock Unlimited Bingo Blitz Free Credits Link\u2013 Play More, Win More",
+      "authors": [
+        "Kaven Smit"
+      ],
+      "year": 2026,
+      "ids": {
+        "doi": "10.55277/researchhub.zgs7aewk"
+      },
+      "url": "https://doi.org/10.55277/researchhub.zgs7aewk",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Refining Evaluation Functions for Game 2048 by Extended Temporal Difference Learning",
+      "authors": [
+        "Weikai Wang",
+        "Kiminori Matsuzaki"
+      ],
+      "year": 2026,
+      "ids": {
+        "doi": "10.1109/tg.2025.3606517"
+      },
+      "url": "https://doi.org/10.1109/tg.2025.3606517",
+      "abstract": "",
+      "venue": "IEEE Transactions on Games",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
+      "authors": [
+        "Andrew Zhao",
+        "Yiran Wu",
+        "Tong Wu",
+        "Quentin Xu",
+        "Yang Yue",
+        "Matthieu Lin",
+        "Shenzhi Wang",
+        "Qingyun Wu",
+        "Zilong Zheng",
+        "Gao Huang"
+      ],
+      "year": 2025,
+      "ids": {
+        "doi": "10.52202/085713-3534"
+      },
+      "url": "https://doi.org/10.52202/085713-3534",
+      "abstract": "",
+      "venue": "Advances in Neural Information Processing Systems 38",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "Zero Inflation? Zero Worries! Unraveling Count Data with the Hurdle Model",
+      "authors": [
+        "Renaud Mabire-Yon"
+      ],
+      "year": 2024,
+      "ids": {
+        "doi": "10.31219/osf.io/b8zs3"
+      },
+      "url": "https://doi.org/10.31219/osf.io/b8zs3",
+      "abstract": "In the dynamic field of psychological research, analyzing count data often unveils a prevalent challenge: an unexpectedly high number of zero observations, known as zero inflation. The Hurdle model stands out as a sophisticated statistical method tailored to address this specific aspect of data science in psychology. This paper is dedicated to demystifying the Hurdle model for a wide audience within the psychological sciences, demonstrating its application through R programming to derive meaningful insights from complex datasets. By walking readers through a compelling example, we illustrate the process of identifying when the Hurdle model is the most apt choice for count data analysis, fostering an intuitive grasp of its operation, and showcasing its implementation in R. This narrative emphasizes the model's broad applicability across various domains of psychological research, encouraging researchers to adopt advanced statistical techniques. The goal is to inspire a deeper, nuanced interpretation of data, paving the way for innovative research outcomes in psychological studies.",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "\u2018Play well, win well\u2019: new Australian sports chair Kate Jenkins faces challenges and opportunities",
+      "authors": [
+        "Lisa Gowthorp"
+      ],
+      "year": 2024,
+      "ids": {
+        "doi": "10.64628/aa.35t9jud6e"
+      },
+      "url": "https://doi.org/10.64628/aa.35t9jud6e",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Game Intelligence: Theory and Computation",
+      "authors": [
+        "Seven, Mehmet Mars"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4322718023",
+        "doi": "10.48550/arxiv.2302.13937"
+      },
+      "url": "https://doi.org/10.48550/arxiv.2302.13937",
+      "abstract": "In this paper, I formalize intelligence measurement in games by introducing mechanisms that assign a real number -- interpreted as an intelligence score -- to each player in a game. This score quantifies the ex-post strategic ability of the players based on empirically observable information, such as the actions of the players, the game's outcome, strength of the players, and a reference oracle machine such as a chess-playing artificial intelligence system. Specifically, I introduce two main concepts: first, the Game Intelligence (GI) mechanism, which quantifies a player's intelligence in a game by considering not only the game's outcome but also the \"mistakes\" made during the game according to the reference machine's intelligence. Second, I define gamingproofness, a practical and computational concept of strategyproofness. To illustrate the GI mechanism, I apply it to an extensive dataset comprising over a billion chess moves, including over a million moves made by top 20 grandmasters in history. Notably, Magnus Carlsen emerges with the highest GI score among all world championship games included in the dataset. In machine-vs-machine games, the well-known chess engine Stockfish comes out on top.",
+      "venue": "RePEc: Research Papers in Economics",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "Inflation Targets and the Zero Lower Bound",
+      "authors": [
+        "Flora Budianto"
+      ],
+      "year": 2023,
+      "ids": {
+        "doi": "10.2139/ssrn.4339381"
+      },
+      "url": "https://doi.org/10.2139/ssrn.4339381",
+      "abstract": "Does a higher inflation target for central banks help to reduce the risk of hitting the zero lower bound (ZLB) on nominal interest rates? In the standard New Keynesian model, a higher inflation target changes the price-setting behavior of firms in a substantial way. Specifically, firms become more forward-looking, inflation is more volatile and, thereby, the nominal interest rate fluctuates more. I show that even with more \"room-to-manoeuvre\" for the nominal interest rate due to a higher inflation target, the higher volatility of the nominal interest rate implies that the economy can end up - on net - more often at the ZLB. I provide an example in which a 4% inflation target can, in fact, increase the risk of hitting the ZLB relative to a 2% inflation target.",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "AGG-Net: Attention Guided Gated-convolutional Network for Depth Image Completion",
+      "authors": [
+        "Dongyue Chen",
+        "Tingxuan Huang",
+        "Zhimin Song",
+        "Shizhuo Deng",
+        "Tong Jia"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4390873505",
+        "doi": "10.1109/iccv51070.2023.00813"
+      },
+      "url": "https://doi.org/10.1109/iccv51070.2023.00813",
+      "abstract": "Recently, stereo vision based on lightweight RGBD cameras has been widely used in various fields. However, limited by the imaging principles, the commonly used RGB-D cameras based on TOF, structured light, or binocular vision acquire some invalid data inevitably, such as weak reflection, boundary shadows, and artifacts, which may bring adverse impacts to the follow-up work. In this paper, we propose a new model for depth image completion based on the Attention Guided Gated-convolutional Network (AGG-Net), through which more accurate and reliable depth images can be obtained from the raw depth maps and the corresponding RGB images. Our model employs a UNet-like architecture which consists of two parallel branches of depth and color features. In the encoding stage, an Attention Guided Gated-Convolution (AG-GConv) module is proposed to realize the fusion of depth and color features at different scales, which can effectively reduce the negative impacts of invalid depth data on the reconstruction. In the decoding stage, an Attention Guided Skip Connection (AG-SC) module is presented to avoid introducing too many depth-irrelevant features to the reconstruction. The experimental results demonstrate that our method outperforms the state-of-the-art methods on the popular benchmarks NYU-Depth V2, DIML, and SUN RGB-D. https://github.com/htx0601/AGG-Net",
+      "venue": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Student of Games: A unified learning algorithm for both perfect and imperfect information games",
+      "authors": [
+        "Martin Schmid",
+        "Matej Morav\u010d\u00edk",
+        "NEIL R. BURCH",
+        "Rudolf Kadlec",
+        "Josh Davidson",
+        "Kevin Waugh",
+        "Nolan Bard",
+        "Finbarr Timbers",
+        "Marc Lanctot",
+        "G. Zacharias Holland",
+        "Elnaz Davoodi",
+        "Alden Christianson",
+        "Michael Bowling"
+      ],
+      "year": 2023,
+      "ids": {
+        "openalex": "W4388711601",
+        "doi": "10.1126/sciadv.adg3256"
+      },
+      "url": "https://doi.org/10.1126/sciadv.adg3256",
+      "abstract": "Games have a long history as benchmarks for progress in artificial intelligence. Approaches using search and learning produced strong performance across many perfect information games, and approaches using game-theoretic reasoning and learning demonstrated strong performance for specific imperfect information poker variants. We introduce Student of Games, a general-purpose algorithm that unifies previous approaches, combining guided search, self-play learning, and game-theoretic reasoning. Student of Games achieves strong empirical performance in large perfect and imperfect information games-an important step toward truly general algorithms for arbitrary environments. We prove that Student of Games is sound, converging to perfect play as available computation and approximation capacity increases. Student of Games reaches strong performance in chess and Go, beats the strongest openly available agent in heads-up no-limit Texas hold'em poker, and defeats the state-of-the-art agent in Scotland Yard, an imperfect information game that illustrates the value of guided search, learning, and game-theoretic reasoning.",
+      "venue": "Science Advances",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Artificial intelligence and the changing sources of competitive advantage",
+      "authors": [
+        "Sebastian Maximillian Krakowski",
+        "Johannes Luger",
+        "Sebastian Raisch"
+      ],
+      "year": 2022,
+      "ids": {
+        "openalex": "W4210271404",
+        "doi": "10.1002/smj.3387"
+      },
+      "url": "https://doi.org/10.1002/smj.3387",
+      "abstract": "Abstract Research Summary We apply a resource\u2010based view to investigate how the adoption of Artificial Intelligence (AI) affects competitive capabilities and performance. Following prior work on using chess as a controlled setting for studying competitive interactions, we compare the same players\u2019 capabilities and performance across conventional, centaur, and engine chess tournaments. Our analysis shows that AI adoption triggers interrelated substitution and complementation dynamics, which make humans\u2019 traditional competitive capabilities obsolete, while creating new sources of persistent heterogeneity when humans interact with chess engines. These novel human\u2010machine capabilities are unrelated, or even negatively related, to traditional capabilities. We contribute an integrated view of substitution and complementation, which identifies AI as the driver of these dynamics and explains how they jointly shift the sources of competitive advantage. Managerial Summary AI\u2010based technologies increasingly substitute and complement humans in managerial tasks such as decision making. We investigate how such change affects the sources of competitive advantage. AI\u2010based engines\u2019 adoption in chess allows us to investigate competitive capabilities and performance in human, AI, and hybrid settings. We find that neither humans nor AI in isolation explain performance differences in the AI and hybrid settings. Instead, a new decision\u2010making resource emerges at the human\u2010AI intersection, which drives performance but is unrelated or even negatively related to humans\u2019 original capability. Our results document how AI adoption changes the sources of competitive advantage and, in turn, requires managers to develop new capabilities to stay relevant in an AI\u2010based competitive landscape.",
+      "venue": "Strategic Management Journal",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "Zero Lower Bound on Inflation Expectations",
+      "authors": [
+        "Yuriy Gorodnichenko",
+        "Dmitriy Sergeyev"
+      ],
+      "year": 2021,
+      "ids": {
+        "doi": "10.3386/w29496"
+      },
+      "url": "https://doi.org/10.3386/w29496",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "Heuristic Sampling for Fast Plausible Playouts",
+      "authors": [
+        "Cameron Browne",
+        "Fabio Barbero"
+      ],
+      "year": 2021,
+      "ids": {
+        "doi": "10.1109/cog52621.2021.9619147"
+      },
+      "url": "https://doi.org/10.1109/cog52621.2021.9619147",
+      "abstract": "",
+      "venue": "2021 IEEE Conference on Games (CoG)",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Are Strong Policies Also Good Playout Policies? Playout Policy Optimization for RTS Games",
+      "authors": [
+        "Zuozhi Yang",
+        "Santiago Onta\u00f1\u00f3n"
+      ],
+      "year": 2020,
+      "ids": {
+        "openalex": "W3093776752",
+        "doi": "10.1609/aiide.v16i1.7423"
+      },
+      "url": "https://doi.org/10.1609/aiide.v16i1.7423",
+      "abstract": "Monte Carlo Tree Search has been successfully applied to complex domains such as computer Go. However, despite its success in building game-playing agents, there is little understanding of general principles to design or learn its playout policy. Many systems, such as AlphaGo, use a policy optimized to mimic human expert as the playout policy. But are strong policies good playout policies? In this paper, we take a case study in real-time strategy games. We use bandit algorithms to optimize stochastic policies as both gameplay policies and playout policies for MCTS in the context of RTS games. Our results show that strong policies do not make the best playout policies, and that policies that maximize MCTS performance as playout policies are actually weak in terms of gameplay strength",
+      "venue": "Proceedings of the AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Self-play deep learning for games: Maximising experiences",
+      "authors": [
+        "Joseph West"
+      ],
+      "year": 2020,
+      "ids": {
+        "openalex": "W3091834252",
+        "doi": "10.5204/thesis.eprints.204194"
+      },
+      "url": "https://doi.org/10.5204/thesis.eprints.204194",
+      "abstract": "This thesis describes several studies focused on improving the learning efficiency to train a combined tree-search/neural-network reinforcement learning agent for different board games. The work's primary contribution is a new approach to creating training experiences by enforcing a structured learning paradigm called the end-game-first curriculum which is shown to improve the speed of learning when compared against the current state-of-the-art agent. The thesis identifies a bottleneck in the self-play experience generation for a reinforcement learning agent and explores different methods to minimise the creation of poor experiences and maximise the use of experiences that are created.",
+      "venue": "Queensland University of Technology",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Introduction: Play to Win",
+      "authors": [],
+      "year": 2019,
+      "ids": {
+        "doi": "10.1525/9780520956698-002"
+      },
+      "url": "https://doi.org/10.1525/9780520956698-002",
+      "abstract": "",
+      "venue": "Playing to Win",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "authors": [
+        "Noam Shazeer",
+        "Azalia Mirhoseini",
+        "Krzysztof Maziarz",
+        "Andy Davis",
+        "Quoc Viet Le",
+        "Geoffrey E. Hinton",
+        "Jeff Dean"
+      ],
+      "year": 2017,
+      "ids": {
+        "openalex": "W2581624817",
+        "doi": "10.48550/arxiv.1701.06538"
+      },
+      "url": "https://doi.org/10.48550/arxiv.1701.06538",
+      "abstract": "The capacity of a neural network to absorb information is limited by its number of parameters. Conditional computation, where parts of the network are active on a per-example basis, has been proposed in theory as a way of dramatically increasing model capacity without a proportional increase in computation. In practice, however, there are significant algorithmic and performance challenges. In this work, we address these challenges and finally realize the promise of conditional computation, achieving greater than 1000x improvements in model capacity with only minor losses in computational efficiency on modern GPU clusters. We introduce a Sparsely-Gated Mixture-of-Experts layer (MoE), consisting of up to thousands of feed-forward sub-networks. A trainable gating network determines a sparse combination of these experts to use for each example. We apply the MoE to the tasks of language modeling and machine translation, where model capacity is critical for absorbing the vast quantities of knowledge available in the training corpora. We present model architectures in which a MoE with up to 137 billion parameters is applied convolutionally between stacked LSTM layers. On large language modeling and machine translation benchmarks, these models achieve significantly better results than state-of-the-art at lower computational cost.",
+      "venue": "arXiv (Cornell University)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Do Narcissism and Emotional Intelligence Win Us Friends? Modeling Dynamics of Peer Popularity Using Inferential Network Analysis",
+      "authors": [
+        "Anna Z. Czarna",
+        "Philip Leifeld",
+        "Magdalena \u015amieja",
+        "Michael Dufner",
+        "Peter Salovey"
+      ],
+      "year": 2016,
+      "ids": {
+        "openalex": "W2524700218",
+        "doi": "10.1177/0146167216666265"
+      },
+      "url": "https://doi.org/10.1177/0146167216666265",
+      "abstract": "This research investigated effects of narcissism and emotional intelligence (EI) on popularity in social networks. In a longitudinal field study, we examined the dynamics of popularity in 15 peer groups in two waves ( N = 273). We measured narcissism, ability EI, and explicit and implicit self-esteem. In addition, we measured popularity at zero acquaintance and 3 months later. We analyzed the data using inferential network analysis (temporal exponential random graph modeling, TERGM) accounting for self-organizing network forces. People high in narcissism were popular, but increased less in popularity over time than people lower in narcissism. In contrast, emotionally intelligent people increased more in popularity over time than less emotionally intelligent people. The effects held when we controlled for explicit and implicit self-esteem. These results suggest that narcissism is rather disadvantageous and that EI is rather advantageous for long-term popularity.",
+      "venue": "Personality and Social Psychology Bulletin",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Adaptive playouts for online learning of policies during Monte Carlo Tree Search",
+      "authors": [
+        "Tobias Graf",
+        "Marco Platzner"
+      ],
+      "year": 2016,
+      "ids": {
+        "openalex": "W2468569233",
+        "doi": "10.1016/j.tcs.2016.06.029"
+      },
+      "url": "https://doi.org/10.1016/j.tcs.2016.06.029",
+      "abstract": "",
+      "venue": "Theoretical Computer Science",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Self-diagnosis in Network-on-Chips",
+      "authors": [
+        "Atefe Dalirsani"
+      ],
+      "year": 2015,
+      "ids": {
+        "openalex": "W1759790382",
+        "doi": "10.18419/opus-3585"
+      },
+      "url": "https://doi.org/10.18419/opus-3585",
+      "abstract": "Network-on-Chips (NoCs) constitute a message-passing infrastructure and can fulfil communication requirements of the today\u2019s System-on-Chips (SoCs), which integrate numerous semiconductor Intellectual Property (IP) blocks into a single die. As the NoC is responsible for data transport among IPs, its reliability is very important regarding the reliability of the entire system. In deep nanoscale technologies, transient and permanent failures of transistors and wires are caused by variety of effects. Such failures may occur in the NoC as well, disrupting its normal operation. An NoC comprises a large number of switches that form a structure spanning across the chip. Inherent redundancy of the NoC provides multiple paths for communication among IPs. Graceful degradation is the property of tolerating a component\u2019s failure in a system at the cost of limited functionality or performance. In NoCs, when a switch in the path is faulty, alternative paths can be used to connect IPs, keeping the SoC functional. To this purpose, a fault detection mechanism is needed to identify the faulty switch and a fault tolerant routing should bypass it. As each NoC switch consists of a number of ports and multiple routing paths, graceful degradation can be considered even in a rather granular way. The fault may destroy some routing paths inside the switch, leaving the rest non-faulty. Thus, instead of disabling the faulty switch completely, its fault-free parts can be used for message passing. In this way, the chance of disconnecting the IP cores is reduced and the probability of having disjoint networks decreases. This study pursues efficient self-test and diagnosis approaches for both manufacturing and in-field testing aiming at graceful degradation of defective NoCs. The approaches here identify the location of defective components in the network rather than providing only a go/no-go test response. Conventionally, structural test approaches like scan-design have been employed for testing the NoC products. Structural testing targets faults of a predefined structural fault model like stuck-at faults. In contrast, functional testing targets certain functionalities of a system for example the instructions of a microprocessor. In NoCs, functional tests target NoC characteristics such as routing functions and undistorted data transport. Functional tests get the highest gain of the regular NoC structure. They reduce the test costs and prevent overtesting. However, unlike structural tests, functional tests do not explicitly target structural faults and the quality of the test approach cannot be measured. We bridge this gap by proposing a self-test approach that combines the advantages of structural and functional test methodologies and hence is suitable for both manufacturing and in-field testing. Here, the software running on the IP cores attached to the NoC is responsible for test. Similar to functional tests, the test patterns here deal only with the functional inputs and outputs of switches. For pattern generation, a model is introduced that brings the information about structural faults to the level of functional outputs of the switch. Thanks to this unique feature of the model, a high structural fault coverage is achieved as revealed by the results. To make NoCs more robust against various defect mechanisms during the lifetime, concurrent error detection is necessary. Toward this, this dissertation contributes an area efficient synthesis technique of NoC switches to detect any error resulting from single combinational and transition fault in the switch and its links during the normal operation. This technique incorporates data encoding and the standard concurrent error detection using multiple parity trees. Results reveal that the proposed approach imposes less area overhead as compared to traditional techniques for concurrent error detection. To enable fine-grained graceful degradation, intact functions of defective switches must be identified. Thanks to the fault tolerant techniques, fault-free parts of switches can be still employed in the NoC. However, reasoning about the fault-free functions with respect to the exact cause of a malfunction is missing in the literature. This dissertation contributes a novel fine-grained switch diagnosis technique that works based on the structural logic diagnosis. After determining the location and the nature of the defect in the faulty switch, all routing paths are checked and the soundness of the intact switch functions is proved. Experimental results show improvements in both performance and reliability of degraded NoCs by incorporating the fine-grained diagnosis of NoC switches.",
+      "venue": "OPUS Publication Server of the University of Stuttgart (University of Stuttgart)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Adaptive Playouts in Monte-Carlo Tree Search with Policy-Gradient Reinforcement Learning",
+      "authors": [
+        "Tobias Graf",
+        "Marco Platzner"
+      ],
+      "year": 2015,
+      "ids": {
+        "doi": "10.1007/978-3-319-27992-3_1"
+      },
+      "url": "https://doi.org/10.1007/978-3-319-27992-3_1",
+      "abstract": "",
+      "venue": "Lecture Notes in Computer Science",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Forwarding on Gates : A flexible and scalable inter-network layer supporting in-network functions",
+      "authors": [
+        "Florian Liers"
+      ],
+      "year": 2014,
+      "ids": {
+        "openalex": "W2435411860"
+      },
+      "url": "https://openalex.org/W2435411860",
+      "abstract": "How to design an inter-network that is flexible regarding its features and scalable at the same time? How can such an inter-network satisfy requirements from applications and subnetworks dynamically? Can routing be more flexible and balance the wishes from end user and network operators? Is there a better world beyond current IP-networks? \\nThis book answers these questions by presenting a new architecture called \"Forwarding on Gates\" (FoG). It exploits the advantages of a recursive reference model and does not follow the traditional OSI reference model. FoG mixes connection-oriented and connectionless aspects dynamically in order to increase its efficiency. It enables a scalable function provisioning by a flexible distribution of states between network participants. Its routing can adjust itself to an optimal trade-off between CPU and memory usage. Moreover, FoG supports new business cases and opens up a market for network-related functions, at which function provider can offer their functions to function users.",
+      "venue": "Common Library Network (Der Gemeinsame Bibliotheksverbund)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Monte Carlo Tree Search with heuristic evaluations using implicit minimax backups",
+      "authors": [
+        "Marc Lanctot",
+        "Mark H. M. Winands",
+        "Tom Pepels",
+        "Nathan Sturtevant"
+      ],
+      "year": 2014,
+      "ids": {
+        "openalex": "W2029572069",
+        "doi": "10.1109/cig.2014.6932903"
+      },
+      "url": "https://doi.org/10.1109/cig.2014.6932903",
+      "abstract": "Monte Carlo Tree Search (MCTS) has improved the performance of game engines in domains such as Go, Hex, and general game playing. MCTS has been shown to outperform classic \u03b1\u03b2 search in games where good heuristic evaluations are difficult to obtain. In recent years, combining ideas from traditional minimax search in MCTS has been shown to be advantageous in some domains, such as Lines of Action, Amazons, and Breakthrough. In this paper, we propose a new way to use heuristic evaluations to guide the MCTS search by storing the two sources of information, estimated win rates and heuristic evaluations, separately. Rather than using the heuristic evaluations to replace the playouts, our technique backs them up implicitly during the MCTS simulations. These minimax values are then used to guide future simulations. We show that using implicit minimax backups leads to stronger play performance in Kalah, Breakthrough, and Lines of Action.",
+      "venue": "IEEE Conference on Computational Intelligence and Games (CIG)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Small and Large MCTS Playouts Applied to Chinese Dark Chess Stochastic Game",
+      "authors": [
+        "Nicolas Jouandeau",
+        "Tristan Cazenave"
+      ],
+      "year": 2014,
+      "ids": {
+        "doi": "10.1007/978-3-319-14923-3_6"
+      },
+      "url": "https://doi.org/10.1007/978-3-319-14923-3_6",
+      "abstract": "",
+      "venue": "Communications in Computer and Information Science",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "A Win-Win Metacognitive Formative Assessment: The Self Evaluation Exercise",
+      "authors": [
+        "Joi T. Montiel"
+      ],
+      "year": 2013,
+      "ids": {
+        "doi": "10.2139/ssrn.2245730"
+      },
+      "url": "https://doi.org/10.2139/ssrn.2245730",
+      "abstract": "A lawyer must learn over the course of his career, without the benefit of a professor; thus, many have called for law schools to teach law students to be self-regulated learners. Likewise, many have called for law schools to use more formative assessments \u2014 to intervene as the learning process is occurring rather than merely assessing whether a student has learned at the end of a course. However, use of formative assessment can be perceived as a burden on professors in large doctrinal courses, and increased number of formative assessments may be a burden on legal writing professors, who are already familiar with formative assessment.\n\nThis Article proposes an exercise for formatively assessing a student\u2019s product as well as his/her process. This exercise \u2014 the Self-Evaluation Exercise \u2014 is less burdensome on the professor than more direct means of formative assessment, such as individual student conferences and detailed critiques, and is likewise more beneficial to the student. Consistent with self-regulated learning theory, the Self-Evaluation Exercise requires students to reflect on, monitor, and adjust his/her own process. In short, after the student has submitted a final product, such as a legal memo or mid-term exam, the professor will provide the student with a model answer. In addition to reviewing the model answer, the student is required to complete a Self-Evaluation Exercise that guides the student in the process of evaluating his own final product and critiquing it in comparison to the model answer. Most significantly, the Self-Evaluation Exercise requires the student to examine why the student met or fell short of the goals of the assignment so that he can adapt his process on future assignments. \n\nThe ability to learn from feedback, in the form of a model answer, and apply this new knowledge to future learning \u2014 metacognition \u2014 is necessary for a law student to become a self-regulated learner. The Self-Evaluation Exercise described in this Article is directed to application in the legal writing classroom; however, it is easily adaptable for use in a doctrinal course. The Self-Evaluation Exercise will allow both legal writing and doctrinal professors to respond to the call for law professors to teach students to be self-regulated learners and to engage in more formative assessment in a feasible way.",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Accelerated UCT and Its Application to Two-Player Games",
+      "authors": [
+        "Junichi Hashimoto",
+        "Akihiro Kishimoto",
+        "Kazuki Yoshizoe",
+        "Kokolo Ikeda"
+      ],
+      "year": 2012,
+      "ids": {
+        "openalex": "W1468005580",
+        "doi": "10.1007/978-3-642-31866-5_1"
+      },
+      "url": "https://doi.org/10.1007/978-3-642-31866-5_1",
+      "abstract": "",
+      "venue": "Lecture notes in computer science",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "Activist Distressed Debtholders: The New Barbarians at the Gate?",
+      "authors": [
+        "Michelle M. Harner"
+      ],
+      "year": 2011,
+      "ids": {
+        "openalex": "W1724406051"
+      },
+      "url": "https://openalex.org/W1724406051",
+      "abstract": "The term \u201ccorporate raiders\u201d previously struck fear in the hearts of corporate boards and management teams. It generally refers to investors who target undervalued, cash-flush or mismanaged companies and initiate a hostile takeover of the company. Corporate raiders earned their name in part because of their focus on value extraction, which could entail dismantling a company and selling off its crown jewels. Today, the term often conjures up images of Michael Milken, Henry Kravis or the movie character Gordon Gekko, but the alleged threat posed to companies by corporate raiders is less prevalent\u2014at least with respect to the traditional use of equity to facilitate a hostile takeover. The growing use of debt rather than equity to cause a change of control at target companies raises new concerns for corporate boards and management teams and new policy considerations for commentators and legislators. Are activist debtholders who employ this investment strategy akin to the corporate raiders of the past? This Article explores these issues by, among other things, presenting in-depth case studies and critically evaluating the value implications of traditional takeover activity and regulation. It compares and contrasts the use of equity and debt in control contests and identifies similarities that suggest some regulation of strategic debt acquisitions is warranted. The Article proposes a proactive approach that better equips corporate boards and management teams to negotiate with activist debtholders while preserving investment opportunities for debtholders and the governance efficiencies that often flow from activism for the corporate target\u2019s other stakeholders.",
+      "venue": "Digital Commons at University of Maryland Carey Law (University of Maryland Francis King Carey School of Law)",
+      "found_in": [
+        "openalex"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Narrative-Based Serious Games",
+      "authors": [
+        "Carlton Reeve"
+      ],
+      "year": 2009,
+      "ids": {
+        "doi": "10.1007/978-3-211-09418-1_5"
+      },
+      "url": "https://doi.org/10.1007/978-3-211-09418-1_5",
+      "abstract": "",
+      "venue": "Serious Games on the Move",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "COMPUTING \u201cELO RATINGS\u201d OF MOVE PATTERNS IN THE GAME OF GO1",
+      "authors": [
+        "R\u00e9mi Coulom"
+      ],
+      "year": 2007,
+      "ids": {
+        "doi": "10.3233/icg-2007-30403"
+      },
+      "url": "https://doi.org/10.3233/icg-2007-30403",
+      "abstract": "",
+      "venue": "ICGA Journal",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "Elo difference playouts per move evaluation games"
+    },
+    {
+      "title": "4. Under the Sign of Zero: Money and Inflation",
+      "authors": [],
+      "year": 2001,
+      "ids": {
+        "doi": "10.1525/9780520924703-007"
+      },
+      "url": "https://doi.org/10.1525/9780520924703-007",
+      "abstract": "",
+      "venue": "Culture and Inflation in Weimar Germany",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "Intelligent Styles of Play",
+      "authors": [],
+      "year": 1998,
+      "ids": {
+        "doi": "10.1201/9781466593466-11"
+      },
+      "url": "https://doi.org/10.1201/9781466593466-11",
+      "abstract": "",
+      "venue": "How to Win More",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    },
+    {
+      "title": "Leela Means To Play",
+      "authors": [
+        "Beverley Simons"
+      ],
+      "year": 1976,
+      "ids": {
+        "doi": "10.3138/ctr.9.006"
+      },
+      "url": "https://doi.org/10.3138/ctr.9.006",
+      "abstract": " CAUTION: Leela Means To Play is fully protected by copyright. All inquiries concerning production of the play including scenes from it should be directed to Beverley Simons, 5202 Marine Drive, West Vancouver, B.C. ",
+      "venue": "Canadian Theatre Review",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "self-play Elo inflation Leela Zero"
+    },
+    {
+      "title": "Threshold-Tunable, Spike-Rate-Dependent Plasticity Originating from Interfacial Proton Gating for Pattern Learning and Memory",
+      "authors": [],
+      "year": null,
+      "ids": {
+        "doi": "10.1021/acsami.9b22369.s001"
+      },
+      "url": "https://doi.org/10.1021/acsami.9b22369.s001",
+      "abstract": "",
+      "venue": "",
+      "found_in": [
+        "crossref"
+      ],
+      "query": "gating evaluation new network self-play win rate threshold"
+    }
+  ]
+}
