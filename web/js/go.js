@@ -123,6 +123,138 @@
 
   function winner(pos) { return areaScore(pos) > 0 ? BLACK : WHITE; }
 
+  // ---- dead-stone estimate for the final count (Play tab only; the engine,
+  // trainer and Mac app still score by Tromp-Taylor) -------------------------
+
+  function rng32(seed) { // mulberry32: small seeded generator, so results are repeatable
+    let a = seed >>> 0;
+    return () => {
+      a = (a + 0x6d2b79f5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  // Can `me` play at empty point p? Also false for filling a point whose four
+  // neighbours are all `me` (an eye), which random playouts never do.
+  function playoutMoveOk(b, p, me, ko, mark) {
+    if (p === ko) return false;
+    let eye = true;
+    for (const n of NEIGHBORS[p]) if (b[n] !== me) { eye = false; break; }
+    if (eye) return false;
+    for (const n of NEIGHBORS[p]) {
+      const v = b[n];
+      if (v === 0) return true;
+      const many = libsAtLeast2(b, n, mark);
+      if ((v === me && many) || (v === -me && !many)) return true;
+    }
+    return false;
+  }
+
+  function libsAtLeast1(b, p, mark) {
+    const stamp = ++mark[POINTS], color = b[p], stack = [p];
+    mark[p] = stamp;
+    while (stack.length) {
+      const q = stack.pop();
+      for (const n of NEIGHBORS[q]) {
+        const v = b[n];
+        if (v === 0) return true;
+        if (v === color && mark[n] !== stamp) { mark[n] = stamp; stack.push(n); }
+      }
+    }
+    return false;
+  }
+
+  // Does the group at p have two or more liberties? Stops at the second one.
+  // `mark` is scratch space (Int32Array(POINTS + 1)); mark[POINTS] is the stamp.
+  function libsAtLeast2(b, p, mark) {
+    const stamp = ++mark[POINTS], color = b[p], stack = [p];
+    mark[p] = stamp;
+    let lib = -1;
+    while (stack.length) {
+      const q = stack.pop();
+      for (const n of NEIGHBORS[q]) {
+        if (mark[n] === stamp) continue;
+        const v = b[n];
+        if (v === 0) { if (lib >= 0 && lib !== n) return true; lib = n; }
+        else if (v === color) { mark[n] = stamp; stack.push(n); }
+      }
+    }
+    return false;
+  }
+
+  // Plays `playouts` random games to the end from pos and returns, per point,
+  // the average final owner (+1 black ... -1 white).
+  function playoutOwnership(pos, playouts, rand) {
+    const sum = new Float64Array(POINTS), mark = new Int32Array(POINTS + 1);
+    const cand = new Int16Array(POINTS), stack = [];
+    for (let k = 0; k < playouts; k++) {
+      const b = pos.board.slice();
+      let me = pos.toPlay, ko = pos.ko, passes = 0;
+      for (let moves = 0; moves < 3 * POINTS && passes < 2; moves++) {
+        // uniform over the allowed moves: draw empty points at random, dropping bad ones
+        let n = 0;
+        for (let p = 0; p < POINTS; p++) if (b[p] === 0) cand[n++] = p;
+        let m = PASS;
+        while (n > 0) {
+          const i = Math.floor(rand() * n), p = cand[i];
+          if (playoutMoveOk(b, p, me, ko, mark)) { m = p; break; }
+          cand[i] = cand[--n];
+        }
+        if (m === PASS) { passes++; ko = -1; me = -me; continue; }
+        passes = 0;
+        b[m] = me;
+        let captured = 0, capturedAt = -1;
+        for (const nb of NEIGHBORS[m]) {
+          if (b[nb] !== -me || libsAtLeast1(b, nb, mark)) continue;
+          // remove the captured group
+          stack.push(nb); b[nb] = 0;
+          while (stack.length) {
+            const q = stack.pop();
+            captured++; capturedAt = q;
+            for (const r of NEIGHBORS[q]) if (b[r] === -me) { b[r] = 0; stack.push(r); }
+          }
+        }
+        ko = -1;
+        if (captured === 1) {
+          let lonely = true, libs = 0;
+          for (const nb of NEIGHBORS[m]) { if (b[nb] === me) lonely = false; else if (b[nb] === 0) libs++; }
+          if (lonely && libs === 1) ko = capturedAt;
+        }
+        me = -me;
+      }
+      regions(b, (region, color) => { for (const r of region) b[r] = color; });
+      for (let i = 0; i < POINTS; i++) sum[i] += b[i];
+    }
+    for (let i = 0; i < POINTS; i++) sum[i] /= playouts;
+    return sum;
+  }
+
+  // Estimates which stones are dead at the end of a game and scores the board
+  // with them removed. A group counts as dead when the opponent owns its points
+  // in at least `threshold` of the random playouts (default 60%), which leaves
+  // seki and unclear fights on the board. An estimate, not an agreement between
+  // players: it can misjudge unsettled positions.
+  function scoreWithDeadRemoved(pos, { playouts = 300, seed = 1, threshold = 0.6 } = {}) {
+    const avg = playoutOwnership(pos, playouts, rng32(seed));
+    const dead = [], seen = new Uint8Array(POINTS);
+    for (let p = 0; p < POINTS; p++) {
+      const c = pos.board[p];
+      if (c === 0 || seen[p]) continue;
+      const { stones } = group(pos.board, p);
+      let s = 0;
+      for (const q of stones) { seen[q] = 1; s += avg[q] * c; }
+      // mean of own*color is 1 - 2 * (share of playouts the opponent owns it)
+      if (s / stones.length <= 1 - 2 * threshold) dead.push(...stones);
+    }
+    const board = pos.board.slice();
+    for (const p of dead) board[p] = 0;
+    const cleaned = { board, prev: board, toPlay: pos.toPlay, ko: -1, passes: 0, moveCount: pos.moveCount };
+    return { score: areaScore(cleaned), dead, ownership: ownership(cleaned), board };
+  }
+
   // 6x9x9 planes from the point of view of the player to move.
   function features(pos) {
     const me = pos.toPlay, f = new Float32Array(PLANES * POINTS);
@@ -157,7 +289,7 @@
 
   const Go = {
     SIZE, POINTS, PASS, NUM_MOVES, KOMI, MAX_MOVES, PLANES, BLACK, WHITE, NEIGHBORS,
-    newPosition, isOver, legalMask, isLegal, play, areaScore, ownership, winner, features,
+    newPosition, isOver, legalMask, isLegal, play, areaScore, ownership, winner, features, scoreWithDeadRemoved,
     sameState, moveName, resultString, colorName, serialize, deserialize,
   };
   root.Go = Go;

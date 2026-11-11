@@ -1,6 +1,6 @@
 // AlphaGo Lite website: Play, AI vs AI and Training tabs plus a feedback tab.
 // The engine (network + MCTS) runs in js/worker.js; the rules in js/go.js.
-import { Board } from "./board.js";
+import { Board } from "./board.js?v=3";
 
 const REPO = "https://github.com/amalmehta/AlphaGoLite";
 const $ = (id) => document.getElementById(id);
@@ -10,7 +10,7 @@ const pct = (x) => Math.round(x * 100);
 
 class Engine {
   constructor(onStatus) {
-    this.worker = new Worker("js/worker.js");
+    this.worker = new Worker("js/worker.js?v=3");
     this.nextId = 1;
     this.handlers = new Map();
     this.worker.onmessage = (e) => {
@@ -34,6 +34,52 @@ class Engine {
   cancel() { this.handlers.clear(); this.worker.postMessage({ type: "cancel" }); }
   reset() { this.handlers.clear(); this.worker.postMessage({ type: "reset" }); }
 }
+
+// ---------------------------------------------------------------- settings & sound
+
+// Per-viewer preferences (checkbox states), remembered in this browser only.
+const prefs = {
+  get(key, fallback) { try { const v = localStorage.getItem("agl." + key); return v === null ? fallback : v === "1"; } catch { return fallback; } },
+  set(key, on) { try { localStorage.setItem("agl." + key, on ? "1" : "0"); } catch { /* storage blocked */ } },
+  bind(id, key, fallback, onChange) {
+    const el = $(id);
+    el.checked = this.get(key, fallback);
+    el.addEventListener("change", () => { this.set(key, el.checked); onChange && onChange(el.checked); });
+  },
+};
+
+// Stone sounds, synthesised with Web Audio (no audio files): a short wooden
+// click for a move, a lower, longer one when stones are captured.
+const sound = {
+  ctx: null,
+  play(captured) {
+    if (!$("sounds").checked) return;
+    try {
+      this.ctx = this.ctx || new (window.AudioContext || window.webkitAudioContext)();
+      const ctx = this.ctx, t = ctx.currentTime, len = captured ? 0.12 : 0.05;
+      const buf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * len), ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, captured ? 2 : 4);
+      const src = ctx.createBufferSource(), filter = ctx.createBiquadFilter(), gain = ctx.createGain();
+      src.buffer = buf;
+      filter.type = "bandpass"; filter.frequency.value = captured ? 900 : 2200; filter.Q.value = 2.5;
+      gain.gain.value = captured ? 0.9 : 0.7;
+      src.connect(filter).connect(gain).connect(ctx.destination);
+      src.start(t);
+    } catch { /* no audio available */ }
+  },
+};
+
+// Map point -> move number for the stones on the board after `moves`
+// (a captured-and-replayed point shows its latest number).
+function moveNumbers(positions, moves) {
+  const nums = new Map(), last = positions[positions.length - 1];
+  moves.forEach((m, i) => { if (m < 81) nums.set(m, i + 1); });
+  for (const p of [...nums.keys()]) if (last.board[p] === 0) nums.delete(p);
+  return nums;
+}
+
+const stoneCount = (pos) => pos.board.reduce((a, v) => a + (v !== 0), 0);
 
 // ---------------------------------------------------------------- charts
 
@@ -66,7 +112,9 @@ function showTab(name) {
 class Play {
   constructor() {
     this.engine = new Engine((s) => { $("model-status").textContent = s; });
-    this.board = new Board($("play-board"), { onPlay: (m) => this.humanPlay(m) });
+    this.preview = null;
+    this.board = new Board($("play-board"), { onPlay: (m) => this.humanPlay(m),
+      onPreview: (p) => { this.preview = p; $("play-status").textContent = this.status(); } });
     this.wrChart = chart($("wr-chart"), {
       type: "line",
       data: { datasets: [{ data: [], borderColor: css("--accent"), backgroundColor: "rgba(47,111,219,0.15)", fill: true, pointRadius: 0, tension: 0.2 }] },
@@ -78,6 +126,8 @@ class Play {
     $("undo").onclick = () => this.undo();
     $("resign").onclick = () => this.resign();
     $("thinking").onchange = () => { $("thinking").checked ? this.analyze() : this.stopAnalysis(); this.render(); };
+    prefs.bind("numbers", "numbers", false, () => this.render());
+    prefs.bind("sounds", "sounds", false);
     this.newGame(Go.BLACK);
   }
 
@@ -96,6 +146,7 @@ class Play {
     this.resigned = null;
     this.winrates = new Map();
     this.thinking = false;
+    this.final = null;
     if (color === Go.WHITE) this.aiMove(); else this.analyze();
     this.render();
   }
@@ -134,8 +185,18 @@ class Play {
   apply(m) {
     this.history.push(this.pos);
     this.moves.push(m);
+    const before = stoneCount(this.pos);
     this.pos = Go.play(this.pos, m);
     this.snap = null;
+    this.final = null;
+    if (m !== Go.PASS) sound.play(stoneCount(this.pos) <= before);
+  }
+
+  // Final count with dead stones removed (computed once per finished game).
+  finalCount() {
+    if (!Go.isOver(this.pos)) return null;
+    if (!this.final) this.final = Go.scoreWithDeadRemoved(this.pos);
+    return this.final;
   }
 
   record(snap) {
@@ -144,9 +205,10 @@ class Play {
 
   aiMove() {
     if (this.isOver || this.pos.toPlay === this.human) return;
-    // If you passed and the engine already wins on the board as it stands, it passes too.
+    // If you passed and the engine already wins the final count (dead stones
+    // removed, as the game will be scored), it passes too.
     if (this.moves[this.moves.length - 1] === Go.PASS) {
-      const s = Go.areaScore(this.pos);
+      const s = Go.scoreWithDeadRemoved(this.pos).score;
       if ((s > 0) === (this.pos.toPlay === Go.BLACK)) { this.apply(Go.PASS); return; }
     }
     this.thinking = true;
@@ -175,25 +237,31 @@ class Play {
   status() {
     if (this.resigned !== null) return this.resigned === this.human ? "AlphaGo Lite wins by resignation" : "You win by resignation";
     if (Go.isOver(this.pos)) {
-      const s = Go.areaScore(this.pos);
-      return `${Go.resultString(s)} — ${(s > 0 ? Go.BLACK : Go.WHITE) === this.human ? "you win" : "AlphaGo Lite wins"}`;
+      const { score: s, dead } = this.finalCount();
+      const deadNote = dead.length ? ` (${dead.length} dead stone${dead.length === 1 ? "" : "s"} removed)` : "";
+      return `${Go.resultString(s)}${deadNote} — ${(s > 0 ? Go.BLACK : Go.WHITE) === this.human ? "you win" : "AlphaGo Lite wins"}`;
     }
     if (this.thinking) return "AlphaGo Lite is thinking…";
     if (this.moves[this.moves.length - 1] === Go.PASS) return `${Go.colorName(-this.pos.toPlay)} passed — your move`;
+    if (this.isHumanTurn && this.preview !== null) return `Tap ${Go.moveName(this.preview)} again to play there`;
     return this.isHumanTurn ? `Your move (${Go.colorName(this.human)})` : "";
   }
 
   render() {
     const snap = this.currentSnap();
     let overlay = {};
-    if (this.isOver && this.resigned === null) overlay = { ownership: Go.ownership(this.pos) };
+    if (this.isOver && this.resigned === null) {
+      const f = this.finalCount();
+      overlay = { ownership: f.ownership, dead: f.dead };
+    }
     else if (this.showThinking && snap) {
       const min = Math.max(3, snap.simulations / 50);
       overlay = { visits: snap.visits, bestMove: snap.bestMove,
         winrates: snap.topMoves.slice(0, 5).filter((m) => m.visits >= min).map((m) => [m.move, m.winrate]) };
     }
     this.board.set({ position: this.pos, lastMove: this.moves.length ? this.moves[this.moves.length - 1] : null,
-      overlay, interactive: this.isHumanTurn });
+      overlay, interactive: this.isHumanTurn,
+      numbers: $("numbers").checked ? moveNumbers([...this.history, this.pos], this.moves) : null });
     $("play-status").textContent = this.status();
     $("pass").disabled = !this.isHumanTurn;
     $("resign").disabled = this.isOver;
@@ -253,6 +321,7 @@ class Watch {
     $("w-play").onclick = () => this.togglePlayback();
     $("w-slider").oninput = (e) => this.goto(Number(e.target.value));
     $("live-toggle").onclick = () => (this.liveRunning ? this.stopLive() : this.startLive());
+    prefs.bind("watch-numbers", "watchNumbers", false, () => this.render());
     document.addEventListener("keydown", (e) => {
       if ($("watch").hidden || e.target.matches("input, textarea, select")) return;
       if (e.key === "ArrowLeft") this.goto(this.step - 1);
@@ -342,7 +411,8 @@ class Watch {
     } else if (this.step < g.moves.length) {
       overlay = { visits: g.moves[this.step].visits, bestMove: g.moves[this.step].move };
     } else if (Go.isOver(pos)) overlay = { ownership: Go.ownership(pos) };
-    this.board.set({ position: pos, lastMove: this.step > 0 ? g.moves[this.step - 1].move : null, overlay });
+    this.board.set({ position: pos, lastMove: this.step > 0 ? g.moves[this.step - 1].move : null, overlay,
+      numbers: $("watch-numbers").checked ? moveNumbers(this.positions.slice(0, this.step + 1), g.moves.slice(0, this.step).map((m) => m.move)) : null });
 
     let caption;
     if (this.step < g.moves.length) {

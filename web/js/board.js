@@ -1,11 +1,15 @@
-// Canvas Go board: grid, stones, last-move marker, search heat map, win rates,
-// territory and a hover ghost stone. Mirrors MacApp/Sources/AlphaGoLite/BoardView.swift.
+// Canvas Go board: grid, coordinates, stones, last-move marker, optional move
+// numbers, search heat map, win rates, territory, dead stones and a ghost stone
+// (on hover with a mouse; on phones the first tap shows it and a second tap on
+// the same point plays). Mirrors MacApp/Sources/AlphaGoLite/BoardView.swift.
 const WOOD = "#dbb373";
 const STARS = [20, 24, 40, 56, 60];
 const COLS = "ABCDEFGHJ";
 
 export class Board {
-  constructor(canvas, { onPlay = null } = {}) {
+  // onPreview(point|null) fires when a tap shows or clears the ghost stone.
+  constructor(canvas, { onPlay = null, onPreview = null } = {}) {
+    this.onPreview = onPreview;
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.onPlay = onPlay;
@@ -14,20 +18,40 @@ export class Board {
     this.overlay = {};
     this.interactive = false;
     this.hover = null;
+    this.numbers = null;
     new ResizeObserver(() => this.draw()).observe(canvas);
-    canvas.addEventListener("mousemove", (e) => { const p = this.pointAt(e); if (p !== this.hover) { this.hover = p; this.draw(); } });
-    canvas.addEventListener("mouseleave", () => { this.hover = null; this.draw(); });
-    canvas.addEventListener("click", (e) => {
+    canvas.addEventListener("pointermove", (e) => {
+      if (e.pointerType !== "mouse") return;
       const p = this.pointAt(e);
-      if (this.interactive && p !== null && Go.isLegal(this.position, p) && this.onPlay) this.onPlay(p);
+      this.touchPreview = false;
+      if (p !== this.hover) { this.hover = p; this.draw(); }
+    });
+    canvas.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") { this.hover = null; this.draw(); } });
+    canvas.addEventListener("pointerup", (e) => {
+      const p = this.pointAt(e);
+      if (!this.interactive || p === null || !Go.isLegal(this.position, p) || !this.onPlay) return;
+      if (e.pointerType !== "mouse" && this.hover !== p) { // preview first, play on a second tap
+        this.hover = p; this.touchPreview = true; this.draw();
+        if (this.onPreview) this.onPreview(p);
+        return;
+      }
+      this.hover = null;
+      if (this.touchPreview && this.onPreview) this.onPreview(null);
+      this.onPlay(p);
     });
   }
 
-  set({ position, lastMove = null, overlay = {}, interactive = false }) {
+  // numbers: optional Map point -> move number, drawn on the stones.
+  set({ position, lastMove = null, overlay = {}, interactive = false, numbers = null }) {
+    if (position !== this.position && this.touchPreview && this.hover !== null) { // a tap preview is for one position
+      this.hover = null;
+      if (this.onPreview) this.onPreview(null);
+    }
     this.position = position;
     this.lastMove = lastMove;
     this.overlay = overlay;
     this.interactive = interactive;
+    this.numbers = numbers;
     this.canvas.style.cursor = interactive ? "pointer" : "default";
     this.draw();
   }
@@ -108,8 +132,28 @@ export class Board {
       }
     }
 
-    for (let p = 0; p < 81; p++) if (pos.board[p] !== 0) stone(ctx, ...xy(p), cell, pos.board[p] === 1, 1);
-    if (this.lastMove !== null && this.lastMove < 81 && pos.board[this.lastMove] !== 0) {
+    const dead = new Set(ov.dead || []);
+    for (let p = 0; p < 81; p++) {
+      if (pos.board[p] === 0) continue;
+      const [x, y] = xy(p);
+      stone(ctx, x, y, cell, pos.board[p] === 1, dead.has(p) ? 0.45 : 1);
+      if (dead.has(p)) { // a cross in the owner's colour marks it as dead
+        ctx.strokeStyle = pos.board[p] === 1 ? "rgba(255,255,255,0.95)" : "rgba(0,0,0,0.85)";
+        ctx.lineWidth = Math.max(1.5, cell * 0.06);
+        const d = cell * 0.17;
+        ctx.beginPath(); ctx.moveTo(x - d, y - d); ctx.lineTo(x + d, y + d); ctx.moveTo(x + d, y - d); ctx.lineTo(x - d, y + d); ctx.stroke();
+      }
+    }
+    if (this.numbers) {
+      ctx.font = `600 ${cell * 0.32}px -apple-system, system-ui, sans-serif`;
+      for (const [p, n] of this.numbers) {
+        if (pos.board[p] === 0 || dead.has(p)) continue;
+        const last = p === this.lastMove;
+        ctx.fillStyle = last ? "#e5484d" : pos.board[p] === 1 ? "#fff" : "#000";
+        ctx.fillText(String(n), ...xy(p));
+      }
+    }
+    if (!this.numbers && this.lastMove !== null && this.lastMove < 81 && pos.board[this.lastMove] !== 0) {
       const [x, y] = xy(this.lastMove);
       ctx.strokeStyle = pos.board[this.lastMove] === 1 ? "#fff" : "#000";
       ctx.lineWidth = Math.max(1.5, cell * 0.05);

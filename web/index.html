@@ -8,12 +8,12 @@
   <link rel="icon" href="icon.png">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-  <script src="js/go.js"></script>
-  <script type="module" src="js/app.js"></script>
+  <script src="js/go.js?v=3"></script>
+  <script type="module" src="js/app.js?v=3"></script>
 </head>
 <body>
   <header>
-    <div class="brand"><img src="icon.png" alt="" width="28" height="28"> AlphaGo Lite</div>
+    <div class="brand"><img src="icon.png" alt="" width="28" height="28"> <span>AlphaGo Lite</span></div>
     <nav role="tablist">
       <button role="tab" data-tab="play" aria-selected="true">Play</button>
       <button role="tab" data-tab="watch">AI vs AI</button>
@@ -48,6 +48,10 @@
           </select>
         </label>
         <label class="row check"><input type="checkbox" id="thinking" checked> Show the engine's thinking</label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" id="numbers"> Move numbers</label>
+          <label class="check"><input type="checkbox" id="sounds"> Sounds</label>
+        </div>
         <hr>
         <h3>Win probability</h3>
         <div class="winbar" id="winbar"><div class="black-part"></div><span class="lbl b"></span><span class="lbl w"></span></div>
@@ -58,7 +62,7 @@
           <div class="chart small"><canvas id="wr-chart"></canvas></div>
         </div>
         <hr>
-        <p class="note">Scoring is by area (Tromp-Taylor), komi 7.5: every stone on the board counts as alive, so capture dead stones before passing.</p>
+        <p class="note">Scoring is by area, komi 7.5. When both players pass, stones that can't survive are marked dead (✕) and removed before counting, so you don't need to capture them first. Which stones are dead is estimated from 300 random playouts of the final position, so in an unsettled fight it can be wrong.</p>
         <p class="note faint" id="model-status">Loading the network…</p>
       </aside>
     </section>
@@ -87,6 +91,7 @@
           </label>
           <button id="live-toggle">Start a new game</button>
         </div>
+        <label class="check"><input type="checkbox" id="watch-numbers"> Move numbers</label>
         <div class="chart"><canvas id="watch-chart"></canvas></div>
       </div>
     </section>

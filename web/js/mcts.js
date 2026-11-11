@@ -1,6 +1,9 @@
 // PUCT tree search; same constants and first-play-urgency rule as
 // trainer/alphago_lite/mcts.py and MacApp/Sources/GoEngine/MCTS.swift.
 // evaluator(features) must return a Promise of { logits: Float32Array(82), value }.
+// Optional batchEvaluator(featuresList) returns a Promise of an array of those;
+// with it, search collects `batch` leaves per network call, using a virtual loss
+// (each pending path temporarily counts as a lost visit) so the leaves differ.
 (function (root) {
   "use strict";
   const Go = root.Go || require("./go.js");
@@ -57,8 +60,10 @@
   }
 
   class MCTS {
-    constructor(evaluator, pos) {
+    constructor(evaluator, pos, { batchEvaluator = null, batch = 1 } = {}) {
       this.evaluator = evaluator;
+      this.batchEvaluator = batchEvaluator;
+      this.batch = batch;
       this.root = new Node(pos || Go.newPosition());
     }
 
@@ -82,10 +87,77 @@
         root.expand(out.logits, out.value);
       }
       if (Go.isOver(root.pos)) return;
+      if (this.batchEvaluator && this.batch > 1) {
+        let done = 0;
+        while (done < count && !shouldStop()) {
+          const before = done;
+          done += await this.simulateBatch(Math.min(this.batch, count - done));
+          if (onProgress && (Math.floor(done / every) > Math.floor(before / every) || done >= count)) onProgress(this.snapshot());
+        }
+        return;
+      }
       for (let i = 0; i < count; i++) {
         if (shouldStop()) break;
         await this.simulate();
         if (onProgress && ((i + 1) % every === 0 || i === count - 1)) onProgress(this.snapshot());
+      }
+    }
+
+    // Up to n simulations with one network call; returns how many completed.
+    // Stops collecting early if a descent reaches a leaf already waiting in
+    // this batch.
+    async simulateBatch(n) {
+      const pending = [];
+      let completed = 0;
+      collect: for (let j = 0; j < n; j++) {
+        let node = this.root;
+        const path = [];
+        for (;;) {
+          const a = node.select();
+          path.push([node, a]);
+          node.visits[a] += 1; node.valueSum[a] -= 1; node.total += 1; // virtual loss
+          let child = node.children.get(a);
+          if (!child) { child = new Node(Go.play(node.pos, a)); node.children.set(a, child); }
+          if (Go.isOver(child.pos)) {
+            MCTS.undoVirtualLoss(path);
+            MCTS.backup(path, MCTS.terminalValue(child.pos));
+            completed++;
+            continue collect;
+          }
+          if (!child.expanded) {
+            if (child.pending) { MCTS.undoVirtualLoss(path); break collect; }
+            child.pending = true;
+            pending.push([path, child]);
+            continue collect;
+          }
+          node = child;
+        }
+      }
+      if (pending.length) {
+        const outs = await this.batchEvaluator(pending.map(([, c]) => Go.features(c.pos)));
+        pending.forEach(([path, child], i) => {
+          child.pending = false;
+          child.expand(outs[i].logits, outs[i].value);
+          MCTS.undoVirtualLoss(path);
+          MCTS.backup(path, outs[i].value);
+        });
+        completed += pending.length;
+      }
+      return completed;
+    }
+
+    static undoVirtualLoss(path) {
+      for (const [n, a] of path) { n.visits[a] -= 1; n.valueSum[a] += 1; n.total -= 1; }
+    }
+
+    // value is from the point of view of the player to move at the leaf.
+    static backup(path, value) {
+      for (let i = path.length - 1; i >= 0; i--) {
+        const [n, a] = path[i];
+        value = -value;
+        n.visits[a] += 1;
+        n.valueSum[a] += value;
+        n.total += 1;
       }
     }
 
@@ -156,8 +228,10 @@
 
   // Uniform policy, zero value: used when the network can't load, and in tests.
   async function uniformEvaluator() { return { logits: new Float32Array(N), value: 0 }; }
+  async function uniformBatchEvaluator(list) { return list.map(() => ({ logits: new Float32Array(N), value: 0 })); }
 
   root.MCTS = MCTS;
   root.uniformEvaluator = uniformEvaluator;
-  if (typeof module !== "undefined" && module.exports) module.exports = { MCTS, uniformEvaluator };
+  root.uniformBatchEvaluator = uniformBatchEvaluator;
+  if (typeof module !== "undefined" && module.exports) module.exports = { MCTS, uniformEvaluator, uniformBatchEvaluator };
 })(typeof self !== "undefined" ? self : globalThis);
