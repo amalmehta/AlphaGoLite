@@ -1,6 +1,6 @@
 // Node tests for the browser engine:  node web/tests/run_tests.js
 // Replays the Python-generated parity vectors (shared with the Swift tests) and
-// checks the search finds a game-winning pass.
+// checks the search finds a game-winning pass. searchMask (the pass rule) was\n// also cross-checked against Python's search_mask on 3,000 random positions.
 const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
@@ -143,6 +143,39 @@ async function test(name, fn) {
   await test("an empty board has nothing dead", () => {
     const r = Go.scoreWithDeadRemoved(Go.newPosition(), { playouts: 50 });
     assert.deepStrictEqual(r.dead, []);
+  });
+
+  await test("pass rule: no pass while there are moves worth playing", () => {
+    const m = Go.searchMask(Go.newPosition());
+    assert.strictEqual(m[Go.PASS], 0);
+    assert.strictEqual(m.reduce((a, v) => a + v, 0), 81);
+  });
+
+  await test("pass rule: pass allowed once only own-eye fills are left", () => {
+    // Black owns the left, white the right, each with two real eyes; the only
+    // empty points are those eyes, so neither side has a worthwhile move.
+    const rows = ["X.XXOO.OO", "XXXXOOOOO", "XXXXOOOOO", "XXXXOOOOO", "XXXXOOOOO",
+                  "XXXXOOOOO", "XXXXOOOOO", "XXXXOOOOO", "X.XXOO.OO"];
+    assert.strictEqual(Go.searchMask(fromRows(rows, Go.BLACK))[Go.PASS], 1);
+    assert.strictEqual(Go.searchMask(fromRows(rows, Go.WHITE))[Go.PASS], 1);
+  });
+
+  await test("pass rule: pass back allowed only when ahead on the board", () => {
+    const pos = fromRows(Array(9).fill("...XO...."));
+    pos.passes = 1;
+    pos.toPlay = Go.BLACK;  // the board is even, so black loses by komi: keep playing
+    assert.strictEqual(Go.searchMask(pos)[Go.PASS], 0);
+    pos.toPlay = Go.WHITE;  // white wins by komi: may pass back
+    assert.strictEqual(Go.searchMask(pos)[Go.PASS], 1);
+  });
+
+  await test("search with the pass rule never passes on an open board", async () => {
+    const pos = Go.newPosition();
+    pos.passes = 1;  // black to play, behind by komi
+    const mcts = new MCTS(uniformEvaluator, pos, { passRule: true, batchEvaluator: uniformBatchEvaluator, batch: 8 });
+    await mcts.search(200);
+    assert.strictEqual(mcts.root.visits[Go.PASS], 0);
+    assert.notStrictEqual(mcts.bestMove(), Go.PASS);
   });
 
   console.log(`${passed} tests passed`);

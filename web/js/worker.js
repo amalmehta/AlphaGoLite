@@ -10,7 +10,7 @@
 // Out: {type: "ready", status}
 //      {type: "progress" | "done", id, snap}
 const ORT_VERSION = "1.17.3";
-const CODE_VERSION = 3; // bump when go.js or mcts.js change, so browsers don't mix cached copies
+const CODE_VERSION = 4; // bump when go.js or mcts.js change, so browsers don't mix cached copies
 importScripts(`https://cdn.jsdelivr.net/npm/onnxruntime-web@${ORT_VERSION}/dist/ort.min.js`,
   `go.js?v=${CODE_VERSION}`, `mcts.js?v=${CODE_VERSION}`);
 
@@ -27,7 +27,7 @@ const ready = (async () => {
   try {
     ort.env.wasm.wasmPaths = `https://cdn.jsdelivr.net/npm/onnxruntime-web@${ORT_VERSION}/dist/`;
     ort.env.wasm.numThreads = 1; // GitHub Pages can't send the headers threads need
-    const session = await ort.InferenceSession.create("../model/alphagolite.onnx", { executionProviders: ["wasm"] });
+    const session = await ort.InferenceSession.create(`../model/alphagolite.onnx?v=${CODE_VERSION}`, { executionProviders: ["wasm"] });
     evaluator = async (features) => {
       const out = await session.run({ planes: new ort.Tensor("float32", features, [1, 6, 9, 9]) });
       return { logits: out.policy.data, value: out.value.data[0] };
@@ -94,7 +94,7 @@ async function runSearch({ id, position, sims }) {
   await ready;
   if (id !== current) return;
   const pos = Go.deserialize(position);
-  if (!mcts) mcts = new MCTS(evaluator, pos);
+  if (!mcts) mcts = new MCTS(evaluator, pos, { passRule: true });
   mcts.evaluator = evaluator;
   mcts.batchEvaluator = batchEvaluator;
   mcts.batch = batchFor(sims);

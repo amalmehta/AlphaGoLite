@@ -10,7 +10,7 @@ importScripts(`https://cdn.jsdelivr.net/npm/onnxruntime-web@${ORT_VERSION}/dist/
 const session = (async () => {
   ort.env.wasm.wasmPaths = `https://cdn.jsdelivr.net/npm/onnxruntime-web@${ORT_VERSION}/dist/`;
   ort.env.wasm.numThreads = 1;
-  return ort.InferenceSession.create("../model/alphagolite.onnx", { executionProviders: ["wasm"] });
+  return ort.InferenceSession.create("../model/alphagolite.onnx?v=4", { executionProviders: ["wasm"] });
 })();
 session.then(() => postMessage({ type: "ready", ok: true }), (e) => postMessage({ type: "ready", ok: false, error: e.message }));
 

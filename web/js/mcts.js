@@ -4,14 +4,17 @@
 // Optional batchEvaluator(featuresList) returns a Promise of an array of those;
 // with it, search collects `batch` leaves per network call, using a virtual loss
 // (each pending path temporarily counts as a lost visit) so the leaves differ.
+// passRule: expand nodes with Go.searchMask instead of Go.legalMask (passing only
+// when nothing worthwhile is left), as in training.
 (function (root) {
   "use strict";
   const Go = root.Go || require("./go.js");
   const C_PUCT = 1.5, FPU_REDUCTION = 0.25, N = 82;
 
   class Node {
-    constructor(pos) {
+    constructor(pos, passRule = false) {
       this.pos = pos;
+      this.passRule = passRule;
       this.children = new Map();
       this.expanded = false;
       this.total = 0;
@@ -19,7 +22,7 @@
     }
 
     expand(logits, value) {
-      const legal = Go.legalMask(this.pos);
+      const legal = this.passRule ? Go.searchMask(this.pos) : Go.legalMask(this.pos);
       let max = -Infinity;
       for (let i = 0; i < N; i++) if (legal[i]) max = Math.max(max, logits[i]);
       const prior = new Float64Array(N);
@@ -60,11 +63,12 @@
   }
 
   class MCTS {
-    constructor(evaluator, pos, { batchEvaluator = null, batch = 1 } = {}) {
+    constructor(evaluator, pos, { batchEvaluator = null, batch = 1, passRule = false } = {}) {
       this.evaluator = evaluator;
+      this.passRule = passRule;
       this.batchEvaluator = batchEvaluator;
       this.batch = batch;
-      this.root = new Node(pos || Go.newPosition());
+      this.root = new Node(pos || Go.newPosition(), passRule);
     }
 
     // Move the root to pos, keeping the subtree if pos is a direct child.
@@ -73,7 +77,7 @@
       for (const child of this.root.children.values()) {
         if (Go.sameState(child.pos, pos)) { this.root = child; return; }
       }
-      this.root = new Node(pos);
+      this.root = new Node(pos, this.passRule);
     }
 
     static terminalValue(pos) { return Go.winner(pos) === pos.toPlay ? 1 : -1; }
@@ -117,7 +121,7 @@
           path.push([node, a]);
           node.visits[a] += 1; node.valueSum[a] -= 1; node.total += 1; // virtual loss
           let child = node.children.get(a);
-          if (!child) { child = new Node(Go.play(node.pos, a)); node.children.set(a, child); }
+          if (!child) { child = new Node(Go.play(node.pos, a), node.passRule); node.children.set(a, child); }
           if (Go.isOver(child.pos)) {
             MCTS.undoVirtualLoss(path);
             MCTS.backup(path, MCTS.terminalValue(child.pos));
@@ -168,7 +172,7 @@
         const a = node.select();
         path.push([node, a]);
         let child = node.children.get(a);
-        if (!child) { child = new Node(Go.play(node.pos, a)); node.children.set(a, child); }
+        if (!child) { child = new Node(Go.play(node.pos, a), node.passRule); node.children.set(a, child); }
         if (Go.isOver(child.pos)) { value = MCTS.terminalValue(child.pos); break; }
         if (!child.expanded) {
           const out = await this.evaluator(Go.features(child.pos));

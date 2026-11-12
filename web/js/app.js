@@ -1,6 +1,6 @@
 // AlphaGo Lite website: Play, AI vs AI and Training tabs plus a feedback tab.
 // The engine (network + MCTS) runs in js/worker.js; the rules in js/go.js.
-import { Board } from "./board.js?v=3";
+import { Board } from "./board.js?v=4";
 
 const REPO = "https://github.com/amalmehta/AlphaGoLite";
 const $ = (id) => document.getElementById(id);
@@ -10,7 +10,7 @@ const pct = (x) => Math.round(x * 100);
 
 class Engine {
   constructor(onStatus) {
-    this.worker = new Worker("js/worker.js?v=3");
+    this.worker = new Worker("js/worker.js?v=4");
     this.nextId = 1;
     this.handlers = new Map();
     this.worker.onmessage = (e) => {
@@ -328,7 +328,7 @@ class Watch {
       else if (e.key === "ArrowRight") this.goto(this.step + 1);
       else if (e.key === " ") { e.preventDefault(); this.togglePlayback(); } else return;
     });
-    fetch("data/games.json").then((r) => r.json()).then((d) => {
+    fetch("data/games.json?v=4").then((r) => r.json()).then((d) => {
       this.games = d.games;
       this.select(this.games.length ? this.games[this.games.length - 1].title : "live");
     }).catch(() => this.select("live"));
@@ -443,7 +443,7 @@ class Watch {
 class Training {
   constructor() {
     this.charts = [];
-    fetch("data/metrics.json").then((r) => r.json()).then((m) => this.render(m, "The training run behind the network on this site"))
+    fetch("data/metrics.json?v=4").then((r) => r.json()).then((m) => this.render(m, "The training run behind the network on this site"))
       .catch(() => { $("tiles").textContent = "No training metrics found."; });
     $("metrics-file").onchange = async (e) => {
       const f = e.target.files[0];

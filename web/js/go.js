@@ -68,6 +68,72 @@
     return mask;
   }
 
+  const DIAGONALS = [];
+  for (let p = 0; p < POINTS; p++) {
+    const r = Math.floor(p / 9), c = p % 9, d = [];
+    for (const dr of [-1, 1]) for (const dc of [-1, 1]) {
+      if (r + dr >= 0 && r + dr < 9 && c + dc >= 0 && c + dc < 9) d.push((r + dr) * 9 + c + dc);
+    }
+    DIAGONALS.push(d);
+  }
+
+  // legalMask, except that passing is only allowed when every legal move would
+  // fill one of our own real eyes or put our own stones in atari, or when the
+  // opponent just passed and we already win on the board. The network was
+  // trained with this rule (trainer/alphago_lite/go.py Position.search_mask),
+  // so the search plays games out until dead stones are captured.
+  function searchMask(pos) {
+    const b = pos.board, me = pos.toPlay;
+    const gid = new Int16Array(POINTS).fill(-1), libsets = [];
+    for (let p = 0; p < POINTS; p++) {
+      if (b[p] === 0 || gid[p] >= 0) continue;
+      const color = b[p], g = libsets.length, stack = [p], libs = new Set();
+      gid[p] = g;
+      while (stack.length) {
+        const q = stack.pop();
+        for (const n of NEIGHBORS[q]) {
+          const v = b[n];
+          if (v === 0) libs.add(n);
+          else if (v === color && gid[n] < 0) { gid[n] = g; stack.push(n); }
+        }
+      }
+      libsets.push(libs);
+    }
+    const mask = new Uint8Array(NUM_MOVES);
+    mask[PASS] = 1;
+    let worthwhile = false;
+    for (let p = 0; p < POINTS; p++) {
+      if (b[p] !== 0 || p === pos.ko) continue;
+      let legal = false, captures = false, ownEye = true;
+      const libs = new Set();
+      for (const n of NEIGHBORS[p]) {
+        const v = b[n];
+        if (v === 0) { legal = true; ownEye = false; libs.add(n); }
+        else if (v === me) {
+          const ls = libsets[gid[n]];
+          if (ls.size > 1) legal = true;
+          for (const l of ls) libs.add(l);
+        } else {
+          ownEye = false;
+          if (libsets[gid[n]].size === 1) legal = captures = true;
+        }
+      }
+      if (!legal) continue;
+      mask[p] = 1;
+      if (worthwhile) continue;
+      if (ownEye) {
+        const diag = DIAGONALS[p];
+        let bad = 0;
+        for (const d of diag) if (b[d] === -me) bad++;
+        if (bad === 0 || (diag.length === 4 && bad === 1)) continue; // filling a real eye
+      }
+      libs.delete(p);
+      if (captures || libs.size >= 2) worthwhile = true;
+    }
+    if (worthwhile && !(pos.passes === 1 && areaScore(pos) * me > 0)) mask[PASS] = 0;
+    return mask;
+  }
+
   function isLegal(pos, m) { return m === PASS || (m >= 0 && m < POINTS && legalMask(pos)[m] === 1); }
 
   function play(pos, m) {
@@ -289,7 +355,7 @@
 
   const Go = {
     SIZE, POINTS, PASS, NUM_MOVES, KOMI, MAX_MOVES, PLANES, BLACK, WHITE, NEIGHBORS,
-    newPosition, isOver, legalMask, isLegal, play, areaScore, ownership, winner, features, scoreWithDeadRemoved,
+    newPosition, isOver, legalMask, searchMask, isLegal, play, areaScore, ownership, winner, features, scoreWithDeadRemoved,
     sameState, moveName, resultString, colorName, serialize, deserialize,
   };
   root.Go = Go;
