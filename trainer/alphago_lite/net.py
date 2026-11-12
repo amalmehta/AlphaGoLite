@@ -37,13 +37,20 @@ class PolicyValueNet(nn.Module):
         self.v_conv = nn.Sequential(nn.Conv2d(channels, 1, 1, bias=False), nn.BatchNorm2d(1), nn.ReLU())
         self.v_fc1 = nn.Linear(NN, 64)
         self.v_fc2 = nn.Linear(64, 1)
+        # Auxiliary ownership head (KataGo): predicts who owns each point at the
+        # end of the game. Used only as a training signal; play and the exports
+        # use policy and value only.
+        self.o_conv = nn.Conv2d(channels, 1, 1)
 
-    def forward(self, x):
+    def forward(self, x, with_ownership=False):
         """x: (B, 6, 9, 9). Returns policy logits (B, 82) and value (B, 1) in [-1, 1]
-        from the point of view of the player to move."""
+        from the point of view of the player to move; with_ownership adds
+        ownership logits (B, 81), positive = the player to move owns the point."""
         h = self.tower(self.stem(x))
         p = self.p_fc(self.p_conv(h).flatten(1))
         v = torch.tanh(self.v_fc2(F.relu(self.v_fc1(self.v_conv(h).flatten(1)))))
+        if with_ownership:
+            return p, v, self.o_conv(h).flatten(1)
         return p, v
 
 
@@ -61,6 +68,10 @@ class Evaluator:
 
 
 def load_net(path):
+    """Loads a checkpoint; ones saved before the ownership head (runs/main) load
+    with that head left at its initial values."""
     net = PolicyValueNet()
-    net.load_state_dict(torch.load(path, map_location="cpu"))
+    missing, unexpected = net.load_state_dict(torch.load(path, map_location="cpu"), strict=False)
+    if unexpected or any(not k.startswith("o_conv.") for k in missing):
+        raise RuntimeError(f"checkpoint mismatch: missing {missing}, unexpected {unexpected}")
     return net.eval()

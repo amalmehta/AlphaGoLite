@@ -67,7 +67,7 @@ def from_gtp(s):
     return (9 - int(s[1:])) * 9 + COLS.index(s[0])
 
 
-def play_games(weights, n_games, sims, level, seed, ours_black_first):
+def play_games(weights, n_games, sims, level, seed, ours_black_first, pass_rule=False):
     """Play n_games sequentially; colors alternate starting from ours_black_first."""
     torch.set_num_threads(1)
     ev = Evaluator(load_net(weights))
@@ -85,7 +85,7 @@ def play_games(weights, n_games, sims, level, seed, ours_black_first):
                 if moves and moves[-1] == PASS and pos.area_score() * ours > 0:
                     m = PASS
                 else:
-                    root = run_searches([pos], ev, sims, rng=rng)[0]
+                    root = run_searches([pos], ev, sims, rng=rng, pass_rule=pass_rule)[0]
                     m = int(root.N.argmax())
                 gtp.cmd(f"play {'B' if ours == 1 else 'W'} {to_gtp(m)}")
             else:
@@ -122,17 +122,19 @@ def main():
     ap.add_argument("--level", type=int, default=10)
     ap.add_argument("--workers", type=int, default=10)
     ap.add_argument("--job-timeout", type=int, default=7200)
+    ap.add_argument("--pass-rule", action="store_true",
+                    help="our search may only pass when no worthwhile move is left (Position.search_mask)")
     args = ap.parse_args()
     run = Path(args.run)
     out = run / "gnugo.json"
     data = json.loads(out.read_text()) if out.exists() else {"matches": []}
-    key = {"gen": args.gen, "sims": args.sims, "level": args.level}
-    if any({k: m[k] for k in key} == key for m in data["matches"]):
+    key = {"gen": args.gen, "sims": args.sims, "level": args.level, "pass_rule": args.pass_rule}
+    if any({k: m.get(k, False) for k in key} == key for m in data["matches"]):
         print("already played", key)
         return
     per = args.games // args.workers
     weights = str(run / "weights" / f"gen_{args.gen:04d}.pt")
-    jobs = [(weights, per, args.sims, args.level, 7777 + w, w % 2 == 0) for w in range(args.workers)]
+    jobs = [(weights, per, args.sims, args.level, 7777 + w, w % 2 == 0, args.pass_rule) for w in range(args.workers)]
     with Workers(args.workers, args.job_timeout) as pool:
         games = [g for r in pool.starmap(play_games, jobs) for g in r]
     decided = [g for g in games if g["ours_won"] is not None]

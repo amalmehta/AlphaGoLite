@@ -36,6 +36,15 @@ def _neighbors(p):
 NEIGHBORS = tuple(_neighbors(p) for p in range(NN))
 
 
+def _diagonals(p):
+    r, c = divmod(p, N)
+    return tuple((r + dr) * N + c + dc for dr in (-1, 1) for dc in (-1, 1)
+                 if 0 <= r + dr < N and 0 <= c + dc < N)
+
+
+DIAGONALS = tuple(_diagonals(p) for p in range(NN))
+
+
 def _group(board, p):
     """Return (stones, liberties) of the group containing p."""
     color = board[p]
@@ -55,18 +64,20 @@ def _group(board, p):
 
 
 class Position:
-    __slots__ = ("board", "prev_board", "to_play", "ko", "passes", "move_count")
+    __slots__ = ("board", "prev_board", "to_play", "ko", "passes", "move_count", "max_moves")
 
-    def __init__(self, board=None, prev_board=None, to_play=BLACK, ko=-1, passes=0, move_count=0):
+    def __init__(self, board=None, prev_board=None, to_play=BLACK, ko=-1, passes=0, move_count=0,
+                 max_moves=MAX_MOVES):
         self.board = board if board is not None else [EMPTY] * NN
         self.prev_board = prev_board if prev_board is not None else [EMPTY] * NN
         self.to_play = to_play
         self.ko = ko
         self.passes = passes
         self.move_count = move_count
+        self.max_moves = max_moves
 
     def is_over(self):
-        return self.passes >= 2 or self.move_count >= MAX_MOVES
+        return self.passes >= 2 or self.move_count >= self.max_moves
 
     def legal_mask(self):
         """Boolean list of length 82. Pass is always legal."""
@@ -107,11 +118,82 @@ class Position:
                     break
         return mask
 
+    def search_mask(self):
+        """legal_mask, except that passing is only allowed when every legal move
+        would fill one of our own eyes or put our own stones in atari. Under area
+        scoring such moves cost nothing, so games are played out until the board
+        is settled (or the opponent has passed and we already win on the board) and Tromp-Taylor scoring counts it correctly (no dead stones
+        left on the board). Used by the trainer's search and the web player
+        (web/js/go.js searchMask); the Mac app still uses legal_mask."""
+        board = self.board
+        me = self.to_play
+        gid = [-1] * NN
+        libsets = []
+        for p in range(NN):
+            if board[p] != EMPTY and gid[p] < 0:
+                color = board[p]
+                g = len(libsets)
+                gid[p] = g
+                stack = [p]
+                libs = set()
+                while stack:
+                    q = stack.pop()
+                    for n in NEIGHBORS[q]:
+                        v = board[n]
+                        if v == EMPTY:
+                            libs.add(n)
+                        elif v == color and gid[n] < 0:
+                            gid[n] = g
+                            stack.append(n)
+                libsets.append(libs)
+        mask = [False] * NUM_MOVES
+        mask[PASS] = True
+        worthwhile = False
+        for p in range(NN):
+            if board[p] != EMPTY or p == self.ko:
+                continue
+            legal = captures = False
+            own_eye = True
+            libs = set()
+            for n in NEIGHBORS[p]:
+                v = board[n]
+                if v == EMPTY:
+                    legal = True
+                    own_eye = False
+                    libs.add(n)
+                elif v == me:
+                    ls = libsets[gid[n]]
+                    if len(ls) > 1:
+                        legal = True
+                    libs |= ls
+                else:
+                    own_eye = False
+                    if len(libsets[gid[n]]) == 1:
+                        legal = captures = True
+            if not legal:
+                continue
+            mask[p] = True
+            if worthwhile:
+                continue
+            if own_eye:
+                diag = DIAGONALS[p]
+                bad = sum(1 for d in diag if board[d] == -me)
+                if bad == 0 or (len(diag) == 4 and bad == 1):
+                    continue  # filling a real eye
+            libs.discard(p)
+            if captures or len(libs) >= 2:
+                worthwhile = True
+        # After an opponent's pass (which under this rule means they had nothing
+        # worthwhile left), passing back is allowed if we already win on the board.
+        if worthwhile and not (self.passes == 1 and self.area_score() * me > 0):
+            mask[PASS] = False
+        return mask
+
     def play(self, m):
         """Return the position after move m. Assumes m is legal."""
         me = self.to_play
         if m == PASS:
-            return Position(self.board, self.board, -me, -1, self.passes + 1, self.move_count + 1)
+            return Position(self.board, self.board, -me, -1, self.passes + 1, self.move_count + 1, self.max_moves)
         b = self.board[:]
         b[m] = me
         captured = []
@@ -128,7 +210,7 @@ class Position:
         ko = -1
         if len(captured) == 1 and len(stones) == 1 and len(libs) == 1:
             ko = captured[0]
-        return Position(b, self.board, -me, ko, 0, self.move_count + 1)
+        return Position(b, self.board, -me, ko, 0, self.move_count + 1, self.max_moves)
 
     def area_score(self):
         """Black area minus white area minus komi (Tromp-Taylor)."""
@@ -158,6 +240,34 @@ class Position:
                 if len(borders) == 1:
                     score += len(region) * borders.pop()
         return score - KOMI
+
+    def ownership(self):
+        """Tromp-Taylor owner of each point (1 black, -1 white, 0 neutral)."""
+        board = self.board
+        own = list(board)
+        seen = [False] * NN
+        for p in range(NN):
+            if board[p] == EMPTY and not seen[p]:
+                region = [p]
+                seen[p] = True
+                stack = [p]
+                borders = set()
+                while stack:
+                    q = stack.pop()
+                    for n in NEIGHBORS[q]:
+                        w = board[n]
+                        if w == EMPTY:
+                            if not seen[n]:
+                                seen[n] = True
+                                region.append(n)
+                                stack.append(n)
+                        else:
+                            borders.add(w)
+                if len(borders) == 1:
+                    c = borders.pop()
+                    for q in region:
+                        own[q] = c
+        return own
 
     def winner(self):
         """1 if black wins, -1 if white wins (komi .5 means no draws)."""

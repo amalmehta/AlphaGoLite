@@ -16,10 +16,12 @@ FPU_REDUCTION = 0.25
 
 
 class Node:
-    __slots__ = ("pos", "legal", "penalty", "P", "N", "W", "V", "total", "children", "expanded")
+    __slots__ = ("pos", "legal", "penalty", "P", "N", "W", "V", "total", "children", "expanded",
+                 "pass_rule")
 
-    def __init__(self, pos):
+    def __init__(self, pos, pass_rule=False):
         self.pos = pos
+        self.pass_rule = pass_rule
         self.children = {}
         self.expanded = False
         self.legal = self.penalty = None
@@ -28,7 +30,7 @@ class Node:
         self.total = 0
 
     def expand(self, logits, value):
-        legal = np.asarray(self.pos.legal_mask(), dtype=bool)
+        legal = np.asarray(self.pos.search_mask() if self.pass_rule else self.pos.legal_mask(), dtype=bool)
         x = np.where(legal, logits, -np.inf)
         x = np.exp(x - x.max())
         self.P = x / x.sum()
@@ -69,7 +71,7 @@ def _descend(root):
         path.append((node, a))
         child = node.children.get(a)
         if child is None:
-            child = Node(node.pos.play(a))
+            child = Node(node.pos.play(a), node.pass_rule)
             node.children[a] = child
         if child.pos.is_over():
             return path, child, terminal_value(child.pos)
@@ -87,10 +89,11 @@ def _backup(path, v):
         node.total += 1
 
 
-def run_searches(positions, evaluator, sims, rng=None, noise=False, roots=None):
-    """Search every position for `sims` simulations. Returns the root nodes."""
+def run_searches(positions, evaluator, sims, rng=None, noise=False, roots=None, pass_rule=False):
+    """Search every position for `sims` simulations. Returns the root nodes.
+    pass_rule: forbid passing while a worthwhile move exists (Position.search_mask)."""
     if roots is None:
-        roots = [Node(p) for p in positions]
+        roots = [Node(p, pass_rule) for p in positions]
     fresh = [r for r in roots if not r.expanded]
     if fresh:
         logits, values = evaluator(np.stack([r.pos.features() for r in fresh]))

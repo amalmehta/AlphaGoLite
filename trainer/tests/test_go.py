@@ -76,3 +76,66 @@ def test_mcts_finds_winning_pass():
     p.passes = 1
     root = run_searches([p], Uniform(), 300)[0]
     assert int(root.N.argmax()) == PASS
+
+
+# --- pass rule (search_mask) and ownership targets ---------------------------
+
+def test_search_mask_forbids_pass_on_open_board():
+    p = Position()
+    assert not p.search_mask()[PASS]
+    assert p.search_mask()[:PASS] == p.legal_mask()[:PASS]
+
+
+def test_search_mask_allows_pass_when_only_own_eyes_remain():
+    # black owns the whole board except two separate one-point eyes (A9, J1)
+    b = [1] * 81
+    b[pt("A9")] = 0
+    b[pt("J1")] = 0
+    p = Position(board=b, to_play=BLACK)
+    assert p.search_mask()[PASS]
+    # white may only play suicide-free captures: none here, both points are suicide
+    pw = Position(board=b, to_play=WHITE)
+    assert pw.search_mask()[PASS]
+
+
+def test_search_mask_allows_pass_when_only_self_atari_remains():
+    # black group on the top edge with a single two-point eye space A9-B9:
+    # filling either point is self-atari for the whole group, so pass is allowed
+    black = [s + "8" for s in "ABCDEFGHJ"] + [s + "9" for s in "CDEFGHJ"]
+    white = [s + "7" for s in "ABCDEFGHJ"] + [s + r for s in "ABCDEFGHJ" for r in "123456"]
+    p = setup(black=black, white=white, to_play=BLACK)
+    m = p.search_mask()
+    assert m[pt("A9")] and m[pt("B9")]   # still legal
+    assert m[PASS]
+
+
+def test_search_mask_requires_capturing_dead_stones():
+    # one white stone sits alone inside black's area: black must keep playing
+    b = [1] * 81
+    for s in ("A9", "J1", "E5"):
+        b[pt(s)] = 0
+    for s in ("D5", "F5", "E4", "E6"):
+        b[pt(s)] = 0
+    b[pt("E5")] = -1
+    p = Position(board=b, to_play=BLACK)
+    assert not p.search_mask()[PASS]
+
+
+def test_ownership_and_max_moves():
+    p = setup(black=["A8", "B9"], white=["J1"])
+    own = p.ownership()
+    assert own[pt("A9")] == 1 and own[pt("A8")] == 1 and own[pt("J1")] == -1
+    assert own[pt("E5")] == 0  # empty region touching both colors is neutral
+    q = Position(max_moves=3)
+    for _ in range(3):
+        assert not q.is_over()
+        q = q.play(q.legal_mask().index(True))
+    assert q.is_over() and q.max_moves == 3
+
+
+def test_search_mask_allows_passing_back_when_ahead():
+    p = setup(black=["E5"], white=[], to_play=WHITE).play(PASS)  # black to play after white passed
+    assert p.passes == 1 and p.area_score() > 0
+    assert p.search_mask()[PASS]
+    q = setup(black=[], white=["E5"], to_play=WHITE).play(PASS)  # black behind
+    assert not q.search_mask()[PASS]
