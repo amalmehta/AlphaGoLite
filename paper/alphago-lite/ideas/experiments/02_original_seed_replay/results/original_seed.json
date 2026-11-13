@@ -1,0 +1,155 @@
+{
+ "pairs": [
+  {
+   "gen": 25,
+   "logged_wins": 23,
+   "replayed_wins": 23,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 26,
+   "logged_wins": 16,
+   "replayed_wins": 16,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 27,
+   "logged_wins": 17,
+   "replayed_wins": 17,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 28,
+   "logged_wins": 17,
+   "replayed_wins": 17,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 29,
+   "logged_wins": 20,
+   "replayed_wins": 20,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 30,
+   "logged_wins": 11,
+   "replayed_wins": 11,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 31,
+   "logged_wins": 23,
+   "replayed_wins": 23,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 32,
+   "logged_wins": 19,
+   "replayed_wins": 19,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 33,
+   "logged_wins": 16,
+   "replayed_wins": 16,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 34,
+   "logged_wins": 22,
+   "replayed_wins": 22,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 35,
+   "logged_wins": 17,
+   "replayed_wins": 17,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 36,
+   "logged_wins": 24,
+   "replayed_wins": 24,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 37,
+   "logged_wins": 28,
+   "replayed_wins": 28,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 38,
+   "logged_wins": 19,
+   "replayed_wins": 19,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 39,
+   "logged_wins": 25,
+   "replayed_wins": 25,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 40,
+   "logged_wins": 21,
+   "replayed_wins": 21,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 41,
+   "logged_wins": 12,
+   "replayed_wins": 12,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 42,
+   "logged_wins": 25,
+   "replayed_wins": 25,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 43,
+   "logged_wins": 17,
+   "replayed_wins": 17,
+   "games": 40,
+   "match": true
+  },
+  {
+   "gen": 44,
+   "logged_wins": 22,
+   "replayed_wins": 22,
+   "games": 40,
+   "match": true
+  }
+ ],
+ "determinism": {
+  "job": "gen 25 seed 197975",
+  "first": 0,
+  "repeat": 0
+ },
+ "wall_seconds": 2314.4,
+ "loadavg_start": [
+  43.72314453125,
+  111.1845703125,
+  122.55029296875
+ ]
+}

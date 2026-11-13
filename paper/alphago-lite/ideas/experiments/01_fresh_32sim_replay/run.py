@@ -35,6 +35,7 @@ def main():
     out = {"design": "consecutive, fresh seeds", "sims": SIMS, "seed_base": SEED, "results": results,
            "wall_seconds": round(time.time() - t, 1), "python": platform.python_version(),
            "loadavg_start": os.getloadavg()}
+    (HERE / "results").mkdir(exist_ok=True)
     (HERE / "results" / "replay32.json").write_text(json.dumps(out, indent=1))
     newer = sum(r["games"] - r["wins_a"] for r in results)
     print(f"newer wins {newer}/{GAMES * len(results)} = {newer / (GAMES * len(results)):.3f} in {out['wall_seconds']} s")
